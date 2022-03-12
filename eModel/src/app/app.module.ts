@@ -7,6 +7,7 @@ import { InitialLoginComponent } from './initial-login/initial-login.component';
 import { ContainerWatchlistComponent } from './container-watchlist/container-watchlist.component';
 import { UserRegistrationComponent } from './user-registration/user-registration.component';
 import { ContainerBookingComponent } from './container-booking/container-booking.component';
+import { TerminalComponent } from './terminal/terminal.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ContainerBookingComponent } from './container-booking/container-booking
     InitialLoginComponent,
     ContainerWatchlistComponent,
     UserRegistrationComponent,
-    ContainerBookingComponent
+    ContainerBookingComponent,
+    TerminalComponent
   ],
   imports: [
     BrowserModule,
