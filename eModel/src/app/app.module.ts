@@ -9,6 +9,7 @@ import { UserRegistrationComponent } from './user-registration/user-registration
 import { ContainerBookingComponent } from './container-booking/container-booking.component';
 import { TerminalComponent } from './terminal/terminal.component';
 import { AdminControlComponent } from './admin-control/admin-control.component';
+import { InitialLandingComponent } from './initial-landing/initial-landing.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { AdminControlComponent } from './admin-control/admin-control.component';
     UserRegistrationComponent,
     ContainerBookingComponent,
     TerminalComponent,
-    AdminControlComponent
+    AdminControlComponent,
+    InitialLandingComponent
   ],
   imports: [
     BrowserModule,
