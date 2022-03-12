@@ -7,7 +7,7 @@ import { InitialLoginComponent } from './initial-login/initial-login.component';
 import { ContainerWatchlistComponent } from './container-watchlist/container-watchlist.component';
 import { UserRegistrationComponent } from './user-registration/user-registration.component';
 import { ContainerBookingComponent } from './container-booking/container-booking.component';
-import { FinalUserPaymentComponent } from './final-user-payment/final-user-payment.component';
+import { TerminalComponent } from './terminal/terminal.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +16,7 @@ import { FinalUserPaymentComponent } from './final-user-payment/final-user-payme
     ContainerWatchlistComponent,
     UserRegistrationComponent,
     ContainerBookingComponent,
-    FinalUserPaymentComponent
+    TerminalComponent
   ],
   imports: [
     BrowserModule,
