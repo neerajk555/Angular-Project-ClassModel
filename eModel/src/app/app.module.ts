@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InitialLoginComponent } from './initial-login/initial-login.component';
 import { ContainerWatchlistComponent } from './container-watchlist/container-watchlist.component';
+import { ContainerBookingComponent } from './container-booking/container-booking.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     InitialLoginComponent,
-    ContainerWatchlistComponent
+    ContainerWatchlistComponent,
+    ContainerBookingComponent
   ],
   imports: [
     BrowserModule,
