@@ -11,6 +11,8 @@ import { TerminalComponent } from './terminal/terminal.component';
 import { AdminControlComponent } from './admin-control/admin-control.component';
 import { InitialLandingComponent } from './initial-landing/initial-landing.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { UpdatedateDirective } from './updatedate.directive';
+
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ContainerBookingComponent,
     TerminalComponent,
     AdminControlComponent,
-    InitialLandingComponent
+    InitialLandingComponent,
+    UpdatedateDirective
   ],
   imports: [
     BrowserModule,
