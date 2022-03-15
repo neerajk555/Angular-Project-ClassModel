@@ -10,6 +10,7 @@ import { ContainerBookingComponent } from './container-booking/container-booking
 import { TerminalComponent } from './terminal/terminal.component';
 import { AdminControlComponent } from './admin-control/admin-control.component';
 import { InitialLandingComponent } from './initial-landing/initial-landing.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { InitialLandingComponent } from './initial-landing/initial-landing.compo
   imports: [
     BrowserModule,
     AppRoutingModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
