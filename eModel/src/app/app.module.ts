@@ -12,6 +12,7 @@ import { AdminControlComponent } from './admin-control/admin-control.component';
 import { InitialLandingComponent } from './initial-landing/initial-landing.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UpdatedateDirective } from './updatedate.directive';
+import { UserInfoComponent } from './user-info/user-info.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { UpdatedateDirective } from './updatedate.directive';
     TerminalComponent,
     AdminControlComponent,
     InitialLandingComponent,
-    UpdatedateDirective
+    UpdatedateDirective,
+    UserInfoComponent
   ],
   imports: [
     BrowserModule,
