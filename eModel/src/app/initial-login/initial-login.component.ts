@@ -12,4 +12,7 @@ export class InitialLoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  logopath="../assets/images/logos/logo.png";
+
+
 }
