@@ -15,7 +15,7 @@
         "authorize":false
     }],
     "card_details":[{
-        "cardid":"CD10002", 
+        "cardid":"CD10001", 
         "userid":"USR100001",
         "card_typr":"ATM",
         "card_title":"SBI Card",
