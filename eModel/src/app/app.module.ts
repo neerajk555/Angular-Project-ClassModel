@@ -10,6 +10,7 @@ import { ContainerBookingComponent } from './container-booking/container-booking
 import { TerminalComponent } from './terminal/terminal.component';
 import { AdminControlComponent } from './admin-control/admin-control.component';
 import { InitialLandingComponent } from './initial-landing/initial-landing.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { InitialLandingComponent } from './initial-landing/initial-landing.compo
     ContainerBookingComponent,
     TerminalComponent,
     AdminControlComponent,
-    InitialLandingComponent
+    InitialLandingComponent,
+    LandingPageComponent
   ],
   imports: [
     BrowserModule,
