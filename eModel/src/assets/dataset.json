@@ -11,6 +11,7 @@
         "user_document":"https://icons.iconarchive.com/icons/custom-icon-design/pretty-office-10/256/Student-id-icon.png",
         "user_profilephoto":"https://www.vhv.rs/dpng/d/256-2569650_men-profile-icon-png-image-free-download-searchpng.png",
         "user_company_name":"ABC XYZ",
+        "user_watchlist_ids":[],
         "user_status":true,
         "user_token":"",        
         "authorize":false
