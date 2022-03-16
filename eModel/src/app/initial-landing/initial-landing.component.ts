@@ -12,4 +12,13 @@ export class InitialLandingComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  show = false;
+  ShowMenu(){
+    if(this.show == false){
+      this.show = true;
+    }
+    else{
+      this.show = false;
+    }
+  }
 }

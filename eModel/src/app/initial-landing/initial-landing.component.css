@@ -1,0 +1,65 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+.header{
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    background-color: white;
+    border: 1px solid black;
+    height: 7%;
+    width: 100%;
+}
+.menu-btn{
+    background-color: red;
+    color: white;
+    border: none;
+    height: 100%;
+    padding: 10px;
+    float: left;
+    margin-right: 20px;
+}
+.logo{
+    height: 50%;
+    transform: translate(0%, 50%);
+}
+.menu-bar{
+    position: fixed;
+    top: 7%;
+    left: -20%;
+    height: 93%;
+    width: 20%;
+    border: 1px solid black;
+}
+.slideright{
+    animation: slideright 0.2s;
+    left: 0%;
+}
+.slideleft{
+    animation: slideleft 0.2s;
+    left: -20%;
+}
+.nav-btn{
+    border: none;
+    background-color: transparent;
+    width: 100%;
+    padding: 20px;
+    border-bottom: 1px solid grey;
+    text-align: left;
+    font-size: 12px;
+}
+.nav-btn:hover{
+    background-color: red;
+    color: white;
+    cursor: pointer;
+}
+@keyframes slideright {
+    from {left: -20%;}
+    to {left: 0%;}
+}
+@keyframes slideleft {
+    from {left: 0%;}
+    to {left: -20%;}
+}
