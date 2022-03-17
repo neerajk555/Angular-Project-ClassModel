@@ -18,7 +18,7 @@
   </div> -->
 
 
-<section class="vh-100 w-100">
+  <section class="vh-100 w-100">
     <div class="container ">
         <div class="row d-flex justify-content-center ">
             <div class=" col-xl-5">
@@ -30,17 +30,15 @@
                                     <img [src]="logopath" class="logo">
                                 </a>
                             </div>
+                            <form [formGroup]="userFormData" (ngSubmit)="AuthCheck()">
                             <div class="form-white mb-3">
-                                <input type="hidden" id="brandingClientId">
-                                <label class="form-label mb-0" for="typeEmailX">Username</label>
-                                <input type="email" id="typeEmailX" class="form-control form-control-md"
-                                    placeholder="Username" />
+                                <label class="form-label mb-0">Username</label>
+                                <input type="email" formControlName="username" class="form-control form-control-md" placeholder="Username" />
                             </div>
 
                             <div class="form-outline form-white mb-2">
-                                <label class="form-label mb-0" for="typePasswordX">Password</label>
-                                <input type="password" id="typePasswordX" class="form-control form-control-md"
-                                    placeholder="Password" />
+                                <label class="form-label mb-0">Password</label>
+                                <input type="password" formControlName="password" class="form-control form-control-md" placeholder="Password" />
                             </div>
 
                             <h6 class=" mb-3 pb-lg-2 d-flex justify-content-end" style="font-size: 14px;">
@@ -49,12 +47,13 @@
                                             href="">Password?</a></strong></em>
                             </h6>
 
-                            <button class="btn btn-md btn-success col-12 fw-bold" type="submit">LOGIN</button>
+                            <button class="btn btn-md btn-success col-12 fw-bold" type="submit" >LOGIN</button>
+                            </form>
                         </div>
 
                         <div>
                             <p class="d-flex text-black justify-content-end" style="font-size: 15px;">Don't have an
-                                account?&nbsp;<a href="#!" class="text-blue-50 text-decoration-none"> Register Now</a>
+                                account?&nbsp;<a routerLink="UserRegistration" class="text-blue-50 text-decoration-none"> Register Now</a>
                             </p>
                         </div>
 
