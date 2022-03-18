@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,5 +6,13 @@ import { Injectable } from '@angular/core';
 })
 export class WatchlistService {
 
-  constructor() { }
+  constructor(public http: HttpClient) { }
+  url = {
+    "pay-data":"http://localhost:3000/pay-data"
+  }
+  
+  getData() {
+    return this.http.get(this.url['pay-data']);
+  }
 }
+
