@@ -17,6 +17,7 @@ const routes: Routes = [
   {path:'InitialLogin',component:InitialLoginComponent},
   {path:'UserRegistration',component:UserRegistrationComponent},
   {path:'InitialLanding',component:InitialLandingComponent},
+  {path:'userInfo',component:UserInfoComponent},
   {path:'ForgotPassword',component:ForgotPasswordComponent},
   {path:'Terminal',component:TerminalComponent}
 ];

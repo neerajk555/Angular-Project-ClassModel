@@ -6,9 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-info.component.css']
 })
 export class UserInfoComponent implements OnInit {
-
+  public toggleButton: boolean = false;
   constructor() { }
-  
+  enable(){
+    this.toggleButton = false
+ }
+
+ disable(){
+    this.toggleButton = true
+ }
   ngOnInit(): void {
   }
 
