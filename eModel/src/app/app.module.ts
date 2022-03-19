@@ -14,7 +14,9 @@ import { AdminControlComponent } from './admin-control/admin-control.component';
 import { InitialLandingComponent } from './initial-landing/initial-landing.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UpdatedateDirective } from './updatedate.directive';
-
+import { UserInfoComponent } from './user-info/user-info.component';
+import { FinalUserPaymentComponent } from './final-user-payment/final-user-payment.component';
+import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { UpdatedateDirective } from './updatedate.directive';
     TerminalComponent,
     AdminControlComponent,
     InitialLandingComponent,
-    UpdatedateDirective
+    UpdatedateDirective,
+    UserInfoComponent,
+    FinalUserPaymentComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +38,8 @@ import { UpdatedateDirective } from './updatedate.directive';
     NgbModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

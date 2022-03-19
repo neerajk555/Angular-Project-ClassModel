@@ -1,1 +1,14 @@
-<p>initial-landing works!</p>
+<div class="header">
+    <button (click)="ShowMenu()" class="menu-btn">
+        <img style="filter: invert(1); height: 100%;" src="../../assets/images/menu-bar.png">
+    </button>
+    <img class="logo" src="../../assets/images/logo.png">
+</div>
+
+<div [ngClass]="show ? 'slideright' : 'slideleft'" class="menu-bar">
+    <button class="nav-btn">EMODAL COMMUNITY PORTAL</button>
+    <button class="nav-btn">CHASSIS CHECK</button>
+    <button class="nav-btn">TERMINAL SERVICES</button>
+    <button class="nav-btn">TRUCKER CHECK</button>
+    <button class="nav-btn">ADMINISTRATION</button>
+</div>

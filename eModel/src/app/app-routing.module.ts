@@ -6,6 +6,8 @@ import { ContainerBookingComponent } from './container-booking/container-booking
 import { InitialLandingComponent } from './initial-landing/initial-landing.component';
 import { InitialLoginComponent } from './initial-login/initial-login.component';
 import { UserRegistrationComponent } from './user-registration/user-registration.component';
+import { UserInfoComponent } from './user-info/user-info.component';
+
 
 const routes: Routes = [
   {path:'',component:InitialLoginComponent},
