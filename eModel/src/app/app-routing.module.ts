@@ -7,14 +7,19 @@ import { InitialLandingComponent } from './initial-landing/initial-landing.compo
 import { InitialLoginComponent } from './initial-login/initial-login.component';
 import { UserRegistrationComponent } from './user-registration/user-registration.component';
 import { UserInfoComponent } from './user-info/user-info.component';
+import { MainLoginComponent } from './main-login/main-login.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { TerminalComponent } from './terminal/terminal.component';
 
 
 const routes: Routes = [
-  {path:'',component:InitialLoginComponent},
+  {path:'',component:MainLoginComponent},
+  {path:'InitialLogin',component:InitialLoginComponent},
   {path:'UserRegistration',component:UserRegistrationComponent},
   {path:'InitialLanding',component:InitialLandingComponent},
   {path:'userInfo',component:UserInfoComponent},
-
+  {path:'ForgotPassword',component:ForgotPasswordComponent},
+  {path:'Terminal',component:TerminalComponent}
 ];
 
 @NgModule({
