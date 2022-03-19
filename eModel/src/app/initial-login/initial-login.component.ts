@@ -16,9 +16,12 @@ export class InitialLoginComponent implements OnInit {
   userInfo:any;
   userFormData:any;
   //flag=false;
-
+  showLoadingIndicator = true;
   ngOnInit(): void {
-
+    setTimeout(()=>
+    {
+      this.showLoadingIndicator=false;
+    },3000);
     this.ds.getUserData().subscribe((data) => this.fatchUserData(data));
 
 
