@@ -16,7 +16,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UpdatedateDirective } from './updatedate.directive';
 import { UserInfoComponent } from './user-info/user-info.component';
 import { FinalUserPaymentComponent } from './final-user-payment/final-user-payment.component';
+import { MainLoginComponent } from './main-login/main-login.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { MainLandingPageComponent } from './main-landing-page/main-landing-page.component';
+
 
 @NgModule({
   declarations: [
@@ -31,6 +34,8 @@ import { MainLandingPageComponent } from './main-landing-page/main-landing-page.
     UpdatedateDirective,
     UserInfoComponent,
     FinalUserPaymentComponent,
+    MainLoginComponent,
+    ForgotPasswordComponent,
     MainLandingPageComponent
   ],
   imports: [
