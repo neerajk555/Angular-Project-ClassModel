@@ -1,14 +1,16 @@
-<div class="header">
+<div class="header border bg-light position-fixed">
     <button (click)="ShowMenu()" class="menu-btn">
-        <img style="filter: invert(1); height: 100%;" src="../../assets/images/menu-bar.png">
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+          </svg>
     </button>
-    <img class="logo" src="../../assets/images/logo.png">
+    <img class="logo" [src]="logo">
 </div>
 
-<div [ngClass]="show ? 'slideright' : 'slideleft'" class="menu-bar">
-    <button class="nav-btn">EMODAL COMMUNITY PORTAL</button>
-    <button class="nav-btn">CHASSIS CHECK</button>
-    <button class="nav-btn">TERMINAL SERVICES</button>
-    <button class="nav-btn">TRUCKER CHECK</button>
-    <button class="nav-btn">ADMINISTRATION</button>
+<div [ngClass]="show ? 'slideright' : 'slideleft'" class="menu-bar bg-light">
+    <a class="btn nav-btn" routerLink="watchlist">WATCHLIST</a><br>
+    <a class="btn nav-btn" routerLink="bookings">BOOKING</a><br>
+    <a class="btn nav-btn" routerLink="profile">PROFILE</a>
 </div>
+
+<router-outlet></router-outlet>

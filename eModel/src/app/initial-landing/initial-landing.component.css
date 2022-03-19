@@ -43,12 +43,16 @@
 }
 .nav-btn{
     border: none;
+    color: black;
+    text-decoration: none;
     background-color: transparent;
     width: 100%;
     padding: 20px;
     border-bottom: 1px solid grey;
     text-align: left;
     font-size: 12px;
+    cursor: default !important;
+    border-radius: 0;
 }
 .nav-btn:hover{
     background-color: red;

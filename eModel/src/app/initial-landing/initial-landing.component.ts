@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class InitialLandingComponent implements OnInit {
 
   constructor() { }
-
+  logo="../../assets/images/logos/logo.png";
   ngOnInit(): void {
   }
 

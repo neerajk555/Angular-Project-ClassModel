@@ -35,23 +35,31 @@
         "contype_height":"20",
         "contype_width":"40",
         "contype_code":"20WD40"
+    },
+    {
+        "id":2,
+        "contype_id":"CTI0002",
+        "contype_type":"Steel",
+        "contype_height":"20",
+        "contype_width":"40",
+        "contype_code":"20SL40"
     }],
     "terminal_details":[{
         "id":1,
         "terminal_id":"TI100001",
-        "terminal_name":"",
-        "terminal_mobile":"",
-        "terminal_email":"",
-        "terminal_username":"",
-        "terminal_password":"",
-        "terminal_location":"",
-        "city":"",
-        "country":"",
-        "zipcode":"",
+        "terminal_name":"UK",
+        "terminal_mobile":"+1789465132",
+        "terminal_email":"asd@asd.asd",
+        "terminal_username":"terminal1",
+        "terminal_password":"termin@123",
+        "terminal_location":"UK",
+        "city":"UK",
+        "country":"UK",
+        "zipcode":"785423",
         "terminal_logo":"https://cdn-icons-png.flaticon.com/512/79/79587.png",
         "fax":"",
         "description":"",
-        "terminal_status":"",
+        "terminal_status":"Active",
         "token":""
     }],
     "container_details":[{
@@ -61,19 +69,14 @@
         "terminal_id_origin":"TI100001",
         "terminal_id_current":"TI100001",
         "status":"Available"
-    }],
-    "status_details":[{
-        "id":1,
-        "status_id":"ST100001",
-        "container_status":"",
-        "booking_date":"",
-        "payment_id":"",
-        "pickup_date":"",
-        "departure_date":"",
-        "ship_id":"",
-        "arriving_date":"",
-        "terminal_id":"",
-        "receiver_delivery_date":""
+    },
+    {
+        "id":2,
+        "con_id":"CON00002",
+        "contype_id":"CTI0002",
+        "terminal_id_origin":"TI100001",
+        "terminal_id_current":"TI100001",
+        "status":"Available"
     }],
     "appointment_details":[{
         "id":1,
@@ -102,6 +105,20 @@
         "Description":"",
         "date":"",
         "appointment_id":"APT100001"
+    }],
+    "status_details":[{
+        "id":1,
+        "status_id":"ST100001",
+        "con_id":"CON00001",
+        "container_status":"Available",
+        "booking_date":"",
+        "payment_id":"",
+        "pickup_date":"",
+        "departure_date":"",
+        "ship_id":"",
+        "arriving_date":"",
+        "terminal_id":"",
+        "receiver_delivery_date":""
     }],
     "feedback_details":[{
         "id":1,

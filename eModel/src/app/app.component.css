@@ -1,3 +1,6 @@
+*{
+  font-family: Arial, Helvetica, sans-serif;
+}
 .loader {
     color: #f71d1d;
     font-size: 20px;
