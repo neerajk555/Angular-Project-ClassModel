@@ -13,7 +13,8 @@ import { InitialLandingComponent } from './initial-landing/initial-landing.compo
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UpdatedateDirective } from './updatedate.directive';
 import { UserInfoComponent } from './user-info/user-info.component';
-
+import { FinalUserPaymentComponent } from './final-user-payment/final-user-payment.component';
+import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -26,12 +27,14 @@ import { UserInfoComponent } from './user-info/user-info.component';
     AdminControlComponent,
     InitialLandingComponent,
     UpdatedateDirective,
-    UserInfoComponent
+    UserInfoComponent,
+    FinalUserPaymentComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
