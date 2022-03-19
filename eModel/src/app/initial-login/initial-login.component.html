@@ -17,8 +17,8 @@
   <button id="btnLogin" type="submit" name="submit" class=" btn btn-block mybtn submit-color tx-tfm" value="login" disabled=""><b>LOGIN</b></button>
   </div> -->
 
-
-  <section class="vh-100 w-100">
+  <div *ngIf="showLoadingIndicator" class="loader"></div>
+  <section class="vh-100 w-100" *ngIf="!showLoadingIndicator">
     <div class="container ">
         <div class="row d-flex justify-content-center ">
             <div class=" col-xl-5">
