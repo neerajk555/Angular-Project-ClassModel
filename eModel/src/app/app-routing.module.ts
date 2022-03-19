@@ -12,7 +12,9 @@ import { UserInfoComponent } from './user-info/user-info.component';
 const routes: Routes = [
   {path:'',component:InitialLoginComponent},
   {path:'UserRegistration',component:UserRegistrationComponent},
-  {path:'InitialLanding',component:InitialLandingComponent}
+  {path:'InitialLanding',component:InitialLandingComponent},
+  {path:'userInfo',component:UserInfoComponent},
+
 ];
 
 @NgModule({
