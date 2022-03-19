@@ -16,7 +16,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UpdatedateDirective } from './updatedate.directive';
 import { UserInfoComponent } from './user-info/user-info.component';
 import { FinalUserPaymentComponent } from './final-user-payment/final-user-payment.component';
-import { HttpClientModule } from '@angular/common/http'
+import { MainLandingPageComponent } from './main-landing-page/main-landing-page.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +30,8 @@ import { HttpClientModule } from '@angular/common/http'
     InitialLandingComponent,
     UpdatedateDirective,
     UserInfoComponent,
-    FinalUserPaymentComponent
+    FinalUserPaymentComponent,
+    MainLandingPageComponent
   ],
   imports: [
     BrowserModule,
