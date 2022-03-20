@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -15,7 +16,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UpdatedateDirective } from './updatedate.directive';
 import { UserInfoComponent } from './user-info/user-info.component';
 import { FinalUserPaymentComponent } from './final-user-payment/final-user-payment.component';
-import { HttpClientModule } from '@angular/common/http'
+import { MainLoginComponent } from './main-login/main-login.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { MainLandingPageComponent } from './main-landing-page/main-landing-page.component';
+
 
 @NgModule({
   declarations: [
@@ -29,14 +33,19 @@ import { HttpClientModule } from '@angular/common/http'
     InitialLandingComponent,
     UpdatedateDirective,
     UserInfoComponent,
-    FinalUserPaymentComponent
+    FinalUserPaymentComponent,
+    MainLoginComponent,
+    ForgotPasswordComponent,
+    MainLandingPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
