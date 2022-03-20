@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WatchlistService } from '../watchlist.service';
 
 @Component({
   selector: 'app-container-watchlist',
@@ -7,9 +8,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContainerWatchlistComponent implements OnInit {
 
-  constructor() { }
+  constructor(private wS: WatchlistService) { }
 
-  ngOnInit(): void {
+  watchlist:any;
+
+  saveToWatchlist(data:any) {
+    data = data.map((v: any) => ({...v, loadRow: false}));
+    this.watchlist = data;
+    console.log(this.watchlist);
+
   }
 
+  ngOnInit(): void {
+    this.wS.getContainerWatchlist().subscribe((data) => this.saveToWatchlist(data));
+  }
+
+  expand(index:any) {
+    this.watchlist[index].loadRow = true;
+  }
+
+  collapse(index: any) {
+    this.watchlist[index].loadRow = false;
+  }
 }
