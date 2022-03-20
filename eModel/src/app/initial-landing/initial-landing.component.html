@@ -7,7 +7,7 @@
     <img class="logo" [src]="logo">
 </div> -->
 
-<nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
+<!-- <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
     <div class="container-fluid header border">
         <button (click)="ShowMenu()" class="menu-btn">
             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
@@ -32,6 +32,45 @@
     <a class="btn nav-btn" routerLink="watchlist">WATCHLIST</a><br>
     <a class="btn nav-btn" routerLink="bookings">BOOKING</a><br>
     <a class="btn nav-btn" routerLink="profile">PROFILE</a>
-</div>
+</div> -->
 
 <router-outlet></router-outlet>
+<div class="header">
+    <button (click)="ShowMenu()" class="menu-btn" [ngClass]="show ? 'menu-btn-clicked' : 'menu-btn-not-clicked'">
+        <img style="height: 80%;" src="../../assets/images/menu-bar.png">
+    </button>
+    <img class="logo" src="../assets/images/logos/logo.png">
+  
+    <button title="User Profile" class="options" (click)="open(content)">
+        <img class="option-img" src="../../assets/images/profile.png">
+    </button>
+    <button title="Notifications" class="options">
+        <img  class="option-img" src="../../assets/images/notification.png">
+    </button>
+  
+  </div>
+  
+  <div [ngClass]="show ? 'slideright' : 'slideleft'" class="menu-bar">
+    <button class="nav-btn">EMODAL COMMUNITY PORTAL</button>
+    <button class="nav-btn">CHASSIS CHECK</button>
+    <button class="nav-btn">TERMINAL SERVICES</button>
+    <button class="nav-btn">TRUCKER CHECK</button>
+    <button class="nav-btn">ADMINISTRATION</button>
+  </div>
+  
+  
+  <ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">User Profile</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <div>
+        <img style="height: 100px; float: left; margin-right: 20px" src="../assets/images/profile.png">
+        <p>Username : Username</p>
+        <p>Name : Name</p>
+        <p>Other details</p>
+      </div>
+      
+    </div>
+  </ng-template>
