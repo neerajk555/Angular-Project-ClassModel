@@ -19,6 +19,7 @@ import { FinalUserPaymentComponent } from './final-user-payment/final-user-payme
 import { MainLoginComponent } from './main-login/main-login.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { MainLandingPageComponent } from './main-landing-page/main-landing-page.component';
+import { BookingService } from './booking.service';
 
 
 @NgModule({
@@ -47,7 +48,7 @@ import { MainLandingPageComponent } from './main-landing-page/main-landing-page.
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [BookingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

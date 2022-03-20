@@ -8,8 +8,8 @@ export class UserDataService {
 
   constructor(private ht: HttpClient) { }
 
-  logintype="";
-  loginid="";
+  logintype="user";
+  loginid="1";
 
   urls={
     "userdata":"http://localhost:3000/user_details/",

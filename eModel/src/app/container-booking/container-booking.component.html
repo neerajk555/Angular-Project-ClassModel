@@ -1,10 +1,9 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light mt-5">
     <h3>Bookings</h3>
-    <button class="btn btn-success mt-3" style="float: right;" (click)="open(content, false)">Add Booking</button>
+    <button class="btn btn-success ms-auto mx-2" (click)="open(content, false)">Add Booking</button>
 </nav>
 
 <div>
-
     <table class="table table-striped">
         <thead class="thead-light">
             <tr>
@@ -17,7 +16,6 @@
                 <th scope="col">Pickup Date</th>
                 <th scope="col">Delivery Date</th>
                 <th scope="col">Remark</th>
-
             </tr>
         </thead>
         <tbody>
@@ -25,9 +23,12 @@
                 <tr>
                     <th scope="row"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></th>
                     <td>{{container.con_id}}</td>
-                    <td *ngIf="!container.loadRow"><button type="button" class="btn btn-primary" (click)="expand(i)">EXPAND</button></td>
-                    <td *ngIf="container.loadRow"><button type="button" class="btn btn-primary" (click)="collapse(i)">Collapse</button></td>
-                    <td><td> 
+                    <td *ngIf="!container.loadRow"><button type="button" class="btn btn-primary"
+                            (click)="expand(i)">EXPAND</button></td>
+                    <td *ngIf="container.loadRow"><button type="button" class="btn btn-primary"
+                            (click)="collapse(i)">Collapse</button></td>
+                    <td>
+                    <td>
                     <td>{{container.source_loc}}</td>
                     <td>{{container.pickup_date}}</td>
                     <td></td>
@@ -51,7 +52,7 @@
                                                 <p>{{container.contype_id}}</p>
                                             </div>
                                         </div>
-                                       
+
                                     </div>
                                 </div>
 
@@ -69,7 +70,7 @@
                                                 <h6>Delivery Location</h6>
                                                 <p>{{container.Delivery_loc}}</p>
                                             </div>
-                                            
+
                                             <div class="col">
                                                 <h6>phone</h6>
                                                 <p>{{container.phone}}</p>
@@ -85,91 +86,83 @@
         </tbody>
     </table>
 
-
-
-<ng-template #content let-modal>
-    <div class="modal-header">
-        <h4 class="modal-title" id="modal-basic-title">ADD Booking</h4>
-        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <div class="modal-body">
-        <form #f="ngForm" (ngSubmit)="onSubmit(f.value)" novalidate>
-            <div class="form-row row">
-                <div class="form-group col md-3">
-                    <label for="containerId">Container Id:</label>
-                    <div class="input-group">
-                        <input id="ContainerId" name="container_id" class="form-control" ngModel>
+    <ng-template #content let-modal>
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">ADD Booking</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form #f="ngForm" (ngSubmit)="onSubmit(f.value)" novalidate>
+                <div class="form-row row">
+                    <div class="form-group col md-3">
+                        <label for="containerId">Container Id:</label>
+                        <div class="input-group">
+                            <input id="ContainerId" name="container_id" class="form-control" ngModel>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group col md-3">
-                    <label for="picupdate">Pickup Date</label>
-                    <div class="input-group">
-                        <input type="date" id="pickupdate" name="pickup_date" class="form-control" ngModel>
-                    </div>
-                </div>
-            </div>
-            <div class="form-row row">
-                <div class="form-group col md-3">
-
-                    <label for="sourcelocation">Source Location</label>
-                    <div class="input-group">
-                        <input id="sourcelocation" name="source_loc" class="form-control" ngModel>
-                    </div>
-                </div>
-                <div class="form-group col md-3">
-
-                    <label for="deliverylocation">Delivery Location</label>
-                    <div class="input-group">
-                        <input id="deliverylocation" name="Delivery_loc" class="form-control" ngModel>
-                    </div>
-                </div>
-            </div>
-            <div class="form-row row">
-                <div class="form-group col md-3">
-
-                    <label for="receivername">Receiver Name:</label>
-                    <div class="input-group">
-                        <input id="receivernamename" name="Receiver_name" class="form-control" ngModel>
-                    </div>
-                </div>
-                <div class="form-group col-md-3">
-                    <label for="phone">phone</label>
-                    <div class="input-group">
-                        <input id="phone" name="phone" class="form-control" ngModel>
+                    <div class="form-group col md-3">
+                        <label for="picupdate">Pickup Date</label>
+                        <div class="input-group">
+                            <input type="date" id="pickupdate" name="pickup_date" class="form-control" ngModel>
+                        </div>
                     </div>
                 </div>
                 <div class="form-row row">
-                <div class="form-group col md-3">
-                <label for="email">Email</label>
-                    <div class="input-group">
-                        <input id="email" name="email" class="form-control" ngModel>
+                    <div class="form-group col md-3">
+                        <label for="sourcelocation">Source Location</label>
+                        <div class="input-group">
+                            <input id="sourcelocation" name="source_loc" class="form-control" ngModel>
+                        </div>
+                    </div>
+                    <div class="form-group col md-3">
+
+                        <label for="deliverylocation">Delivery Location</label>
+                        <div class="input-group">
+                            <input id="deliverylocation" name="Delivery_loc" class="form-control" ngModel>
+                        </div>
                     </div>
                 </div>
-                </div>
-                <div class="form-group col md-3">
+                <div class="form-group col-md-3">
                     <label for="remark">Remark</label>
                     <div class="input-group">
                         <input id="remark" name="remark" class="form-control" ngModel>
                     </div>
                 </div>
-                <br><br>
-                <div>
-                    <div class=" text-center">
-                        <button data-dismiss="modal" class="btn btn-info">Submit</button>
+                <div class="form-row mt-3">
+                    <div class="form-group row">
+                        <label class="control-label">Receiver</label>
+                        <div class="form-group col-md-4">
+                            <label for="receivername">Full Name</label>
+                            <div class="input-group">
+                                <input id="receivernamename" name="Receiver_name" class="form-control" ngModel>
+                            </div>
                         </div>
-                        
+                        <div class="form-group col-md-4">
+                            <label for="phone">Contact Number</label>
+                            <div class="input-group">
+                                <input id="phone" name="phone" class="form-control" ngModel>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="email">Email</label>
+                            <div class="input-group">
+                                <input id="email" name="email" class="form-control" ngModel>
+                            </div>
+                        </div>
+                    </div>
+                    <br><br>
+                    <div>
+                        <div class=" text-center">
+                            <button data-dismiss="modal" class="btn btn-info">Submit</button>
+                        </div>
+
+                    </div>
                 </div>
-            </div>
-        </form>
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
-    </div>
-</ng-template>
-
-
-
-    
-   
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+        </div>
+    </ng-template>
