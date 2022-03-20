@@ -1,13 +1,13 @@
+
 .creditCardForm {
-    
+    max-width: 700px;
     background-color: #fff;
     margin: 50px 20px;
     overflow: hidden;
     padding: 25px;
     color: #4c4e56;
-    float: left;
     border:1px solid #8b8b8f;
-    
+    height: 660px;
 }
 .creditCardForm label {
     width: 100%;
@@ -19,14 +19,14 @@
     color: #4c4e56;
 }
 .creditCardForm .payment {
-    
+    float: left;
     font-size: 18px;
     padding: 10px 25px;
     margin-top: 20px;
-    
+    position: relative;
 }
 .creditCardForm .payment .form-group {
-    
+    float: left;
     margin-bottom: 15px;
 }
 .creditCardForm .payment .form-control {
@@ -81,7 +81,6 @@
         text-align: left;
     }
 }
-
 .order{
     background-color: #fff;
     margin-top: 50px;
