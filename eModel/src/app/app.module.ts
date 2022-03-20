@@ -44,8 +44,14 @@ import { MainLandingPageComponent } from './main-landing-page/main-landing-page.
     NgbModule,
     HttpClientModule,
     ReactiveFormsModule,
+<<<<<<< HEAD
+    FormsModule
+
+
+=======
     FormsModule,
     HttpClientModule
+>>>>>>> main
   ],
   providers: [],
   bootstrap: [AppComponent]
