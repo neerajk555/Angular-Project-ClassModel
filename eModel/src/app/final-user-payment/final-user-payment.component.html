@@ -6,18 +6,18 @@
       <h1>Confirm Purchase</h1>
   </div>
   <div class="payment">
-      <form>
+      <form [formGroup]="payment">
           <div class="form-group owner">
               <label for="owner">Owner</label>
-              <input type="text" class="form-control" id="owner">
+              <input type="text" formControlName="name" placeholder="Enter your Name" class="form-control" id="owner">
           </div>
           <div class="form-group CVV">
               <label for="cvv">CVV</label>
-              <input type="text" class="form-control" id="cvv">
+              <input type="text" formControlName="cvv" placeholder="---" class="form-control" id="cvv">
           </div>
           <div class="form-group" id="card-number-field">
               <label for="cardNumber">Card Number</label>
-              <input type="text" class="form-control" id="cardNumber">
+              <input type="text" formControlName="cardNumber" placeholder="---- ---- ---- ----" class="form-control" id="cardNumber">
           </div>
           <div class="form-group" id="expiration-date">
               <label>Expiration Date</label>
@@ -36,12 +36,12 @@
                   <option value="12">December</option>
               </select>
               <select>
-                  <option value="16"> 2016</option>
-                  <option value="17"> 2017</option>
-                  <option value="18"> 2018</option>
-                  <option value="19"> 2019</option>
-                  <option value="20"> 2020</option>
-                  <option value="21"> 2021</option>
+                  <option value="16"> 2023</option>
+                  <option value="17"> 2024</option>
+                  <option value="18"> 2025</option>
+                  <option value="19"> 2026</option>
+                  <option value="20"> 2027</option>
+                  <option value="21"> 2028</option>
               </select>
           </div>
           <div class="form-group" id="credit_cards">
@@ -49,7 +49,7 @@
               <img src="./../../assets/images/ms.png" id="mastercard" style="height: 40px;">
           </div>
           <div class="form-group" id="pay-now">
-              <button type="submit" class="btn btn-default" id="confirm-purchase">Confirm</button>
+              <button type="submit" [disabled]="!payment.valid" class="btn btn-default" id="confirm-purchase">Confirm</button>
           </div>
       </form>
   </div>
