@@ -65,6 +65,7 @@
     "status_details":[{
         "id":1,
         "status_id":"ST100001",
+        "con_id": "CON00001",
         "container_status":"",
         "booking_date":"",
         "payment_id":"",
