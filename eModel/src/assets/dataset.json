@@ -74,9 +74,41 @@
         "id":2,
         "con_id":"CON00002",
         "contype_id":"CTI0002",
-        "terminal_id_origin":"TI100001",
-        "terminal_id_current":"TI100001",
+        "terminal_id_origin":"TI103401",
+        "terminal_id_current":"TI106701",
         "status":"Available"
+    },
+    {
+        "id":3,
+        "con_id":"CON00003",
+        "contype_id":"CTI0003",
+        "terminal_id_origin":"KI103401",
+        "terminal_id_current":"KI106701",
+        "status":"Unavailable"
+    },
+    {
+        "id":4,
+        "con_id":"CON00004",
+        "contype_id":"CTI0004",
+        "terminal_id_origin":"HI103401",
+        "terminal_id_current":"HI106701",
+        "status":"Unavailable"
+    },
+    {
+        "id":5,
+        "con_id":"CON00005",
+        "contype_id":"CTI0005",
+        "terminal_id_origin":"UF103401",
+        "terminal_id_current":"UG106701",
+        "status":"Available"
+    },
+    {
+        "id":6,
+        "con_id":"CON00006",
+        "contype_id":"CTI0006",
+        "terminal_id_origin":"OY103401",
+        "terminal_id_current":"OY106701",
+        "status":"Unavailable"
     }],
     "appointment_details":[{
         "id":1,
