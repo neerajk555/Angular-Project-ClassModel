@@ -26,6 +26,6 @@ export class MainLandingPageComponent implements OnInit {
 
   login()
   {
-    this.router.navigate(['/','InitialLanding']);
+    this.router.navigate(['/','mainlogin']);
   }
 }

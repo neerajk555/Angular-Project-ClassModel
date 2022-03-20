@@ -4,13 +4,7 @@
     box-sizing: border-box;
 }
 .header{
-    position: fixed;
-    top: 0%;
-    left: 0%;
-    background-color: white;
-    border: 1px solid black;
-    height: 7%;
-    width: 100%;
+    padding: 0 2rem 0 0;
 }
 .menu-btn{
     background-color: red;
@@ -23,7 +17,7 @@
 }
 .logo{
     height: 50%;
-    transform: translate(0%, 50%);
+
 }
 .menu-bar{
     position: fixed;

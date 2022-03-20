@@ -7,7 +7,6 @@ import { InitialLandingComponent } from './initial-landing/initial-landing.compo
 import { InitialLoginComponent } from './initial-login/initial-login.component';
 import { UserRegistrationComponent } from './user-registration/user-registration.component';
 import { UserInfoComponent } from './user-info/user-info.component';
-<<<<<<< HEAD
 import { MainLandingPageComponent } from './main-landing-page/main-landing-page.component';
 import { ContainerWatchlistComponent } from './container-watchlist/container-watchlist.component';
 import { MainLoginComponent } from './main-login/main-login.component';
@@ -17,7 +16,7 @@ import { TerminalComponent } from './terminal/terminal.component';
 const routes: Routes = [
   {path:'',component:MainLandingPageComponent},
   {path:'InitialLogin',component:InitialLoginComponent},
-  {path:'login',component:MainLoginComponent},
+  {path:'mainlogin',component:MainLoginComponent},
   {path:'InitialLanding',component:InitialLandingComponent,children:[
     {path:'watchlist',component:ContainerWatchlistComponent},
     {path:'bookings',component:ContainerBookingComponent},
