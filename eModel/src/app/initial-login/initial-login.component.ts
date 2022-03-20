@@ -27,7 +27,7 @@ export class InitialLoginComponent implements OnInit {
       {
         this.showLoadingIndicator=false;
       },1000);
-      this.logintype=this.ds.logintype;
+      this.logintype=this.ds.logintype; 
       if(this.ds.logintype=="user"){
         this.ds.getUserData().subscribe((data) => this.fatchUserData(data));
       }
@@ -73,6 +73,7 @@ export class InitialLoginComponent implements OnInit {
         if (this.userFormData.value.username == this.userInfo[i].user_username && this.userFormData.value.password == this.userInfo[i].user_password) {
           console.log(this.userFormData.value.username);
           this.flag = true;
+          this.ds.loginid=this.userInfo[i].id;
           this.router.navigateByUrl('/InitialLanding');
           break;
         }
@@ -80,14 +81,13 @@ export class InitialLoginComponent implements OnInit {
       if (this.flag == false) {
         this.alertmsg = true;
       }
-
-
     }
     else if (this.ds.logintype = 'terminal') {
       for (let i = 0; i < this.terminalInfo.length; i++) {
         if (this.userFormData.value.username == this.terminalInfo[i].terminal_username && this.userFormData.value.password == this.terminalInfo[i].terminal_password) {
           console.log(this.userFormData.value.username);
           this.flag = true;
+          this.ds.loginid=this.terminalInfo[i].id;
           this.router.navigateByUrl('/InitialLanding');
           break;
         }

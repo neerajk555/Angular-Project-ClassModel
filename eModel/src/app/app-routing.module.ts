@@ -14,7 +14,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { TerminalComponent } from './terminal/terminal.component';
 
 const routes: Routes = [
-  {path:'',component:MainLandingPageComponent},
+  {path:'home',component:MainLandingPageComponent},
   {path:'InitialLogin',component:InitialLoginComponent},
   {path:'mainlogin',component:MainLoginComponent},
   {path:'InitialLanding',component:InitialLandingComponent,children:[
@@ -26,7 +26,8 @@ const routes: Routes = [
   {path:'UserRegistration',component:UserRegistrationComponent},
   {path:'userInfo',component:UserInfoComponent},
   {path:'ForgotPassword',component:ForgotPasswordComponent},
-  {path:'Terminal',component:TerminalComponent}
+  {path:'Terminal',component:TerminalComponent},
+  {path:'',component:MainLandingPageComponent}
 ];
 
 @NgModule({

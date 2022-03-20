@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserDataService } from '../user-data.service';
 
 @Component({
   selector: 'app-main-landing-page',
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class MainLandingPageComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  constructor(private router:Router, private ds:UserDataService) { }
   
   logo="../../assets/images/landing_page/logo.png";
   hero="../../assets/images/landing_page/video.mp4";
@@ -22,6 +23,7 @@ export class MainLandingPageComponent implements OnInit {
   service_img6="../../assets/images/landing_page/data_manager.png";
   email="../../assets/images/landing_page/email.png";
   ngOnInit(): void {
+    this.ds.logintype="";
   }
 
   login()

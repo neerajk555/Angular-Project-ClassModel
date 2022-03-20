@@ -25,10 +25,11 @@
 .menu-btn-clicked{
     background-color: red;
 }
-.logo{
-    height: 50%;
 
+.dropdown-toggle::after {
+    display:none;
 }
+
 .options{
     height: 100%;
     width: 70px;
@@ -42,14 +43,11 @@
     background-color: rgb(0, 255, 255);
     filter: invert(1);
 }
-.option-img{
-    height: 50%;
-}
 .menu-bar{
     position: fixed;
     top: 45px;
     left: -20%;
-    height: 92%;
+    height: 93%;
     width: 20%;
     background-color: white;
     z-index: 1;

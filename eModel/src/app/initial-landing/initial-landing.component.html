@@ -1,76 +1,72 @@
-<!-- <div class="header border bg-light position-fixed">
-    <button (click)="ShowMenu()" class="menu-btn">
-        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
-          </svg>
+<div class="header border d-flex">
+  <button (click)="ShowMenu()" class="menu-btn" [ngClass]="show ? 'menu-btn-clicked' : 'menu-btn-not-clicked'">
+    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-list"
+      viewBox="0 0 16 16">
+      <path fill-rule="evenodd"
+        d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+    </svg>
+  </button>
+  <div>
+    <img class="logo mt-2" [src]="logo">
+  </div>
+
+  <button title="Notifications" class="options ms-auto">
+    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-bell"
+      viewBox="0 0 16 16">
+      <path
+        d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z" />
+    </svg>
+  </button>
+  <button title="User Profile" class="options" (click)="open(content)">
+    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-person-fill"
+      viewBox="0 0 16 16">
+      <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+    </svg>
+  </button>
+  <!-- <div ngbDropdown class="d-inline-block">
+    <button id="dropdownForm1" class="px-3 options" ngbDropdownToggle>
+      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-person-fill"
+        viewBox="0 0 16 16">
+        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+      </svg>
     </button>
-    <img class="logo" [src]="logo">
-</div> -->
-
-<!-- <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
-    <div class="container-fluid header border">
-        <button (click)="ShowMenu()" class="menu-btn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
-              </svg>
-        </button>
-      <div class="collapse navbar-collapse">
-        <img class="logo" [src]="logo">
-      </div>
-      <div class="profile ms-auto">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
-            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-          </svg>
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
-            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-          </svg>
+    <div ngbDropdownMenu aria-labelledby="dropdownForm1" class="mt-2 px-4 py-3 ">
+      <div class="d-flex m-2">
+        <img [src]="this.userimg" height="90" width="90" alt="Profile" class="rounded-circle mx-2">
+        <div class="mx-2">
+          <p class="text-truncate m-0 p-0"><strong><u>Username</u></strong><br> {{this.username}}</p>
+          <p class="text-truncate mt-1 p-0"><strong><u>Name</u></strong><br> {{this.userFullName}}</p>
         </div>
+      </div>
+      <div class="dropdown-divider"></div>
+      <button type="submit" class="btn rounded-0 btn-secondary col-12">Log Out</button>
     </div>
-  </nav>
+  </div> -->
+</div>
 
-<div [ngClass]="show ? 'slideright' : 'slideleft'" class="menu-bar bg-light border">
-    <a class="btn nav-btn" routerLink="watchlist">WATCHLIST</a><br>
-    <a class="btn nav-btn" routerLink="bookings">BOOKING</a><br>
-    <a class="btn nav-btn" routerLink="profile">PROFILE</a>
-</div> -->
+<!-- Side Menubar -->
+<div [ngClass]="show ? 'slideright' : 'slideleft'" class="menu-bar border bg-light">
+  <button class="nav-btn" routerLink="watchlist">WATCHLIST</button>
+  <button class="nav-btn" routerLink="bookings">BOOKING</button>
+  <button class="nav-btn" routerLink="profile">PROFILE</button>
+</div>
+<!-- Side Menubar End -->
+
+<!-- User Info Modal -->
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">User Profile</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <div>
+      <img style="height: 100px; float: left; margin-right: 20px" [src]="this.userimg">
+      <p>Username : {{this.username}}</p>
+      <p>Name : {{this.userFullName}}</p>
+    </div>
+  </div>
+  <button class="btn rounded-0 btn-secondary col-12" (click)="logout()">Log Out</button>
+</ng-template>
+<!-- User Info Modal End -->
 
 <router-outlet></router-outlet>
-<div class="header">
-    <button (click)="ShowMenu()" class="menu-btn" [ngClass]="show ? 'menu-btn-clicked' : 'menu-btn-not-clicked'">
-        <img style="height: 80%;" src="../../assets/images/menu-bar.png">
-    </button>
-    <img class="logo" src="../assets/images/logos/logo.png">
-  
-    <button title="User Profile" class="options" (click)="open(content)">
-        <img class="option-img" src="../../assets/images/profile.png">
-    </button>
-    <button title="Notifications" class="options">
-        <img  class="option-img" src="../../assets/images/notification.png">
-    </button>
-  
-  </div>
-  
-  <div [ngClass]="show ? 'slideright' : 'slideleft'" class="menu-bar">
-    <button class="nav-btn">EMODAL COMMUNITY PORTAL</button>
-    <button class="nav-btn">CHASSIS CHECK</button>
-    <button class="nav-btn">TERMINAL SERVICES</button>
-    <button class="nav-btn">TRUCKER CHECK</button>
-    <button class="nav-btn">ADMINISTRATION</button>
-  </div>
-  
-  
-  <ng-template #content let-c="close" let-d="dismiss">
-    <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">User Profile</h4>
-      <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
-    </div>
-    <div class="modal-body">
-      <div>
-        <img style="height: 100px; float: left; margin-right: 20px" src="../assets/images/profile.png">
-        <p>Username : Username</p>
-        <p>Name : Name</p>
-        <p>Other details</p>
-      </div>
-      
-    </div>
-  </ng-template>
