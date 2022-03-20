@@ -10,10 +10,11 @@ import { UserInfoComponent } from './user-info/user-info.component';
 import { MainLoginComponent } from './main-login/main-login.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { TerminalComponent } from './terminal/terminal.component';
+import { MainLandingPageComponent } from './main-landing-page/main-landing-page.component';
 
 
 const routes: Routes = [
-  {path:'',component:MainLoginComponent},
+  {path:'',component:MainLandingPageComponent},
   {path:'InitialLogin',component:InitialLoginComponent},
   {path:'UserRegistration',component:UserRegistrationComponent},
   {path:'InitialLanding',component:InitialLandingComponent},
