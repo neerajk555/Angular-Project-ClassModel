@@ -13,31 +13,32 @@ import { FormGroup } from '@angular/forms';
 })
 export class ContainerBookingComponent implements OnInit {
 
-  users:any;
-  payment:any;
-  receiver:any;
-  constructor(private userData:BookingService,private modalService:NgbModal,private http : HttpClient) {
-      userData.users().subscribe((data)=>{
-        
-        this.users=data});
-      userData.payment().subscribe((data)=>this.payment=data);
-      userData.receiver().subscribe((data)=>this.receiver=data);
-    
-   }
-   myForm:any;
-   formIsNew:any;
-  
+  users: any;
+  payment: any;
+  receiver: any;
+  constructor(private userData: BookingService, private modalService: NgbModal, private http: HttpClient) {
+    userData.users().subscribe((data) => {
+
+      this.users = data
+    });
+    userData.payment().subscribe((data) => this.payment = data);
+    userData.receiver().subscribe((data) => this.receiver = data);
+
+  }
+  myForm: any;
+  formIsNew: any;
+
   ngOnInit(): void {
   }
 
-  expand(index:any) {
+  expand(index: any) {
     this.receiver[index].loadRow = true;
   }
 
   collapse(index: any) {
     this.receiver[index].loadRow = false;
   }
-  
+
   closeResult = '';
   open(content: any, data: any) {
 
@@ -48,16 +49,16 @@ export class ContainerBookingComponent implements OnInit {
     });
 
 
-}
+  }
 
-  onSubmit(data:any){
+  onSubmit(data: any) {
     console.warn(data);
-    this.userData.ReceiverData(data).subscribe((result)=>{
+    this.userData.ReceiverData(data).subscribe((result) => {
       console.warn(result)
     }
     )
     //this.modalService.dismissAll();
   }
-  }
+}
 
 
