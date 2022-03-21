@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserDataService } from '../user-data.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder,Validators, AbstractControl,ValidatorFn } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-registration',
@@ -10,7 +11,7 @@ import { FormBuilder,Validators, AbstractControl,ValidatorFn } from '@angular/fo
 })
 export class UserRegistrationComponent implements OnInit {
 
-  constructor(private ds:UserDataService, public fb:FormBuilder) { }
+  constructor(private ds:UserDataService, public fb:FormBuilder,private router:Router) { }
   UserFormData:any;
   postuserdata:any;
   submitted = false;
@@ -26,7 +27,7 @@ export class UserRegistrationComponent implements OnInit {
       profile: ['', Validators.required],
       Document: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      phoneNumber: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
+      phoneNumber: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(15)]],
       confirmPassword: ['', Validators.required],
       password:['',Validators.required]
     });
@@ -50,16 +51,16 @@ export class UserRegistrationComponent implements OnInit {
         "user_emailid":this.UserFormData.value.email,
         "user_username":this.UserFormData.value.username,
         "user_password":this.UserFormData.value.confirmPassword,
-        "user_document":this.UserFormData.value.Document,
-        "user_profilephoto":this.UserFormData.value.profile,
+        "user_document":"../assets/images/user/usercard.png",
+        "user_profilephoto":"../assets/images/user/profile.png",
         "user_company_name":this.UserFormData.value.companyName,
         "user_status":true,
         "user_token":"",        
         "authorize":false
   }
-  console.log(this.postuserdata); 
+//  console.log(this.postuserdata); 
   this.ds.postUserData(this.postuserdata).subscribe((data) => console.log(data));
-
+  this.router.navigate(['/','mainlogin']);
   }
 
 

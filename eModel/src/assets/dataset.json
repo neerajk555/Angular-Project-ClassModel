@@ -1,129 +1,182 @@
+{
+  "user_details": [
     {
-    "user_details":[{
-        "id":1,
-        "userid":"USR100001",
-        "user_first_name":"Leanne",
-        "user_last_name":"Jackson",
-        "user_contact":"7788994455",
-        "user_emailid":"Sincere@april.biz",
-        "user_username":"LJackson",
-        "user_password":"12345",
-        "user_document":"https://icons.iconarchive.com/icons/custom-icon-design/pretty-office-10/256/Student-id-icon.png",
-        "user_profilephoto":"https://www.vhv.rs/dpng/d/256-2569650_men-profile-icon-png-image-free-download-searchpng.png",
-        "user_company_name":"ABC XYZ",
-        "user_watchlist_ids":[],
-        "user_status":true,
-        "user_token":"",        
-        "authorize":false
-    }],
-    "card_details":[{
-        "id":1,
-        "cardid":"CD10001",
-        "userid":"USR100001",
-        "card_typr":"ATM",
-        "card_title":"SBI Card",
-        "card_bank":"SBI",
-        "card_number":"1234 1332 4567 8974",
-        "card_expiry":"04/22",
-        "card_nameoncard":"Jackson Leanne",
-        "card_cvv":"514"
-    }],
-    "containertype_details":[{
-        "id":1,
-        "contype_id":"CTI0001",
-        "contype_type":"Wooden",
-        "contype_height":"20",
-        "contype_width":"40",
-        "contype_code":"20WD40"
-    }],
-    "terminal_details":[{
-        "id":1,
-        "terminal_id":"TI100001",
-        "terminal_name":"",
-        "terminal_mobile":"",
-        "terminal_email":"",
-        "terminal_username":"",
-        "terminal_password":"",
-        "terminal_location":"",
-        "city":"",
-        "country":"",
-        "zipcode":"",
-        "terminal_logo":"https://cdn-icons-png.flaticon.com/512/79/79587.png",
-        "fax":"",
-        "description":"",
-        "terminal_status":"",
-        "token":""
-    }],
-    "container_details":[{
-        "id":1,
-        "con_id":"CON00001",
-        "contype_id":"CTI0001",
-        "terminal_id_origin":"TI100001",
-        "terminal_id_current":"TI100001",
-        "status":"Available"
-    }],
-    "status_details":[{
-        "id":1,
-        "status_id":"ST100001",
-        "con_id": "CON00001",
-        "container_status":"",
-        "booking_date":"",
-        "payment_id":"",
-        "pickup_date":"",
-        "departure_date":"",
-        "ship_id":"",
-        "arriving_date":"",
-        "terminal_id":"",
-        "receiver_delivery_date":""
-    }],
-    "appointment_details":[{
-        "id":1,
-        "appointment_id":"APT100001",
-        "user_id":"USR100001",
-        "container_id":"CON00001",
-        "pickup_date":"",
-        "sending_date":"",
-        "delivery_terminal_id":"",
-        "delivery_date":"",
-        "user_remarks":"",
-        "cost":[],
-        "terminal_remarks":"",
-        "datetime":"",
-        "receiver_fullname":"",
-        "receiver_phone":"",
-        "receiver_mail":"",
-        "appointment_status":""
-    }],
-    "payment_details":[{
-        "id":1,
-        "payment_id":"",
-        "payment_mode":"ATM",
-        "payment_amount":"",
-        "issued_by":"eModal",
-        "Description":"",
-        "date":"",
-        "appointment_id":"APT100001"
-    }],
-    "feedback_details":[{
-        "id":1,
-        "usertype":"",
-        "feedaback_type":"",
-        "description":"",
-        "read_status":false
-    }],
-    "admin_master":[{
-        "id":1,
-        "admin_id":"MASTER85646",
-        "admin_first_name":"Ervin",
-        "admin_last_name":"Howell",
-        "admin_username":"ErHowell456",
-        "admin_password":"85Er6Ho46",
-        "admin_token":""
-    }],
-    "notification_details":[{
-        "id":1,
-        "notification_type":"",
-        "date":"",
-        "description":""
-    }]
+      "id": 1,
+      "userid": "USR100001",
+      "user_first_name": "Leanne",
+      "user_last_name": "Jackson",
+      "user_contact": "7788994455",
+      "user_emailid": "Sincere@april.biz",
+      "user_username": "LJackson",
+      "user_password": "12345",
+      "user_document": "../assets/images/user/usercard.png",
+      "user_profilephoto": "../assets/images/user/profile.png",
+      "user_company_name": "ABC XYZ",
+      "user_watchlist_ids": [],
+      "user_status": true,
+      "user_token": "",
+      "authorize": false
+    },
+    {
+      "id": 82,
+      "user_first_name": "mosh",
+      "user_last_name": "jonson",
+      "user_contact": "78945612345",
+      "user_emailid": "mjonson@son.in",
+      "user_username": "mjonson",
+      "user_password": "123",
+      "user_document": "../assets/images/user/usercard.png",
+      "user_profilephoto": "../assets/images/user/profile.png",
+      "user_company_name": "advent",
+      "user_status": true,
+      "user_token": "",
+      "authorize": false
+    }
+  ],
+  "card_details": [
+    {
+      "id": 1,
+      "cardid": "CD10001",
+      "userid": "USR100001",
+      "card_typr": "ATM",
+      "card_title": "SBI Card",
+      "card_bank": "SBI",
+      "card_number": "1234 1332 4567 8974",
+      "card_expiry": "04/22",
+      "card_nameoncard": "Jackson Leanne",
+      "card_cvv": "514"
+    }
+  ],
+  "containertype_details": [
+    {
+      "id": 1,
+      "contype_id": "CTI0001",
+      "contype_type": "Wooden",
+      "contype_height": "20",
+      "contype_width": "40",
+      "contype_code": "20WD40"
+    },
+    {
+      "id": 2,
+      "contype_id": "CTI0002",
+      "contype_type": "Steel",
+      "contype_height": "20",
+      "contype_width": "40",
+      "contype_code": "20SL40"
+    }
+  ],
+  "terminal_details": [
+    {
+      "id": 1,
+      "terminal_id": "TI100001",
+      "terminal_name": "EVERPORT",
+      "terminal_mobile": "+1789465132",
+      "terminal_email": "asd@asd.asd",
+      "terminal_username": "terminal1",
+      "terminal_password": "12345",
+      "terminal_location": "7th St",
+      "city": "Oakland",
+      "country": "United States",
+      "zipcode": "94607",
+      "terminal_logo": "../assets/images/terminallogo.png",
+      "fax": "",
+      "description": "",
+      "terminal_status": "Active",
+      "token": ""
+    }
+  ],
+  "container_details": [
+    {
+      "id": 1,
+      "con_id": "CON00001",
+      "contype_id": "CTI0001",
+      "terminal_id_origin": "TI100001",
+      "terminal_id_current": "TI100001",
+      "status": "Available"
+    },
+    {
+      "id": 2,
+      "con_id": "CON00002",
+      "contype_id": "CTI0002",
+      "terminal_id_origin": "TI100001",
+      "terminal_id_current": "TI100001",
+      "status": "Available"
+    }
+  ],
+  "appointment_details": [
+    {
+      "id": 1,
+      "appointment_id": "APT100001",
+      "user_id": "USR100001",
+      "container_id": "CON00001",
+      "pickup_date": "",
+      "sending_date": "",
+      "delivery_terminal_id": "",
+      "delivery_date": "",
+      "user_remarks": "",
+      "cost": [],
+      "terminal_remarks": "",
+      "datetime": "",
+      "receiver_fullname": "",
+      "receiver_phone": "",
+      "receiver_mail": "",
+      "appointment_status": ""
+    }
+  ],
+  "payment_details": [
+    {
+      "id": 1,
+      "payment_id": "",
+      "payment_mode": "ATM",
+      "payment_amount": "",
+      "issued_by": "eModal",
+      "Description": "",
+      "date": "",
+      "appointment_id": "APT100001"
+    }
+  ],
+  "status_details": [
+    {
+      "id": 1,
+      "status_id": "ST100001",
+      "con_id": "CON00001",
+      "container_status": "Available",
+      "booking_date": "",
+      "payment_id": "",
+      "pickup_date": "",
+      "departure_date": "",
+      "ship_id": "",
+      "arriving_date": "",
+      "terminal_id": "",
+      "receiver_delivery_date": ""
+    }
+  ],
+  "feedback_details": [
+    {
+      "id": 1,
+      "usertype": "",
+      "feedaback_type": "",
+      "description": "",
+      "read_status": false
+    }
+  ],
+  "admin_master": [
+    {
+      "id": 1,
+      "admin_id": "MASTER85646",
+      "admin_first_name": "Ervin",
+      "admin_last_name": "Howell",
+      "admin_username": "ErHowell456",
+      "admin_password": "85Er6Ho46",
+      "admin_token": ""
+    }
+  ],
+  "notification_details": [
+    {
+      "id": 1,
+      "notification_type": "",
+      "date": "",
+      "description": ""
+    }
+  ]
 }
