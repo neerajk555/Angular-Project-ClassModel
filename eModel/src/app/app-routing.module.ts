@@ -12,6 +12,7 @@ import { ContainerWatchlistComponent } from './container-watchlist/container-wat
 import { MainLoginComponent } from './main-login/main-login.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { TerminalComponent } from './terminal/terminal.component';
+import { UserrequestComponent } from './userrequest/userrequest.component';
 
 const routes: Routes = [
   {path:'home',component:MainLandingPageComponent},
@@ -21,6 +22,7 @@ const routes: Routes = [
     {path:'watchlist',component:ContainerWatchlistComponent},
     {path:'bookings',component:ContainerBookingComponent},
     {path:'profile',component:UserInfoComponent},
+    {path:'userrequests',component:UserrequestComponent},
     {path:'',component:ContainerWatchlistComponent}
   ]},
   {path:'UserRegistration',component:UserRegistrationComponent},

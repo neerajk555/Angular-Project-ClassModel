@@ -1,13 +1,13 @@
 .header{
-    /* padding: 0 2rem 0 0; */
-    position: fixed;
+    padding: 0 2rem 0 0;
+    /* position: fixed;
     top: 0%;
     left: 0%;
     background-color: white;
     border: 1px solid black;
     height: 45px;
     width: 100%;
-    z-index: 1;
+    z-index: 1; */
 }
 .menu-btn{
     background-color: grey;
@@ -33,7 +33,6 @@
 .options{
     height: 100%;
     width: 70px;
-    float: right;
     border: none;
     background-color: transparent;
     cursor: pointer;

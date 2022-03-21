@@ -20,6 +20,7 @@ import { MainLoginComponent } from './main-login/main-login.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { MainLandingPageComponent } from './main-landing-page/main-landing-page.component';
 import { BookingService } from './booking.service';
+import { UserrequestComponent } from './userrequest/userrequest.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { BookingService } from './booking.service';
     FinalUserPaymentComponent,
     MainLoginComponent,
     ForgotPasswordComponent,
-    MainLandingPageComponent
+    MainLandingPageComponent,
+    UserrequestComponent
   ],
   imports: [
     BrowserModule,
