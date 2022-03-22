@@ -21,6 +21,8 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { MainLandingPageComponent } from './main-landing-page/main-landing-page.component';
 import { BookingService } from './booking.service';
 import { UserrequestComponent } from './userrequest/userrequest.component';
+import { AdminTerminalComponent } from './admin-terminal/admin-terminal.component';
+import { AdminUserComponent } from './admin-user/admin-user.component';
 
 
 @NgModule({
@@ -39,7 +41,9 @@ import { UserrequestComponent } from './userrequest/userrequest.component';
     MainLoginComponent,
     ForgotPasswordComponent,
     MainLandingPageComponent,
-    UserrequestComponent
+    UserrequestComponent,
+    AdminTerminalComponent,
+    AdminUserComponent
   ],
   imports: [
     BrowserModule,
