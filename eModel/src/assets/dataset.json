@@ -138,7 +138,10 @@
       "receiver_fullname": "",
       "receiver_phone": "",
       "receiver_mail": "",
-      "appointment_status": ""
+      "appointment_status": "rejected",
+      "destination": "Long Island",
+      "selected": true,
+      "selectedAll": true
     },
     {
       "id": 2,
@@ -156,7 +159,31 @@
       "receiver_fullname": "",
       "receiver_phone": "",
       "receiver_mail": "",
-      "appointment_status": ""
+      "appointment_status": "rejected",
+      "destination": "Oakland",
+      "selected": true,
+      "selectedAll": true
+    },
+    {
+      "id": 3,
+      "appointment_id": "APT100003",
+      "user_id": "USR100003",
+      "container_id": "CON00003",
+      "pickup_date": "22-03-2022",
+      "sending_date": "22-03-2022",
+      "delivery_terminal_id": "TI100002",
+      "delivery_date": "22-03-2022",
+      "user_remarks": "Ok. Nice.",
+      "cost": [],
+      "terminal_remarks": "",
+      "datetime": "",
+      "receiver_fullname": "",
+      "receiver_phone": "",
+      "receiver_mail": "",
+      "appointment_status": "rejected",
+      "destination": "Long Island",
+      "selected": true,
+      "selectedAll": true
     }
   ],
   "payment_details": [
