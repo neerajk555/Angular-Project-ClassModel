@@ -13,10 +13,26 @@ export class ContainerWatchlistComponent implements OnInit {
   watchlist:any;
 
   saveToWatchlist(data:any) {
-    data = data.map((v: any) => ({...v, loadRow: false}));
+    data = data.map((v: any) => ({...v, loadRow: false, isChecked: false}));
     this.watchlist = data;
     console.log(this.watchlist);
 
+  }
+
+  changeState(i: any) {
+    this.watchlist[i].isChecked = !this.watchlist[i].isChecked;
+  }
+
+
+  deleteSelectedRows() {
+    // console.log(this.watchlist);
+    for(var i in this.watchlist) {
+      if(this.watchlist[i].isChecked) {
+        // console.log(this.watchlist[i].id); 
+        this.wS.delete(this.watchlist[i].id).subscribe();
+        this.watchlist.splice(i, 1);
+      }
+    }
   }
 
   ngOnInit(): void {

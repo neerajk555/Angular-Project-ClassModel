@@ -9,7 +9,7 @@ export class WatchlistService {
   constructor(public http: HttpClient) { }
   url = {
     "pay-data":"http://localhost:3000/pay-data",
-    "containerWatchlist": "http://localhost:3000/container_details"
+    "containerWatchlist": "http://localhost:3000/container_details/"
   }
   
   getData() {
@@ -20,5 +20,9 @@ export class WatchlistService {
     return this.http.get(this.url['containerWatchlist']);
   }
 
+  delete(id: any) {
+
+    return this.http.delete(this.url['containerWatchlist'] + id);
+  }
 }
 
