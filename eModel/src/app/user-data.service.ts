@@ -31,6 +31,10 @@ export class UserDataService {
   {
     return this.ht.get(this.urls.terminaldata);
   }
+  getappointmentdata()
+  {
+    return this.ht.get(this.urls.appointmentdata);
+  }
   postUserData(data:any)
   {
     return this.ht.post(this.urls.userdata, data);

@@ -1,30 +1,66 @@
 <div class="navbar bg-light">
-    <h4 class="mx-3 text-secondary">User Requests</h4>
-    <!-- <button class="btn btn-secondary ms-auto mx-2" >Actions</button> -->
+  <h4 class="mx-3 text-secondary">User Requests</h4>
+  <!-- <button class="btn btn-secondary ms-auto mx-2" >Actions</button> -->
 </div>
+
+
 <div class="container">
-    <table class="table mt-3">
-        <thead class="thead-light">
-            <tr>
-                <th scope="col"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></th>
-                <th scope="col">#</th>
-                <th scope="col">Pickup Date</th>
-                <th scope="col">Sending Date</th>
-                <th scope="col">Destination</th>
-                <th scope="col">Remarks</th>
-                <th scope="col">Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="">
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        </tbody>
-    </table>
+  <table class="table mt-3">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="flexCheckDefault"
+          />
+        </th>
+        <th scope="col">#</th>
+        <th scope="col">Pickup Date</th>
+        <th scope="col">Sending Date</th>
+        <th scope="col">Destination</th>
+        <th scope="col">Remarks</th>
+        <th scope="col">Approve</th>
+        <th scope="col">Reject</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of recRequestData; let i = index">
+        <th scope="col">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="flexCheckDefault"
+          />
+        </th>
+        <td>{{ item.appointment_id }}</td>
+        <td>{{ item.pickup_date }}</td>
+        <td>{{ item.sending_date }}</td>
+        <td>{{ item.destination }}</td>
+        <td>{{ item.user_remarks }}</td>
+        <td>
+          <button
+            type="button"
+            class="btn btn-primary btn-sm me-1"
+            data-bs-toggle="modal"
+            data-bs-target="#putModal"
+          >
+            Approve
+          </button>
+        </td>
+        <td>
+          <button
+            type="button"
+            class="btn btn-danger btn-sm"
+            data-bs-toggle="modal"
+            data-bs-target="#putModal"
+          >
+            Reject
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
