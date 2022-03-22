@@ -19,6 +19,7 @@ import { FinalUserPaymentComponent } from './final-user-payment/final-user-payme
 import { MainLoginComponent } from './main-login/main-login.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { MainLandingPageComponent } from './main-landing-page/main-landing-page.component';
+import { ContainersComponent } from './containers/containers.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { MainLandingPageComponent } from './main-landing-page/main-landing-page.
     FinalUserPaymentComponent,
     MainLoginComponent,
     ForgotPasswordComponent,
-    MainLandingPageComponent
+    MainLandingPageComponent,
+    ContainersComponent
   ],
   imports: [
     BrowserModule,
