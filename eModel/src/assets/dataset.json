@@ -61,26 +61,73 @@
         "terminal_id_origin":"TI100001",
         "terminal_id_current":"TI100001",
         "status":"Available"
-    }],
+    },
+  {
+    "id":2,
+    "con_id":"CON00002",
+    "contype_id":"CTI0002",
+    "terminal_id_origin":"TI100002",
+    "terminal_id_current":"TI100001",
+    "status":"Available"
+  },
+  {
+    "id":3,
+    "con_id":"CON00003",
+    "contype_id":"CTI0003",
+    "terminal_id_origin":"TI100001",
+    "terminal_id_current":"TI100001",
+    "status":"Available"
+  },
+  {
+    "id":3,
+    "con_id":"CON00003",
+    "contype_id":"CTI0003",
+    "terminal_id_origin":"TI100003",
+    "terminal_id_current":"TI100001",
+    "status":"Available"
+  },
+  {
+    "id":4,
+    "con_id":"CON00004",
+    "contype_id":"CTI0004",
+    "terminal_id_origin":"TI100004",
+    "terminal_id_current":"TI100001",
+    "status":"Available"
+  }
+  ],
     "status_details":[{
         "id":1,
         "status_id":"ST100001",
-        "container_status":"",
-        "booking_date":"",
-        "payment_id":"",
-        "pickup_date":"",
-        "departure_date":"",
-        "ship_id":"",
-        "arriving_date":"",
-        "terminal_id":"",
-        "receiver_delivery_date":""
-    }],
+        "con_id": "CON00001",
+        "con_loaded":"true",
+        "container_status":"Shiping",
+        "appointment_id":"APT100001",
+        "destination":"trsrdcg",
+        "departure_date":"1-12-2022",
+        "ship_id":"SP0001",
+        "arriving_date":"1-12-2022",
+        "receiver_delivery_date":"1-12-2022"
+    },
+    {
+        "id":1,
+        "status_id":"ST100002",
+        "con_id": "CON00002",
+        "con_loaded":"true",
+        "container_status":"Shiping",
+        "appointment_id":"APT100001",
+        "destination":"trsrdcg",
+        "departure_date":"1-12-2022",
+        "ship_id":"SP0001",
+        "arriving_date":"1-12-2022",
+        "receiver_delivery_date":"1-12-2022"
+    }
+],
     "appointment_details":[{
         "id":1,
         "appointment_id":"APT100001",
         "user_id":"USR100001",
         "container_id":"CON00001",
-        "pickup_date":"",
+        "pickup_date":"11-3-2022",
         "sending_date":"",
         "delivery_terminal_id":"",
         "delivery_date":"",
@@ -90,7 +137,7 @@
         "datetime":"",
         "receiver_fullname":"",
         "receiver_phone":"",
-        "receier_mail":"",
+        "receiver_mail":"",
         "appointment_status":""
     }],
     "payment_details":[{
