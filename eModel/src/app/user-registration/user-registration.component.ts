@@ -15,7 +15,14 @@ export class UserRegistrationComponent implements OnInit {
   UserFormData:any;
   postuserdata:any;
   submitted = false;
+  public toggleButton: boolean = false;
+  enable(){
+    this.toggleButton = false
+ }
 
+ disable(){
+    this.toggleButton = true
+ }
   ngOnInit(): void {
 
     this.UserFormData = this.fb.group({
