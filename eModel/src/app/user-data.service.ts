@@ -5,6 +5,9 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class UserDataService {
+  receiver() {
+    throw new Error('Method not implemented.');
+  }
 
   constructor(private ht: HttpClient) { }
 
@@ -20,7 +23,8 @@ export class UserDataService {
     "appointmentdata":"http://localhost:3000/appointment_details/",
     "paymentdata":"http://localhost:3000/payment_details/",
     "statusdata":"http://localhost:3000/status_details/",
-    "feedbackdata":"http://localhost:3000/feedback_details/"
+    "feedbackdata":"http://localhost:3000/feedback_details/",
+    "terminal_details":"http://localhost:3000/terminal_details"
   }
 
   getUserData()
@@ -42,6 +46,9 @@ export class UserDataService {
   getterminalDataById(data:any)
   {
     return this.ht.get(this.urls.terminaldata+data);
+  }
+  getterminal(){
+    return this.ht.get(this.urls.terminal_details);
   }
 
 }

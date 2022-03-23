@@ -83,6 +83,24 @@
       "description": "",
       "terminal_status": "Active",
       "token": ""
+    },
+    {
+      "id": 2,
+      "terminal_id": "TI1000012",
+      "terminal_name": "EVERPORT North",
+      "terminal_mobile": "+178946",
+      "terminal_email": "aas@aas.asd",
+      "terminal_username": "terminal2",
+      "terminal_password": "12345",
+      "terminal_location": "7th St",
+      "city": "Long Island",
+      "country": "United States",
+      "zipcode": "94607",
+      "terminal_logo": "../assets/images/terminallogo.png",
+      "fax": "",
+      "description": "",
+      "terminal_status": "Active",
+      "token": ""
     }
   ],
   "container_details": [
@@ -101,6 +119,22 @@
       "terminal_id_origin": "TI100001",
       "terminal_id_current": "TI100001",
       "status": "Available"
+    },
+    {
+      "id": 3,
+      "con_id": "CON00003",
+      "contype_id": "CTI0001",
+      "terminal_id_origin": "TI100002",
+      "terminal_id_current": "TI100001",
+      "status": "Available"
+    },
+    {
+      "id": 4,
+      "con_id": "CON00004",
+      "contype_id": "CTI0002",
+      "terminal_id_origin": "TI100002",
+      "terminal_id_current": "TI100001",
+      "status": "Available"
     }
   ],
   "appointment_details": [
@@ -108,19 +142,47 @@
       "id": 1,
       "appointment_id": "APT100001",
       "user_id": "USR100001",
-      "container_id": "CON00001",
-      "pickup_date": "",
-      "sending_date": "",
-      "delivery_terminal_id": "",
-      "delivery_date": "",
-      "user_remarks": "",
-      "cost": [],
-      "terminal_remarks": "",
-      "datetime": "",
-      "receiver_fullname": "",
-      "receiver_phone": "",
-      "receiver_mail": "",
-      "appointment_status": ""
+      "container_id": "CTI0001",
+      "pickup_date": "23-03-2022",
+      "sending_date": "23-03-2022",
+      "source_terminal_id": "TI100001",
+      "delivery_terminal_id": "TI1000012",
+      "delivery_date": "23-03-2022",
+      "user_remarks": "Ok",
+      "cost": 99,
+      "terminal_remarks": "Ok",
+      "datetime": "23-03-2022",
+      "receiver_fullname": "ABC",
+      "receiver_phone": 123456789,
+      "receiver_mail": "a@b.com",
+      "appointment_status": "Approved"
+    },
+    {
+      "id": 2,
+      "appointment_id": "APT100002",
+      "user_id": "USR100002",
+      "container_id": "CTI0002",
+      "pickup_date": "23-03-2022",
+      "sending_date": "23-03-2022",
+      "source_terminal_id": "TI1000012",
+      "delivery_terminal_id": "TI100001",
+      "delivery_date": "23-03-2022",
+      "user_remarks": "Ok",
+      "cost": 99,
+      "terminal_remarks": "Ok",
+      "datetime": "23-03-2022",
+      "receiver_fullname": "PQR",
+      "receiver_phone": 123456789,
+      "receiver_mail": "a@b.com",
+      "appointment_status": "Approved"
+    },
+    {
+      "pickup_date": "2022-03-25",
+      "delivery_date": "2022-03-31",
+      "receiver_fullname": "Muskan",
+      "receiver_mail": "mg@gmail.comm",
+      "receiver_phone": "1234567891",
+      "id": 3
     }
   ],
   "payment_details": [
@@ -176,7 +238,7 @@
       "id": 1,
       "notification_type": "",
       "date": "",
-      "description": ""
+      "containers": ""
     }
   ]
 }
