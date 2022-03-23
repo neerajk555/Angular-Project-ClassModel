@@ -27,7 +27,7 @@ export class UserDataService {
     "feedbackdata":"http://localhost:3000/feedback_details/",
     "terminal_details":"http://localhost:3000/terminal_details",
     "admindata":"http://localhost:3000/admin_master/",
-    "notification":"http://localhost:3000/notification_details/"
+    "notifications":"http://localhost:3000/notification_details/"
   }
 
   getUserData() { return this.ht.get(this.urls.userdata); }
