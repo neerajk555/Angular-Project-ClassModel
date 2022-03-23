@@ -15,14 +15,18 @@ import { TerminalComponent } from './terminal/terminal.component';
 import { UserrequestComponent } from './userrequest/userrequest.component';
 import { AdminTerminalComponent } from './admin-terminal/admin-terminal.component';
 import { AdminUserComponent } from './admin-user/admin-user.component';
+import { AdminPaymentComponent } from './admin-payment/admin-payment.component';
+import { AdminFeedbackComponent } from './admin-feedback/admin-feedback.component';
 
 const routes: Routes = [
   {path:'home',component:MainLandingPageComponent},
   {path:'InitialLogin',component:InitialLoginComponent},
+  {path:'InitialLogin?admin',component:InitialLoginComponent},
   {path:'mainlogin',component:MainLoginComponent},
   {path:'admin-terminal',component:AdminTerminalComponent},
   {path:'admin-user',component:AdminUserComponent},
-  {path:'admin',component:AdminControlComponent},
+  {path:'admin-payment',component:AdminPaymentComponent},
+  {path:'admin-feedback',component:AdminFeedbackComponent},
   {path:'InitialLanding',component:InitialLandingComponent,children:[
     {path:'watchlist',component:ContainerWatchlistComponent},
     {path:'bookings',component:ContainerBookingComponent},

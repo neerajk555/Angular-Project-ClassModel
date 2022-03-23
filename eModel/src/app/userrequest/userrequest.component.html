@@ -1,30 +1,247 @@
-<div class="navbar bg-light">
-    <h4 class="mx-3 text-secondary">User Requests</h4>
-    <!-- <button class="btn btn-secondary ms-auto mx-2" >Actions</button> -->
-</div>
 <div class="container">
+  <div class="navbar bg-light">
+    <h4 class="text-secondary">User Requests</h4>
+    <!-- <button class="btn btn-secondary ms-auto mx-2" >Actions</button> -->
+  </div>
+  <button
+    class="btn btn-success mt-2 mb-2 btn-sm"
+    data-bs-toggle="modal"
+    data-bs-target="#multiple"
+  >
+    Approve Selected
+  </button>
+
+  <div class="container">
     <table class="table mt-3">
-        <thead class="thead-light">
-            <tr>
-                <th scope="col"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></th>
-                <th scope="col">#</th>
-                <th scope="col">Pickup Date</th>
-                <th scope="col">Sending Date</th>
-                <th scope="col">Destination</th>
-                <th scope="col">Remarks</th>
-                <th scope="col">Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="">
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        </tbody>
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="flexCheckDefault"
+              (change)="selectAll()"
+            />
+          </th>
+          <th scope="col">#</th>
+          <th scope="col">Pickup Date</th>
+          <th scope="col">Sending Date</th>
+          <th scope="col">Destination</th>
+          <th scope="col">Remarks</th>
+          <th scope="col">Status</th>
+          <th scope="col">Approve</th>
+          <th scope="col">Reject</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of recRequestData; let i = index">
+          <th scope="col">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              [value]="item.id"
+              [checked]="item.selected"
+              (change)="onChangeCheckbox($event)"
+            />
+          </th>
+          <td>{{ item.appointment_id }}</td>
+          <td>{{ item.pickup_date }}</td>
+          <td>{{ item.sending_date }}</td>
+          <td>{{ item.destination }}</td>
+          <td>{{ item.user_remarks }}</td>
+          <td>{{ item.appointment_status }}</td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-primary btn-sm me-1"
+              data-bs-toggle="modal"
+              data-bs-target="#individual"
+              (click)="approveRequest(item, item.id)"
+            >
+              Approve
+            </button>
+          </td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-danger btn-sm"
+              data-bs-toggle="modal"
+              data-bs-target="#remarks"
+              (click)="rejectRequest(item, item.id)"
+            >
+              Reject
+            </button>
+          </td>
+        </tr>
+      </tbody>
     </table>
+  </div>
+
+  <!-- Modal for approving individual-->
+  <div
+    class="modal fade"
+    id="individual"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <form
+        [formGroup]="approvedDetails"
+        (ngSubmit)="approveFromModal(approvedDetails)"
+      >
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"></h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+
+          <div class="modal-body">
+            <div class="input-group mt-1">
+              <span class="input-group-text">Enter Cost</span>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="requestCost"
+                required
+              />
+            </div>
+            <div class="input-group mt-1">
+              <span class="input-group-text">Enter Delivery Date</span>
+              <input
+                class="form-control"
+                type="date"
+                formControlName="deliveryDate"
+                required
+              />
+            </div>
+            <div class="modal-footer">
+              <button
+                type="submit"
+                class="btn btn-primary"
+                data-bs-dismiss="modal"
+                [disabled]="approvedDetails.invalid"
+              >
+                Approve
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal for approving selected-->
+  <div
+    class="modal fade"
+    id="multiple"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <form
+        [formGroup]="approvedDetails"
+        (ngSubmit)="approveFromModalSelected(approvedDetails)"
+      >
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"></h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+
+          <div class="modal-body">
+            <div class="input-group mt-1">
+              <span class="input-group-text">Enter Cost</span>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="requestCost"
+                required
+              />
+            </div>
+            <div class="input-group mt-1">
+              <span class="input-group-text">Enter Delivery Date</span>
+              <input
+                class="form-control"
+                type="date"
+                formControlName="deliveryDate"
+                required
+              />
+            </div>
+            <div class="modal-footer">
+              <button
+                type="submit"
+                class="btn btn-primary"
+                data-bs-dismiss="modal"
+                [disabled]="approvedDetails.invalid"
+              >
+                Approve
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal for remarks selected-->
+  <div
+    class="modal fade"
+    id="remarks"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <form
+        [formGroup]="rejectDetails"
+        (ngSubmit)="rejectRemarksFromModal(rejectDetails)"
+      >
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"></h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+
+          <div class="modal-body">
+            <div class="input-group mt-1">
+              <span class="input-group-text">Enter Remarks</span>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="terminalRemarks"
+                required
+              />
+            </div>
+            <div class="modal-footer">
+              <button
+                type="submit"
+                class="btn btn-primary"
+                data-bs-dismiss="modal"
+                [disabled]="rejectDetails.invalid"
+              >
+                Reject
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>

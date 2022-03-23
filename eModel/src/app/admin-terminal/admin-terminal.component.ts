@@ -1,9 +1,6 @@
-import { Component, OnInit, HostListener, ElementRef, ViewChild } from '@angular/core';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { FormsModule } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
-import { UserDataService } from '../user-data.service';
+import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { FormBuilder,  Validators } from '@angular/forms';
 import { AdminService } from '../admin.service';
 
 @Component({
@@ -19,6 +16,7 @@ export class AdminTerminalComponent implements OnInit {
   constructor(public ht: AdminService, private modalService: NgbModal, private fb: FormBuilder) { }
   myForm: any;
   emptyForm = {
+    "id":"",
     "terminal_id": "",
     "terminal_name": "",
     "terminal_mobile": "",
@@ -38,6 +36,7 @@ export class AdminTerminalComponent implements OnInit {
     this.ht.getterminalData().subscribe((terminal_details) => this.show(terminal_details));
 
     this.myForm = this.fb.group({
+      id: ['', Validators.required],
       terminal_id: ['', Validators.required],
       terminal_name: ['', Validators.required],
       terminal_mobile: ['', Validators.required],
@@ -55,6 +54,7 @@ export class AdminTerminalComponent implements OnInit {
   TerminalData() {
     console.log(this.myForm.value);
     this.updatedFormData = {
+      "id": this.myForm.value.id,
       "terminal_id": this.myForm.value.terminal_id,
       "terminal_name": this.myForm.value.terminal_name,
     "terminal_mobile": this.myForm.value.terminal_mobile,
@@ -78,6 +78,7 @@ export class AdminTerminalComponent implements OnInit {
   postTermminalData(){
     console.log(this.myForm.value);
     this.updatedFormData = {
+      "id": this.myForm.value.id,
       "terminal_id": this.myForm.value.terminal_id,
       "terminal_name": this.myForm.value.terminal_name,
     "terminal_mobile": this.myForm.value.terminal_mobile,
@@ -96,17 +97,10 @@ export class AdminTerminalComponent implements OnInit {
 
     this.ht.postTerminalData(this.updatedFormData).subscribe((data) => console.log(data));
   }
-
-  DeleteTerminal(data:any) {
-    console.log(data);
-    
-    // this.ht.deleteTerminalData(data.value.terminal_id);
-    this.modalService.dismissAll()
-  }
-
   objectToFormData(objData: any) {
 
     this.myForm.setValue({
+      id: objData.id,
       terminal_id: objData.terminal_id,
       terminal_name: objData.terminal_name,
       terminal_mobile: objData.terminal_mobile,
