@@ -13,7 +13,7 @@ import { TerminalComponent } from './terminal/terminal.component';
 
 
 const routes: Routes = [
-  {path:'',component:MainLoginComponent},
+  {path:'',component:UserInfoComponent},
   {path:'InitialLogin',component:InitialLoginComponent},
   {path:'UserRegistration',component:UserRegistrationComponent},
   {path:'InitialLanding',component:InitialLandingComponent},
