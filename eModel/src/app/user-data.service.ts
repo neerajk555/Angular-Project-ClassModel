@@ -10,6 +10,7 @@ export class UserDataService {
 
   logintype="user";
   loginid="1";
+  user: any;
 
   urls={
     "userdata":"http://localhost:3000/user_details/",
@@ -42,6 +43,10 @@ export class UserDataService {
   getterminalDataById(data:any)
   {
     return this.ht.get(this.urls.terminaldata+data);
+  }
+
+  putUserData(data: any, index: any) {
+    return this.ht.put(this.urls.userdata+index, data);
   }
 
 }

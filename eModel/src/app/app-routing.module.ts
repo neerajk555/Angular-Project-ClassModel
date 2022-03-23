@@ -20,6 +20,7 @@ const routes: Routes = [
   {path:'home',component:MainLandingPageComponent},
   {path:'InitialLogin',component:InitialLoginComponent},
   {path:'mainlogin',component:MainLoginComponent},
+  {path:'TerminalLanding',component:TerminalComponent},
   {path:'admin-terminal',component:AdminTerminalComponent},
   {path:'admin-user',component:AdminUserComponent},
   {path:'admin',component:AdminControlComponent},
