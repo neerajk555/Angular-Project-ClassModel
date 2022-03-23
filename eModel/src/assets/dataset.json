@@ -18,19 +18,22 @@
       "authorize": false
     },
     {
-      "id": 82,
-      "user_first_name": "mosh",
-      "user_last_name": "jonson",
-      "user_contact": "78945612345",
-      "user_emailid": "mjonson@son.in",
-      "user_username": "mjonson",
-      "user_password": "123",
+      "id": 2,
+      "userid": "USR100002",
+      "user_first_name": "Leanne",
+      "user_last_name": "Jackson",
+      "user_contact": "7788994455",
+      "user_emailid": "Sincere@april.biz",
+      "user_username": "LJackson",
+      "user_password": "12345",
       "user_document": "../assets/images/user/usercard.png",
       "user_profilephoto": "../assets/images/user/profile.png",
-      "user_company_name": "advent",
+      "user_company_name": "ABC XYZ",
+      "user_watchlist_ids": [],
       "user_status": true,
       "user_token": "",
-      "authorize": false
+      "authorize": false,
+      "status": true
     }
   ],
   "card_details": [
@@ -74,21 +77,17 @@
       "terminal_email": "asd@asd.asd",
       "terminal_username": "terminal1",
       "terminal_password": "12345",
-      "terminal_location": "7th St",
+      "terminal_location": "dfg",
       "city": "Oakland",
       "country": "United States",
       "zipcode": "94607",
-      "terminal_logo": "../assets/images/terminallogo.png",
-      "fax": "",
-      "description": "",
-      "terminal_status": "Active",
-      "token": ""
+      "terminal_status": "Active"
     },
     {
       "id": 3,
       "terminal_id": "TI100003",
       "terminal_name": "EVERPORT",
-      "terminal_mobile": "+1789465132",
+      "terminal_mobile": "+178943456",
       "terminal_email": "asd@asd.asd",
       "terminal_username": "terminal1",
       "terminal_password": "12345",
@@ -96,11 +95,35 @@
       "city": "Oakland",
       "country": "United States",
       "zipcode": "94607",
-      "terminal_logo": "../assets/images/terminallogo.png",
-      "fax": "",
-      "description": "",
-      "terminal_status": "Active",
-      "token": ""
+      "terminal_status": "Active"
+    },
+    {
+      "id": 4,
+      "terminal_id": "TI0002",
+      "terminal_name": "Mudra",
+      "terminal_mobile": "1234567890",
+      "terminal_email": "abc@gmail.com",
+      "terminal_username": "Mudra123",
+      "terminal_password": 4003,
+      "terminal_location": "Gujarat",
+      "city": "KUtch",
+      "country": "India",
+      "zipcode": 320004,
+      "terminal_status": ""
+    },
+    {
+      "id": 5,
+      "terminal_id": "TI0005",
+      "terminal_name": "Kutch",
+      "terminal_mobile": "2131443",
+      "terminal_email": "asd@gmail.com",
+      "terminal_username": "sdsf",
+      "terminal_password": 2134,
+      "terminal_location": "fvbfdg",
+      "city": "sdf",
+      "country": "dfsf",
+      "zipcode": 1234,
+      "terminal_status": ""
     }
   ],
   "container_details": [
@@ -129,7 +152,7 @@
       "container_id": "CON00001",
       "pickup_date": "",
       "sending_date": "",
-      "delivery_terminal_id": "",
+      "delivery_terminal_id": "TI100001",
       "delivery_date": "",
       "user_remarks": "",
       "cost": [],
@@ -138,19 +161,19 @@
       "receiver_fullname": "",
       "receiver_phone": "",
       "receiver_mail": "",
-      "appointment_status": ""
+      "appointment_status": "",
+      "payment_id": "PT001"
     }
   ],
   "payment_details": [
     {
       "id": 1,
-      "payment_id": "",
+      "payment_id": "PT001",
       "payment_mode": "ATM",
-      "payment_amount": "",
+      "payment_amount": 2000,
       "issued_by": "eModal",
       "Description": "",
-      "date": "",
-      "appointment_id": "APT100001"
+      "date": "21/03/2022"
     }
   ],
   "status_details": [
@@ -175,7 +198,7 @@
       "usertype": "",
       "feedaback_type": "",
       "description": "",
-      "read_status": false
+      "read_status": true
     }
   ],
   "admin_master": [
