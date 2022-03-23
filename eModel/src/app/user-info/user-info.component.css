@@ -1,11 +1,54 @@
 .form-inline {
-  display: flex;
-  flex-flow: row wrap;
-  align-items: center; 
-}
-   
+    display: flex;
+     flex-flow: row wrap;
+     align-items: center;    
+   }
 .form-inline label {
-  margin: 5px 10px 5px 0;
+     margin: 5px 10px 5px 0;
+    } 
+.user-logo{
+  height: 266px;
+  width: 272px;
+    } 
+
+ .userinfo-input{
+   margin-left: 10px;
+   margin-top: 10px;
+ }
+   @media (max-width: 800px) {
+     .form-inline input {
+       margin: 10px 0;
+     }
+   
+     .form-inline {
+       flex-direction: column;
+       align-items: stretch;
+     }
+   }
+
+.container {
+     height: 320px;
+     border-radius: 10px  ;
+     background-color: #fdfcfc;
+     border: 2px   black;
+     margin-top: 20px;
+     box-shadow: 0px 5px 15px  #dad9d9;
+    
+   }
+
+   @media screen and (max-width: 600px) {
+     .col-25, .col-75, input[type=submit] {
+       width: 100%;
+       margin-top: 0;
+     }
+   }
+   .btn{
+     margin-left: 10px;
+     margin-top: 10px;
+   }
+.card{
+  height: 300px;
+  margin-top: 10px;
 }
    
 .userinfo{
