@@ -21,8 +21,8 @@ import { AdminFeedbackComponent } from './admin-feedback/admin-feedback.componen
 const routes: Routes = [
   {path:'home',component:MainLandingPageComponent},
   {path:'InitialLogin',component:InitialLoginComponent},
+  {path:'InitialLogin?admin',component:InitialLoginComponent},
   {path:'mainlogin',component:MainLoginComponent},
-  {path:'admin',component:AdminControlComponent},
   {path:'admin-terminal',component:AdminTerminalComponent},
   {path:'admin-user',component:AdminUserComponent},
   {path:'admin-payment',component:AdminPaymentComponent},

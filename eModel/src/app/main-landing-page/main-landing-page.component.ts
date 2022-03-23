@@ -12,7 +12,7 @@ export class MainLandingPageComponent implements OnInit {
   constructor(private router:Router, private ds:UserDataService) { }
   
   logo="../../assets/images/landing_page/logo.png";
-  hero="../../assets/images/landing_page/video.mp4";
+  hero="../../assets/images/landing_page/Intro_Video.mp4";
   advent_logo="../../assets/images/landing_page/advent-logo.png";
   herologo="../../assets/images/landing_page/video-logo.png";
   service_img1="../../assets/images/landing_page/port_manager.png";

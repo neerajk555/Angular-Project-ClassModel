@@ -20,9 +20,12 @@ export class MainLoginComponent implements OnInit {
   {
     if(path=="terminal")
       this.ds.logintype="terminal";
+      console.log("Hi from terminal!!");
+      this.router.navigate(['/','TerminalLanding']);
+
     if(path=="user")
       this.ds.logintype="user";
-    this.router.navigate(['/','InitialLogin']);
+      this.router.navigate(['/','InitialLogin']);
   }
   terminalimage="../assets/images/logos/porticon.png";
   userimage="../assets/images/logos/userlogo.png";

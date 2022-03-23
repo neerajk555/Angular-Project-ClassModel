@@ -15,7 +15,14 @@ export class UserRegistrationComponent implements OnInit {
   UserFormData:any;
   postuserdata:any;
   submitted = false;
+  public toggleButton: boolean = false;
+  enable(){
+    this.toggleButton = false
+ }
 
+ disable(){
+    this.toggleButton = true
+ }
   ngOnInit(): void {
 
     this.UserFormData = this.fb.group({
@@ -54,6 +61,7 @@ export class UserRegistrationComponent implements OnInit {
         "user_document":"../assets/images/user/usercard.png",
         "user_profilephoto":"../assets/images/user/profile.png",
         "user_company_name":this.UserFormData.value.companyName,
+        "user_watchlist_ids":[],
         "user_status":true,
         "user_token":"",        
         "authorize":false
@@ -63,5 +71,37 @@ export class UserRegistrationComponent implements OnInit {
   this.router.navigate(['/','mainlogin']);
   }
 
+  passType='password';
+  flag=true;
+  showPassword(ptype:any)
+  {
+    if(ptype=="show")
+    {
+      this.passType='text';
+      this.flag=false;
+    }
+    else if(ptype=="hide")
+    {
+      this.passType='password';
+      this.flag=true;
+    }
+  }
+
+
+  ConfirmpassType='password';
+  Confirmflag=true;
+  ConfirmShowPassword(ptype:any)
+  {
+    if(ptype=="show")
+    {
+      this.ConfirmpassType='text';
+      this.Confirmflag=false;
+    }
+    else if(ptype=="hide")
+    {
+      this.ConfirmpassType='password';
+      this.Confirmflag=true;
+    }
+  }
 
 }
