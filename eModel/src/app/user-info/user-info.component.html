@@ -70,4 +70,49 @@
         <button class="btn btn-primary">Edit</button>
         <button type="btn btn-success" (click)="disable()" class="btn btn-success">Save</button>
     </div> -->
+
+<!--<div class="container mt-5">
+    <h5 style="color:#0088e8; font-size: 16px;">User Information</h5>
+    <label >First Name</label>
+    <input type="text" class="userinfo" [disabled]='toggleButton' name="fname" [value]="this.userdata.fname">
+    <label>Last Name</label>
+    <input type="text" class="userinfo" [disabled]='toggleButton' name="lname" [value]="this.userdata.lname">
+    <button class="edit-btn" (click)="enable()" type="button" *ngIf="toggleButton">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen"
+            viewBox="0 0 16 16">
+            <path
+                d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z" />
+        </svg>
+    </button>
+    <br><br>
+    <form class="form-inline">
+        <label>Phone</label>-->
+        <!-- <select id="myText" [disabled]='toggleButton'>
+            <option value="us">US(+1)</option>
+            <option value="india">INDIA(+91)</option>
+            <option value="uk">UK(+44)</option>
+            <option value="germany">Germany(+49)</option>
+        </select> -->
+        <!--<input type="text" class="userinfo" id="myText" name="lname" [disabled]='toggleButton' [value]="this.userdata.phone">
+    </form>
+    <button (click)="disable()" class="btn btn-success" type="button" *ngIf="!toggleButton">Save</button>-->
 </div>
+
+<!--<div class="container">
+    <h5 style="color:#0088e8;font-size: 16px;">Login information</h5>
+    <form>
+        <label>Email :</label><button class="edit-btn1" (click)="loginenable()" *ngIf="logintoggleButton">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen"
+                viewBox="0 0 16 16">
+                <path
+                    d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z" />
+            </svg>
+        </button><br>
+        <input type="email" [disabled]='logintoggleButton' class="userinfo" id="myText" placeholder="abc@gmail.com"
+            name="fname" [value]="this.userdata.mail">
+        <br><br>
+        <label>Password</label><br>
+        <input type="password" [disabled]='logintoggleButton' class="userinfo" id="myText" name="lname" [value]="this.userdata.password">
+        <button type="button" (click)="logindisable()" class="btn btn-success" *ngIf="!logintoggleButton">Save</button>
+    </form>
+</div>-->

@@ -19,7 +19,14 @@ import { FinalUserPaymentComponent } from './final-user-payment/final-user-payme
 import { MainLoginComponent } from './main-login/main-login.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { MainLandingPageComponent } from './main-landing-page/main-landing-page.component';
-
+import { ContainersComponent } from './containers/containers.component';
+import { BookingService } from './booking.service';
+import { UserrequestComponent } from './userrequest/userrequest.component';
+import { AdminTerminalComponent } from './admin-terminal/admin-terminal.component';
+import { AdminUserComponent } from './admin-user/admin-user.component';
+import { AdminPaymentComponent } from './admin-payment/admin-payment.component';
+import { AdminFeedbackComponent } from './admin-feedback/admin-feedback.component';
+import { FeedbackComponent } from './feedback/feedback.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +43,14 @@ import { MainLandingPageComponent } from './main-landing-page/main-landing-page.
     FinalUserPaymentComponent,
     MainLoginComponent,
     ForgotPasswordComponent,
-    MainLandingPageComponent
+    MainLandingPageComponent,
+    UserrequestComponent,
+    AdminTerminalComponent,
+    AdminUserComponent,
+    AdminPaymentComponent,
+    AdminFeedbackComponent,
+    ContainersComponent,
+    FeedbackComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +61,7 @@ import { MainLandingPageComponent } from './main-landing-page/main-landing-page.
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [BookingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
