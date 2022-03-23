@@ -21,6 +21,7 @@ const routes: Routes = [
   {path:'InitialLogin',component:InitialLoginComponent},
   {path:'InitialLogin?admin',component:InitialLoginComponent},
   {path:'mainlogin',component:MainLoginComponent},
+  {path:'TerminalLanding',component:TerminalComponent},
   {path:'admin-terminal',component:AdminTerminalComponent},
   {path:'admin-user',component:AdminUserComponent},
   {path:'admin',component:AdminControlComponent},

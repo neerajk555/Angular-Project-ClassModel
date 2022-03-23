@@ -24,6 +24,7 @@ import { BookingService } from './booking.service';
 import { UserrequestComponent } from './userrequest/userrequest.component';
 import { AdminTerminalComponent } from './admin-terminal/admin-terminal.component';
 import { AdminUserComponent } from './admin-user/admin-user.component';
+import { FeedbackComponent } from './feedback/feedback.component';
 
 
 
@@ -46,7 +47,8 @@ import { AdminUserComponent } from './admin-user/admin-user.component';
     UserrequestComponent,
     AdminTerminalComponent,
     AdminUserComponent,
-    ContainersComponent
+    ContainersComponent,
+    FeedbackComponent
   ],
   imports: [
     BrowserModule,
