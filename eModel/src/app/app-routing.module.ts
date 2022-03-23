@@ -18,6 +18,7 @@ const routes: Routes = [
   {path:'home',component:MainLandingPageComponent},
   {path:'InitialLogin',component:InitialLoginComponent},
   {path:'mainlogin',component:MainLoginComponent},
+  {path:'TerminalLanding',component:TerminalComponent},
   {path:'InitialLanding',component:InitialLandingComponent,children:[
     {path:'watchlist',component:ContainerWatchlistComponent},
     {path:'bookings',component:ContainerBookingComponent},

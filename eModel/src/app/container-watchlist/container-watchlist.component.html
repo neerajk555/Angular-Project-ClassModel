@@ -3,21 +3,11 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
     <a class="navbar-brand" href="#">My Containers</a>
-    <div class="dropdown">
-        <button class="dropbtn">Actions</button>
-        <div class="dropdown-content">
-            <a href="#">Pay Fees</a>
-            <button type="button" class="btn btn-primary"(click)="deletwSelectedRows()">Remove Container</button>
+   
+        
+            <button type="button" class="btn btn-default-add"(click)="deletwSelectedRows()">Remove Container</button>
 
-        </div>
-    </div>
-
-    <div class="dropdown">
-        <button class="dropbtn">Add To My Container</button>
-        <div class="dropdown-content">
-         
-           
-
+ 
 <ng-template #content let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Add Container you want to watch</h4>
@@ -34,13 +24,12 @@
 </ng-template>
 
 
-<button class="btn btn-default btn-sm" (click)="open(content)">Add Container</button>
+<button class="btn btn-default-add" (click)="open(content)">Add Container</button>
 
 
-        </div>
-    </div>
+    
 
-    <div class="dropdown ">
+    <!-- <div class="dropdown ">
         
         <button class="btn btn-default btn-sm">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-pdf"
@@ -62,7 +51,7 @@
             </svg>
         </button>
     </div>
-    <!-- <button onclick="download()">Generate PDF</button> -->
+  -->
 
 </nav>
 
@@ -91,11 +80,16 @@
                     <th scope="row"><input class="form-check-input" type="checkbox" value="" (click)="changeState(i)"></th>
                     <td>{{container.con_id}}</td>
                     <td *ngIf="!container.loadRow"><button type="button" class="btn btn-default btn-sm"
-                            (click)="expand(i)"> <i class="fa-solid fa-angles-down"></i>></button></td>
+                            (click)="expand(i)"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#ff0000" class="bi bi-arrow-down-square-fill" viewBox="0 0 16 16">
+                                <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5a.5.5 0 0 1 1 0z"/>
+                              </svg></button></td>
                     <td *ngIf="container.loadRow"><button type="button" class="btn btn-default btn-sm" (click)="collapse(i)"><i class="fa-solid fa-angles-down"></i>
-                            * </button>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#ff0000" class="bi bi-arrow-up-square-fill" viewBox="0 0 16 16">
+                            <path d="M2 16a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2zm6.5-4.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 1 0z"/>
+                          </svg> </button>
                     </td>
-                    <td>{{container.con_loaded}}</td>
+                    <td *ngIf="container.con_loaded">Loaded</td>
+                    <td *ngIf="!container.con_loaded">Empty</td>
                     <td>{{container.container_status}}</td>
                     <td>{{container.appointment_id}}</td>
                     <td>{{container.destination}}</td>
@@ -119,7 +113,8 @@
 
                                             <div class="w-50">
                                                 <h6>Loaded OR Empty</h6>
-                                                <p>{{container.con_loaded}}</p>
+                                                <p *ngIf="container.con_loaded">Loaded</p>
+                                                <p *ngIf="!container.con_loaded">Empty</p>
                                             </div>
                                         </div>
 
@@ -137,11 +132,11 @@
 
 
                                             <div class="col">
-                                                <h6>Current Location</h6>
+                                                <h6>Destination</h6>
                                                 <p>{{container.destination}}</p>
                                             </div>
 
-                                            <div class="col">
+                                            <div class="col" *ngIf="container.departure_date != ''">
                                                 <h6>Departher Date</h6>
                                                 <p>{{container.departure_date}}</p>
                                             </div>
@@ -151,11 +146,11 @@
                                                 <p>{{container.ship_id}}</p>
                                             </div>
 
-                                            <div class="col">
+                                            <div class="col" *ngIf="container.arriving_date != ''">
                                                 <h6>Arriving Date</h6>
                                                 <p>{{container.arriving_date}}</p>
                                             </div>
-                                            <div class="col">
+                                            <div class="col" *ngIf="container.receiver_delivery_date != ''">
                                                 <h6>Delivery  Date</h6>
                                                 <p>{{container.receiver_delivery_date}}</p>
                                             </div>
@@ -171,11 +166,4 @@
     </table>
 
 
-<!-- <script>
-    function download(){
-        var doc =new jsPDF()
-        var text = document.getElementById('contentToConvert').value
-        doc.text (text,15,15)
-        doc.save("new.pdf")
-    }
-</script> -->
+

@@ -1,6 +1,6 @@
 import { WatchlistService } from '../watchlist.service';
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 
 import { HttpClient } from '@angular/common/http';
@@ -15,34 +15,34 @@ declare var jsPDF: any;
 export class ContainerWatchlistComponent implements OnInit {
   public isCollapsed = false;
   closeResult = '';
- 
-  constructor(private wS: WatchlistService,private modalService: NgbModal,private http:HttpClient, private uS: UserDataService) { }
+
+  constructor(private wS: WatchlistService, private modalService: NgbModal, private http: HttpClient, private uS: UserDataService) { }
 
 
   watchlist: any;
   containerIds = "";
 
   saveToWatchlist(data: any) {
-    data = data.map((v: any) => ({ ...v, loadRow: false, isChecked:false}));
+    data = data.map((v: any) => ({ ...v, loadRow: false, isChecked: false }));
     this.watchlist = data;
     console.log(this.watchlist);
 
   }
-  changeState(i:any){
+  changeState(i: any) {
     this.watchlist[i].isChacked = !this.watchlist[i].isChacked;
   }
- deletwSelectedRows(){
-   for(var i in this.watchlist){
-     if(this.watchlist[i].isChacked){
-       this.wS.delete(this.watchlist[i].id).subscribe();
-       this.watchlist.splice(i,1);
-     }
-   }
- }
+  deletwSelectedRows() {
+    for (var i in this.watchlist) {
+      if (this.watchlist[i].isChacked) {
+        this.wS.delete(this.watchlist[i].id).subscribe();
+        this.watchlist.splice(i, 1);
+      }
+    }
+  }
 
- updateUser(data: any) {
-   this.uS.user = data;
- }
+  updateUser(data: any) {
+    this.uS.user = data;
+  }
 
   ngOnInit(): void {
     this.wS.getContainerWatchlist().subscribe((data) => this.saveToWatchlist(data));
@@ -56,27 +56,44 @@ export class ContainerWatchlistComponent implements OnInit {
   collapse(index: any) {
     this.watchlist[index].loadRow = false;
   }
-  open(content:any) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+  open(content: any) {
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
-  value:any;
+  value: any;
 
   updateWatchList(data: any, conid: any) {
-    if(data != []) {
+    if (data != []) {
       this.watchlist.push(data[0]);
       console.log(data);
     }
   }
-  addContainer(conid:any){
+
+  isPresent(item: any, data: any) {
+    for (let i = 0; i < data.length; i++) {
+      if (data[i] == item) {
+        return true;
+      }
+    }
+    return false;
+  }
+  addContainer(conid: any) {
     //console.log(this.containerIds);
-    console.log(conid);
-    this.uS.user.user_watchlist_ids.push(conid);
-    this.uS.putUserData(this.uS.user, this.uS.user.id).subscribe((data) => console.log(data));
-    this.wS.getContainerById(conid).subscribe((data) => this.updateWatchList(data, conid));
+    if (conid != '') {
+      // console.log(conid);
+      // console.log(this.uS.user.user_watchlist_ids);
+      if (!this.isPresent(conid, this.uS.user.user_watchlist_ids)) {
+        this.uS.user.user_watchlist_ids.push(conid);
+        this.uS.putUserData(this.uS.user, this.uS.user.id).subscribe((data) => console.log(data));
+        this.wS.getContainerById(conid).subscribe((data) => this.updateWatchList(data, conid));
+      }
+
+
+    }
+    this.modalService.dismissAll();
     // this.wS.getConid(conid).subscribe((saveToWatchlist) => {this.value=saveToWatchlist})
     // console.log(this.value);
 
@@ -100,9 +117,9 @@ export class ContainerWatchlistComponent implements OnInit {
   //     var imgHeight =canvas.height * 208 /canvas .width;
   //     doc.addImage(imgData,0,0,208,imgHeight)
   //     doc.save("image.pdf")
-      
+
   //   });
-    
+
 }
 //   recData: any
 

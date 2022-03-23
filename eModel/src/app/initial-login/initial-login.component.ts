@@ -90,7 +90,7 @@ export class InitialLoginComponent implements OnInit {
           console.log(this.userFormData.value.username);
           this.flag = true;
           this.ds.loginid=this.terminalInfo[i].id;
-          this.router.navigateByUrl('/InitialLanding');
+          this.router.navigateByUrl('/TerminalLanding');
           break;
         }
       }
