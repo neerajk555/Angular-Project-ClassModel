@@ -20,7 +20,8 @@ export class UserDataService {
     "appointmentdata":"http://localhost:3000/appointment_details/",
     "paymentdata":"http://localhost:3000/payment_details/",
     "statusdata":"http://localhost:3000/status_details/",
-    "feedbackdata":"http://localhost:3000/feedback_details/"
+    "feedbackdata":"http://localhost:3000/feedback_details/",
+    "admindata":"http://localhost:3000/admin_master/"
   }
 
   getUserData()
@@ -42,6 +43,10 @@ export class UserDataService {
   getterminalDataById(data:any)
   {
     return this.ht.get(this.urls.terminaldata+data);
+  }
+  getadminData()
+  {
+    return this.ht.get(this.urls.admindata);
   }
 
 }

@@ -19,6 +19,7 @@ import { AdminUserComponent } from './admin-user/admin-user.component';
 const routes: Routes = [
   {path:'home',component:MainLandingPageComponent},
   {path:'InitialLogin',component:InitialLoginComponent},
+  {path:'InitialLogin?admin',component:InitialLoginComponent},
   {path:'mainlogin',component:MainLoginComponent},
   {path:'admin-terminal',component:AdminTerminalComponent},
   {path:'admin-user',component:AdminUserComponent},
