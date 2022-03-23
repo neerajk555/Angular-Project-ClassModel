@@ -28,6 +28,29 @@ export class AdminService {
   {
     return this.ht.get(this.urls.userdata);
   }
+  putUserData(data:any) {
+    return this.ht.put(this.urls.userdata+data.id, data);
+  }
+
+
+  getPaymentData()
+  {
+    return this.ht.get(this.urls.paymentdata);
+  }
+  getAppointmentData()
+  {
+    return this.ht.get(this.urls.appointmentdata);
+  }
+
+  getFeedbackData()
+  {
+    return this.ht.get(this.urls.feedbackdata);
+  }
+  putFeedbackData(data:any)
+  {
+    return this.ht.put(this.urls.feedbackdata+data.id, data);
+  }
+
   getterminalData()
   {
     return this.ht.get(this.urls.terminaldata);
@@ -38,11 +61,6 @@ export class AdminService {
   }
   putTerminalsData(data:any) {
     return this.ht.put(this.urls.terminaldata+data.id, data);
-  }
-  deleteTerminalData(id:any) {
-    console.log(id);
-    
-    // return this.ht.delete(this.urls.terminaldata+id);
   }
 
 }
