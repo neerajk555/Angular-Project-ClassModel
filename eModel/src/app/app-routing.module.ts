@@ -1,5 +1,4 @@
 import { Component, NgModule } from '@angular/core';
-import { ControlContainer } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminControlComponent } from './admin-control/admin-control.component';
 import { ContainerBookingComponent } from './container-booking/container-booking.component';
@@ -20,6 +19,8 @@ import { ContainersComponent } from './containers/containers.component';
 import { UserauthGuard } from './userauth.guard';
 import { TerminalauthGuard } from './terminalauth.guard';
 import { AuthGuard } from './auth.guard';
+import { AdminPaymentComponent } from './admin-payment/admin-payment.component';
+import { AdminFeedbackComponent } from './admin-feedback/admin-feedback.component';
 
 const routes: Routes = [
   {path:'home',component:MainLandingPageComponent},
@@ -38,6 +39,8 @@ const routes: Routes = [
     {path:'Containers',component:ContainersComponent,canActivate:[TerminalauthGuard]},
     {path:'admin-terminal',component:AdminTerminalComponent,canActivate:[AuthGuard]},
     {path:'admin-user',component:AdminUserComponent,canActivate:[AuthGuard]},
+    {path:'admin-payment',component:AdminPaymentComponent},
+    {path:'admin-feedback',component:AdminFeedbackComponent}
   ]},
   {path:'',component:MainLandingPageComponent}
 ];

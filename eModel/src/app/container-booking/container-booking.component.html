@@ -1,38 +1,33 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <h3>Bookings</h3>
-    <button class="btn btn-success ms-auto mx-2" (click)="open(content, false)">Add Booking</button>
-</nav>
+<div class="container">
 
-<div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mt-5">
+        <h3>Bookings</h3>
+        <button class="btn btn-success ms-auto mx-2" (click)="open(content, false)">Add Booking</button>
+    </nav>
+
     <table class="table table-striped">
         <thead class="thead-light">
             <tr>
-                <th scope="col"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></th>
-                <th scope="col">Boooking #</th>
-                <th scope="col"></th>
-                <th scope="col"></th>
-                <th scope="col">Status </th>
-                <th scope="col">Source</th>
-                <th scope="col">Pickup Date</th>
-                <th scope="col">Delivery Date</th>
-                <th scope="col">Remark</th>
+                <th scope="col" *ngFor="let itemField of fieldsForTable">{{ itemField }}</th>
             </tr>
         </thead>
         <tbody>
-            <ng-container *ngFor="let container of receiver; let i = index">
+            <ng-container *ngFor="let container of recAppointmentData; let i = index">
                 <tr>
-                    <th scope="row"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></th>
-                    <td>{{container.con_id}}</td>
+                    <!-- <td scope="row"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td> -->
+                    <td>{{container.appointment_id}}</td>
+                    <td>{{container.container_id}}</td>
                     <td *ngIf="!container.loadRow"><button type="button" class="btn btn-primary"
                             (click)="expand(i)">EXPAND</button></td>
                     <td *ngIf="container.loadRow"><button type="button" class="btn btn-primary"
                             (click)="collapse(i)">Collapse</button></td>
-                    <td>
-                    <td>
-                    <td>{{container.source_loc}}</td>
+                    <td>{{container.appointment_status}}</td>
+                    <td>{{container.source}}</td>
+                    <td>{{container.destination}}</td>
                     <td>{{container.pickup_date}}</td>
-                    <td></td>
-                    <td>{{container.remark}}</td>
+                    <td>{{container.delivery_date}}</td>
+                    <td>{{container.cost}}</td>
+                    <td>{{container.terminal_remarks}}</td>
                 </tr>
                 <tr *ngIf="container.loadRow">
                     <td colspan="7">
@@ -49,7 +44,7 @@
 
                                             <div class="w-50">
                                                 <h6>Container Type</h6>
-                                                <p>{{container.contype_id}}</p>
+                                                <p>{{container.containerType}}</p>
                                             </div>
                                         </div>
 
@@ -62,18 +57,18 @@
                                         <div class="row">
                                             <div class="col">
                                                 <h6>Receiver Name</h6>
-                                                <p>{{container.Receiver_name}}</p>
+                                                <p>{{container.receiver_fullname}}</p>
                                             </div>
 
 
                                             <div class="col">
                                                 <h6>Delivery Location</h6>
-                                                <p>{{container.Delivery_loc}}</p>
+                                                <p>{{container.destination}}</p>
                                             </div>
 
                                             <div class="col">
                                                 <h6>phone</h6>
-                                                <p>{{container.phone}}</p>
+                                                <p>{{container.receiver_phone}}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -85,84 +80,197 @@
             </ng-container>
         </tbody>
     </table>
+</div>
+<!-- <ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">ADD Booking</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <form #f="ngForm" novalidate>
 
-    <ng-template #content let-modal>
-        <div class="modal-header">
-            <h4 class="modal-title" id="modal-basic-title">ADD Booking</h4>
-            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <form #f="ngForm" (ngSubmit)="onSubmit(f.value)" novalidate>
-                <div class="form-row row">
-                    <div class="form-group col md-3">
-                        <label for="containerId">Container Id:</label>
-                        <div class="input-group">
-                            <input id="ContainerId" name="container_id" class="form-control" ngModel>
-                        </div>
-                    </div>
-                    <div class="form-group col md-3">
-                        <label for="picupdate">Pickup Date</label>
-                        <div class="input-group">
-                            <input type="date" id="pickupdate" name="pickup_date" class="form-control" ngModel>
-                        </div>
-                    </div>
+            <div class="form-row row">
+                <div class="form-group col-md-6">
+                    <label for="sourcelocation">Start Location</label><br>
+                    <select (change)="onChange(source)" [(ngModel)]="source" name="source"> 
+                    
+                    <select [(ngModel)]="recDataTerminal">
+                        <option [ngValue]="null" selected disabled>Select User</option>
+                        <option *ngFor="let d of recDataTerminal">{{d.terminal_name}},{{d.city}}</option>
+                    </select>
+
                 </div>
-                <div class="form-row row">
-                    <div class="form-group col md-3">
-                        <label for="sourcelocation">Source Location</label>
-                        <div class="input-group">
-                            <input id="sourcelocation" name="source_loc" class="form-control" ngModel>
-                        </div>
-                    </div>
-                    <div class="form-group col md-3">
 
-                        <label for="deliverylocation">Delivery Location</label>
-                        <div class="input-group">
-                            <input id="deliverylocation" name="Delivery_loc" class="form-control" ngModel>
-                        </div>
+                <div class="form-group col-md-6">
+
+                    <label for="deliverylocation">Destination </label><br>
+                    <select [(ngModel)]="destination" name="destination">
+                        <option [ngValue]="" selected disabled>Select</option>
+                        <option *ngFor="let d of recDataTerminal">{{d.terminal_name}},{{d.city}}</option>
+                    </select> -->
+                    <!-- <select [(ngModel)]="destination" name="destination" >
+                        <option [ngValue]="" selected disabled>Select</option>
+                        <option *ngFor="let d of dest" >{{d.terminal_name}},{{d.city}}</option>
+                    </select> 
+                </div>
+            </div>
+            <br>
+            <div class="form-row row">
+                <div class="form-group col-md-6">
+                    <label for="containerId">Containers Available</label><br>
+
+                    <div class="input-group">
+                        <input id="ContainerId" name="container_id" class="form-control" formControlName="cid">
                     </div>
                 </div>
                 <div class="form-group col-md-3">
-                    <label for="remark">Remark</label>
+                    <label for="pickupdate">Pickup Date</label>
                     <div class="input-group">
-                        <input id="remark" name="remark" class="form-control" ngModel>
+                        <input type="date" id="pickupdate" name="pickup_date" class="form-control"
+                            formControlName="pickupdate">
                     </div>
                 </div>
-                <div class="form-row mt-3">
-                    <div class="form-group row">
-                        <label class="control-label">Receiver</label>
-                        <div class="form-group col-md-4">
-                            <label for="receivername">Full Name</label>
-                            <div class="input-group">
-                                <input id="receivernamename" name="Receiver_name" class="form-control" ngModel>
-                            </div>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="phone">Contact Number</label>
-                            <div class="input-group">
-                                <input id="phone" name="phone" class="form-control" ngModel>
-                            </div>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="email">Email</label>
-                            <div class="input-group">
-                                <input id="email" name="email" class="form-control" ngModel>
-                            </div>
-                        </div>
+                <div class="form-group col-md-3">
+                    <label for="sendingdate">Sending date</label>
+                    <div class="input-group">
+                        <input type="date" id="sendingdate" name="pickup_date" class="form-control"
+                            formControlName="sendingdate">
                     </div>
-                    <br><br>
-                    <div>
-                        <div class=" text-center">
-                            <button data-dismiss="modal" class="btn btn-info">Submit</button>
-                        </div>
+                </div>
 
+            </div>
+            <br>
+            <div class="form-group col-md-3">
+                <label for="remark">Remarks</label>
+                <div class="input-group">
+                    <input id="remark" name="remark" class="form-control" formControlName="remarks">
+                </div>
+            </div>
+            <div class="form-row mt-3">
+                <div class="form-group row"><br>
+                    <label class="control-label">Receiver's Details</label><br>
+                    <div class="form-group col-md-4">
+                        <label for="receivername">Full Name</label>
+                        <div class="input-group">
+                            <input id="receivernamename" name="Receiver_name" class="form-control"
+                                formControlName="Receiver_name">
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="phone">Contact Number</label>
+                        <div class="input-group">
+                            <input id="phone" name="phone" class="form-control" formControlName="phone">
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="email">Email</label>
+                        <div class="input-group">
+                            <input id="email" name="email" class="form-control" formControlName="email">
+                        </div>
                     </div>
                 </div>
-            </form>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
-        </div>
-    </ng-template>
+                <br><br>
+                <div>
+                    <div class=" text-center">
+                        <button type="submit" class="btn btn-primary"
+                            (click)="modal.dismiss('Cross click')">Submit</button>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </div>
+</ng-template>-->
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">ADD Booking</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form #f="ngForm" (ngSubmit)="onSubmit(f.value)" novalidate>
+            <div class="form-row row">
+                <div class="form-group col-md-6">
+                    <label for="sourcelocation">Start Location</label><br>
+                    <div class="input-group">
+                        <select id="source_terminal_id" name="source_terminal_id" #src (change)="onChange(src.value)" class="form-select">
+                            <option [ngValue]="null" selected disabled>Select City</option>
+                            <option *ngFor="let d of recDataTerminal">{{d.terminal_name}},{{d.city}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="deliverylocation">Destination</label><br>
+                    <div class="input-group">
+                        <select #destination class="form-select" id="delivery_terminal_id" name="delivery_terminal_id">
+                            <option [ngValue]="null" selected disabled>Select City</option>
+                            <option *ngFor="let d of dest">{{d.terminal_name}},{{d.city}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="containerId">Container List</label><br>
+                    <div class="input-group">
+                        <select class="form-select" id="container_id" name="container_id" >
+                            <option [ngValue]="null" selected disabled>Select Container</option>
+                            <option *ngFor="let type of recContainerData">{{type.contype_type}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="picupdate">Pickup Date</label>
+                    <div class="input-group">
+                        <input type="date" id="pickupdate" name="pickup_date" class="form-control" ngModel>
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="picupdate">Delivery Date</label>
+                    <div class="input-group">
+                        <input type="date" id="delivery_date" name="delivery_date" class="form-control" ngModel>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <label for="receivername">Receiver</label><br><br>
+            
+            <div class="form-row row">
+                <div class="form-group col-md-4">
+                    <label> Name</label>
+                    <div class="input-group">
+                        <input id="receivername" name="receiver_fullname" class="form-control" ngModel>
+                    </div>
+                </div>
+                <div class="form-group col-md-4">
+                    <label> Email</label>
+                    <div class="input-group">
+                        <input id="receiver_mail" name="receiver_mail" class="form-control" ngModel>
+                    </div>
+                </div>
+                <div class="form-group col-md-4">
+                    <label> Contact</label>
+                    <div class="input-group">
+                        <input id="receiver_phone" name="receiver_phone" class="form-control" ngModel>
+                    </div>
+                </div>
+            </div>
+                
+                <div class="form-group col-md-12">
+                    <label for="user_remarks">Remark</label>
+                    <div class="input-group">
+                        <input id="user_remarks" name="user_remarks" class="form-control" formControlName="terminal_remarks" ngModel>
+                    </div>
+                </div>
+                <br><br>
+                <div>
+                    <div class=" text-center">
+                        <button type="submit" class="btn btn-primary"
+                            (click)="modal.dismiss('Cross click')">Submit</button>
+                    </div>
+
+                </div>
+            
+        </form>
+    </div>
+    
+</ng-template>

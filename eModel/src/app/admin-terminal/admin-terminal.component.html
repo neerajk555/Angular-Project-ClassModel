@@ -5,8 +5,9 @@
 
 
 <table class="table table-striped">
-    <thead>
+    <thead class="thead-light">
         <tr>
+            <th scope="col">ID</th>
             <th scope="col">Terminal_Id</th>
             <th scope="col">Terminal_Name</th>
             <th scope="col">Terminal_Mobile</th>
@@ -17,14 +18,14 @@
     </thead>
     <tbody>
         <tr *ngFor="let receiveData of receiveterminaldetails">
-            <th scope="row">{{receiveData.terminal_id}}</th>
+            <th scope="row">{{receiveData.id}}</th>
+            <td>{{receiveData.terminal_id}}</td>
             <td>{{receiveData.terminal_name}}</td>
             <td>{{receiveData.terminal_mobile}}</td>
             <td>{{receiveData.terminal_email}}</td>
             <td>{{receiveData.terminal_password}}</td>
-            <td>{{receiveData.terminal_location}},<br>&nbsp;{{receiveData.city}},<br>&nbsp;{{receiveData.country}},{{receiveData.zipcode}}</td>
+            <td>{{receiveData.terminal_location}},&nbsp;{{receiveData.city}},&nbsp;{{receiveData.country}},{{receiveData.zipcode}}</td>
             <td><button class="btn btn-primary btn-sm" (click)="open(content, receiveData)">Edit</button></td>
-            <td><button class="btn btn-danger btn-sm" class="btn btn-danger btn-sm" (click)="DeleteTerminal(receiveData.Terminal_Id)">Remove</button></td>
         </tr>
 </table>
 
@@ -37,6 +38,10 @@
     <div class="modal-body">
         <form [formGroup]="myForm" *ngIf="!formIsNew" (ngSubmit)="TerminalData()">
             <div class="form-row row">
+                <div class="form-group col-md-6">
+                    <label>ID</label>
+                    <input type="number" class="form-control" formControlName="id">
+                </div>
                 <div class="form-group col-md-6">
                     <label>Terminal ID</label>
                     <input type="text" class="form-control" formControlName="terminal_id">

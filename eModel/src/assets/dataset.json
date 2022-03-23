@@ -21,19 +21,22 @@
       "authorize": false
     },
     {
-      "id": 82,
-      "user_first_name": "mosh",
-      "user_last_name": "jonson",
-      "user_contact": "78945612345",
-      "user_emailid": "mjonson@son.in",
-      "user_username": "mjonson",
-      "user_password": "123",
+      "id": 2,
+      "userid": "USR100002",
+      "user_first_name": "Leanne",
+      "user_last_name": "Jackson",
+      "user_contact": "7788994455",
+      "user_emailid": "Sincere@april.biz",
+      "user_username": "LJackson",
+      "user_password": "12345",
       "user_document": "../assets/images/user/usercard.png",
       "user_profilephoto": "../assets/images/user/profile.png",
-      "user_company_name": "advent",
+      "user_company_name": "ABC XYZ",
+      "user_watchlist_ids": [],
       "user_status": true,
       "user_token": "",
-      "authorize": false
+      "authorize": false,
+      "status": true
     }
   ],
   "card_details": [
@@ -77,7 +80,7 @@
       "terminal_email": "asd@asd.asd",
       "terminal_username": "terminal1",
       "terminal_password": "12345",
-      "terminal_location": "7th St",
+      "terminal_location": "dfg",
       "city": "Oakland",
       "country": "United States",
       "zipcode": "94607",
@@ -90,15 +93,33 @@
     {
       "id": 2,
       "terminal_id": "TI100002",
-      "terminal_name": "EVERPORT",
-      "terminal_mobile": "+1789465132",
+      "terminal_name": "EVERPORT North",
+      "terminal_mobile": "+178943456",
       "terminal_email": "asd@asd.asd",
-      "terminal_username": "terminal1",
+      "terminal_username": "terminal2",
       "terminal_password": "12345",
       "terminal_location": "7th St",
       "city": "Long Island",
       "country": "United States",
       "zipcode": "94607",
+      "terminal_logo": "../assets/images/terminallogo.png",
+      "fax": "",
+      "description": "",
+      "terminal_status": "Active",
+      "token": ""
+    },
+    {
+      "id": 4,
+      "terminal_id": "TI0002",
+      "terminal_name": "Mudra",
+      "terminal_mobile": "1234567890",
+      "terminal_email": "abc@gmail.com",
+      "terminal_username": "Mudra123",
+      "terminal_password": 4003,
+      "terminal_location": "Gujarat",
+      "city": "KUtch",
+      "country": "India",
+      "zipcode": 320004,
       "terminal_logo": "../assets/images/terminallogo.png",
       "fax": "",
       "description": "",
@@ -138,6 +159,22 @@
       "terminal_id_origin": "TI100004",
       "terminal_id_current": "TI100004",
       "status": "Available"
+    },
+    {
+      "id": 3,
+      "con_id": "CON00003",
+      "contype_id": "CTI0001",
+      "terminal_id_origin": "TI100002",
+      "terminal_id_current": "TI100001",
+      "status": "Available"
+    },
+    {
+      "id": 4,
+      "con_id": "CON00004",
+      "contype_id": "CTI0002",
+      "terminal_id_origin": "TI100002",
+      "terminal_id_current": "TI100001",
+      "status": "Available"
     }
   ],
   "status_details": [
@@ -173,19 +210,20 @@
       "id": 1,
       "appointment_id": "APT100001",
       "user_id": "USR100001",
-      "container_id": "CON00001",
-      "pickup_date": "22-03-2022",
-      "sending_date": "22-03-2022",
-      "delivery_terminal_id": "TI100002",
-      "delivery_date": "",
-      "user_remarks": "Ok. Nice.",
-      "cost": [],
-      "terminal_remarks": "make some changes",
-      "datetime": "",
-      "receiver_fullname": "",
-      "receiver_phone": "",
-      "receiver_mail": "",
-      "appointment_status": "rejected",
+      "container_id": "CTI0001",
+      "pickup_date": "23-03-2022",
+      "sending_date": "23-03-2022",
+      "source_terminal_id": "TI100001",
+      "delivery_terminal_id": "TI1000012",
+      "delivery_date": "23-03-2022",
+      "user_remarks": "Ok",
+      "cost": 99,
+      "terminal_remarks": "Ok",
+      "datetime": "23-03-2022",
+      "receiver_fullname": "ABC",
+      "receiver_phone": 123456789,
+      "receiver_mail": "a@b.com",
+      "appointment_status": "Approved",
       "destination": "Long Island",
       "selected": false,
       "selectedAll": false,
@@ -195,6 +233,27 @@
       "id": 2,
       "appointment_id": "APT100002",
       "user_id": "USR100002",
+      "container_id": "CTI0002",
+      "pickup_date": "23-03-2022",
+      "sending_date": "23-03-2022",
+      "source_terminal_id": "TI1000012",
+      "delivery_terminal_id": "TI100001",
+      "delivery_date": "23-03-2022",
+      "user_remarks": "Ok",
+      "cost": 99,
+      "terminal_remarks": "Ok",
+      "datetime": "23-03-2022",
+      "receiver_fullname": "PQR",
+      "receiver_phone": 123456789,
+      "receiver_mail": "a@b.com",
+      "appointment_status": "Approved",
+      "destination": "Long Island",
+      "selected": false,
+      "selectedAll": false,
+      "deliveryDate": "2022-03-11"
+    },
+    {
+      "id": 3,
       "container_id": "CON00002",
       "pickup_date": "22-03-2022",
       "sending_date": "22-03-2022",
@@ -214,7 +273,7 @@
       "deliveryDate": "2022-03-03"
     },
     {
-      "id": 3,
+      "id": 4,
       "appointment_id": "APT100003",
       "user_id": "USR100003",
       "container_id": "CON00003",
@@ -229,7 +288,8 @@
       "receiver_fullname": "",
       "receiver_phone": "",
       "receiver_mail": "",
-      "appointment_status": "rejected",
+      "appointment_status": "",
+      "payment_id": "PT001",
       "destination": "Long Island",
       "selected": false,
       "selectedAll": false,
@@ -239,13 +299,12 @@
   "payment_details": [
     {
       "id": 1,
-      "payment_id": "",
+      "payment_id": "PT001",
       "payment_mode": "ATM",
-      "payment_amount": "",
+      "payment_amount": 2000,
       "issued_by": "eModal",
       "Description": "",
-      "date": "",
-      "appointment_id": "APT100001"
+      "date": "21/03/2022"
     }
   ],
   "feedback_details": [
@@ -255,8 +314,8 @@
       "userid": "",
       "feedaback_type": "",
       "description": "",
-      "feedback_time": "",
-      "read_status": false
+      "read_status": true,
+      "feedback_time": ""
     },
     {
       "id": 38,
@@ -282,9 +341,31 @@
   "notification_details": [
     {
       "id": 1,
-      "notification_type": "",
+      "sendto_id": 82,
       "date": "",
-      "description": ""
+      "description": "This is a notification",
+      "status":false
+    },
+    {
+      "id": 2,
+      "sendto_id": 1,
+      "date": "",
+      "description": "This is another notification",
+      "status":false
+    },
+    {
+      "id": 3,
+      "sendto_id": 1,
+      "date": "",
+      "description": "This is some other notification",
+      "status":false
+    },
+    {
+      "id": 4,
+      "sendto_id": 82,
+      "date": "",
+      "description": "This is 4th notification",
+      "status":false
     }
   ]
 }

@@ -24,9 +24,9 @@ import { BookingService } from './booking.service';
 import { UserrequestComponent } from './userrequest/userrequest.component';
 import { AdminTerminalComponent } from './admin-terminal/admin-terminal.component';
 import { AdminUserComponent } from './admin-user/admin-user.component';
+import { AdminPaymentComponent } from './admin-payment/admin-payment.component';
+import { AdminFeedbackComponent } from './admin-feedback/admin-feedback.component';
 import { FeedbackComponent } from './feedback/feedback.component';
-
-
 
 @NgModule({
   declarations: [
@@ -47,6 +47,8 @@ import { FeedbackComponent } from './feedback/feedback.component';
     UserrequestComponent,
     AdminTerminalComponent,
     AdminUserComponent,
+    AdminPaymentComponent,
+    AdminFeedbackComponent,
     ContainersComponent,
     FeedbackComponent
   ],
