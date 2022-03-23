@@ -19,8 +19,13 @@ import { FinalUserPaymentComponent } from './final-user-payment/final-user-payme
 import { MainLoginComponent } from './main-login/main-login.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { MainLandingPageComponent } from './main-landing-page/main-landing-page.component';
+import { ContainersComponent } from './containers/containers.component';
 import { BookingService } from './booking.service';
 import { UserrequestComponent } from './userrequest/userrequest.component';
+import { AdminTerminalComponent } from './admin-terminal/admin-terminal.component';
+import { AdminUserComponent } from './admin-user/admin-user.component';
+import { FeedbackComponent } from './feedback/feedback.component';
+
 
 
 @NgModule({
@@ -39,7 +44,11 @@ import { UserrequestComponent } from './userrequest/userrequest.component';
     MainLoginComponent,
     ForgotPasswordComponent,
     MainLandingPageComponent,
-    UserrequestComponent
+    UserrequestComponent,
+    AdminTerminalComponent,
+    AdminUserComponent,
+    ContainersComponent,
+    FeedbackComponent
   ],
   imports: [
     BrowserModule,
