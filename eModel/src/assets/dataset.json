@@ -192,9 +192,31 @@
   "notification_details": [
     {
       "id": 1,
-      "notification_type": "",
+      "sendto_id": 82,
       "date": "",
-      "description": ""
+      "description": "This is a notification",
+      "status":false
+    },
+    {
+      "id": 2,
+      "sendto_id": 1,
+      "date": "",
+      "description": "This is another notification",
+      "status":false
+    },
+    {
+      "id": 3,
+      "sendto_id": 1,
+      "date": "",
+      "description": "This is some other notification",
+      "status":false
+    },
+    {
+      "id": 4,
+      "sendto_id": 82,
+      "date": "",
+      "description": "This is 4th notification",
+      "status":false
     }
   ]
 }
