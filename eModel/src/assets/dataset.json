@@ -86,6 +86,24 @@
       "description": "",
       "terminal_status": "Active",
       "token": ""
+    },
+    {
+      "id": 3,
+      "terminal_id": "TI100003",
+      "terminal_name": "EVERPORT",
+      "terminal_mobile": "+1789465132",
+      "terminal_email": "asd@asd.asd",
+      "terminal_username": "terminal1",
+      "terminal_password": "12345",
+      "terminal_location": "7th St",
+      "city": "Oakland",
+      "country": "United States",
+      "zipcode": "94607",
+      "terminal_logo": "../assets/images/terminallogo.png",
+      "fax": "",
+      "description": "",
+      "terminal_status": "Active",
+      "token": ""
     }
   ],
   "container_details": [
@@ -186,8 +204,19 @@
     {
       "id": 1,
       "usertype": "",
+      "userid": "",
       "feedaback_type": "",
       "description": "",
+      "feedback_time": "",
+      "read_status": false
+    },
+    {
+      "id": 38,
+      "usertype": "",
+      "userid": "",
+      "feedaback_type": "akjef",
+      "description": "siuvuefh",
+      "feedback_time": "2022-03-23T14:27:14.729Z",
       "read_status": false
     }
   ],
