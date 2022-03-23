@@ -18,30 +18,40 @@ export class InitialLoginComponent implements OnInit {
   alertmsg = false;
   flag = false;
   showLoadingIndicator = true;
+  logintype:any;
 
   ngOnInit(): void {
-    setTimeout(()=>
+    if(this.ds.logintype!="")
     {
-      this.showLoadingIndicator=false;
-    },3000);
-    this.ds.getUserData().subscribe((data) => this.fatchUserData(data));
-    this.ds.getterminalData().subscribe((data) => this.fatchTerminalData(data));
-
-
-    this.userFormData = this.fb.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required],
-    });
+      setTimeout(()=>
+      {
+        this.showLoadingIndicator=false;
+      },1000);
+      this.logintype=this.ds.logintype; 
+      if(this.ds.logintype=="user"){
+        this.ds.getUserData().subscribe((data) => this.fatchUserData(data));
+      }
+      else if(this.ds.logintype=="terminal"){
+        this.ds.getterminalData().subscribe((data) => this.fatchTerminalData(data)); 
+      }
+      this.userFormData = this.fb.group({
+        username: ['', Validators.required],
+        password: ['', Validators.required],
+      });
+    }
+    else{
+      this.router.navigate(['/','mainlogin']);
+    }
   }
 
   fatchUserData(data: any) {
     this.userInfo = data;
-    console.log(this.userInfo);
+  //  console.log(this.userInfo);
   }
 
   fatchTerminalData(data: any) {
     this.terminalInfo = data;
-    console.log(this.userInfo);
+  // console.log(this.terminalInfo);
   }
 
   get f() { return this.userFormData.controls; }
@@ -53,10 +63,9 @@ export class InitialLoginComponent implements OnInit {
       return;
     }
 
-    console.log(this.userFormData.value.username);
+    /*console.log(this.userFormData.value.username);
     console.log(this.ds.logintype);
-    console.log(this.userFormData.value.password);
-    console.log(this.userInfo[0].user_username);
+    console.log(this.userFormData.value.password);*/
 
     if (this.ds.logintype == 'user') {
 
@@ -64,6 +73,7 @@ export class InitialLoginComponent implements OnInit {
         if (this.userFormData.value.username == this.userInfo[i].user_username && this.userFormData.value.password == this.userInfo[i].user_password) {
           console.log(this.userFormData.value.username);
           this.flag = true;
+          this.ds.loginid=this.userInfo[i].id;
           this.router.navigateByUrl('/InitialLanding');
           break;
         }
@@ -71,16 +81,14 @@ export class InitialLoginComponent implements OnInit {
       if (this.flag == false) {
         this.alertmsg = true;
       }
-
-
     }
     else if (this.ds.logintype = 'terminal') {
-
       for (let i = 0; i < this.terminalInfo.length; i++) {
         if (this.userFormData.value.username == this.terminalInfo[i].terminal_username && this.userFormData.value.password == this.terminalInfo[i].terminal_password) {
           console.log(this.userFormData.value.username);
           this.flag = true;
-          this.router.navigateByUrl('/Terminal');
+          this.ds.loginid=this.terminalInfo[i].id;
+          this.router.navigateByUrl('/InitialLanding');
           break;
         }
       }

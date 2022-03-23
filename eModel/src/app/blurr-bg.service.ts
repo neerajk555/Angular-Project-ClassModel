@@ -7,4 +7,5 @@ export class BlurrBgService {
 
   constructor() { }
   show = false;
+  
 }

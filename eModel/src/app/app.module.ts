@@ -20,6 +20,9 @@ import { MainLoginComponent } from './main-login/main-login.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { MainLandingPageComponent } from './main-landing-page/main-landing-page.component';
 import { ContainersComponent } from './containers/containers.component';
+import { BookingService } from './booking.service';
+import { UserrequestComponent } from './userrequest/userrequest.component';
+
 
 
 @NgModule({
@@ -38,7 +41,9 @@ import { ContainersComponent } from './containers/containers.component';
     MainLoginComponent,
     ForgotPasswordComponent,
     MainLandingPageComponent,
-    ContainersComponent
+    ContainersComponent,
+    UserrequestComponent
+
   ],
   imports: [
     BrowserModule,
@@ -49,7 +54,7 @@ import { ContainersComponent } from './containers/containers.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [BookingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
