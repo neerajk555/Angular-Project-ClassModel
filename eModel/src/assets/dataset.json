@@ -130,18 +130,19 @@
       "pickup_date": "22-03-2022",
       "sending_date": "22-03-2022",
       "delivery_terminal_id": "TI100002",
-      "delivery_date": "22-03-2022",
+      "delivery_date": "",
       "user_remarks": "Ok. Nice.",
       "cost": [],
-      "terminal_remarks": "",
+      "terminal_remarks": "make some changes",
       "datetime": "",
       "receiver_fullname": "",
       "receiver_phone": "",
       "receiver_mail": "",
       "appointment_status": "rejected",
       "destination": "Long Island",
-      "selected": true,
-      "selectedAll": true
+      "selected": false,
+      "selectedAll": false,
+      "deliveryDate": "2022-03-11"
     },
     {
       "id": 2,
@@ -151,7 +152,7 @@
       "pickup_date": "22-03-2022",
       "sending_date": "22-03-2022",
       "delivery_terminal_id": "TI100001",
-      "delivery_date": "22-03-2022",
+      "delivery_date": "",
       "user_remarks": "Ok. Nice.",
       "cost": [],
       "terminal_remarks": "",
@@ -161,8 +162,9 @@
       "receiver_mail": "",
       "appointment_status": "rejected",
       "destination": "Oakland",
-      "selected": true,
-      "selectedAll": true
+      "selected": false,
+      "selectedAll": false,
+      "deliveryDate": "2022-03-03"
     },
     {
       "id": 3,
@@ -172,7 +174,7 @@
       "pickup_date": "22-03-2022",
       "sending_date": "22-03-2022",
       "delivery_terminal_id": "TI100002",
-      "delivery_date": "22-03-2022",
+      "delivery_date": "",
       "user_remarks": "Ok. Nice.",
       "cost": [],
       "terminal_remarks": "",
@@ -182,8 +184,9 @@
       "receiver_mail": "",
       "appointment_status": "rejected",
       "destination": "Long Island",
-      "selected": true,
-      "selectedAll": true
+      "selected": false,
+      "selectedAll": false,
+      "deliveryDate": "2022-03-03"
     }
   ],
   "payment_details": [

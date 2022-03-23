@@ -12,10 +12,13 @@ export class UserrequestComponent implements OnInit {
 
   constructor(private getDataRequest: UserDataService, private fB: FormBuilder) { }
   recRequestData: any;
-  approvedCost: any;
+  approvedDetails: any;
+  rejectDetails: any;
   tempCost = 0;
   tempData: any
+  tempDataReject: any
   tempId: any
+  tempDate: any
   tempApproveIdStorage: any = []
 
   approveRequest(requestData: any, id: any) {
@@ -23,21 +26,20 @@ export class UserrequestComponent implements OnInit {
     this.tempId = id
   }
 
-  approveFromModal(approvedCost: any) {
-    this.tempCost = parseFloat(approvedCost.value.requestCost)
+  approveFromModal(approvedDetails: any) {
+    this.tempCost = parseFloat(approvedDetails.value.requestCost)
     this.tempData.cost = this.tempCost
     this.tempData.appointment_status = "approved"
+    this.tempData.terminal_remarks = ""
+    this.tempData.deliveryDate = approvedDetails.value.deliveryDate
     this.getDataRequest.putappointmentdata(this.tempData, this.tempId).subscribe((data: any) => {
     });
-    this.approvedCost.reset();
+    this.approvedDetails.reset();
   }
 
   rejectRequest(requestData: any, id: any) {
-    let dataTemp = requestData
-    dataTemp.appointment_status = "rejected"
-    dataTemp.cost = []
-    this.getDataRequest.putappointmentdata(dataTemp, id).subscribe((data: any) => {
-    });
+    this.tempDataReject = requestData
+    this.tempId = id
   }
 
   onChangeCheckbox($event: any) {
@@ -62,22 +64,35 @@ export class UserrequestComponent implements OnInit {
     // console.log(this.tempApproveIdStorage);
   }
 
-  approveFromModalSelected(approvedCost: any) {
-    this.tempCost = parseFloat(approvedCost.value.requestCost)
+  approveFromModalSelected(approvedDetails: any) {
+    this.tempCost = parseFloat(approvedDetails.value.requestCost)
+    this.tempDate = approvedDetails.value.deliveryDate
     for (let i = 0; i < this.recRequestData.length; i++) {
       if (this.tempApproveIdStorage.includes(this.recRequestData[i].id)) {
         this.tempData = this.recRequestData[i]
         this.tempData.cost = this.tempCost
         this.tempData.appointment_status = "approved"
+        this.tempData.deliveryDate = this.tempDate
+        this.tempData.terminal_remarks = ""
         // console.log(this.tempData)
         this.getDataRequest.putappointmentdata(this.tempData, this.recRequestData[i].id).subscribe((data: any) => {
         });
       }
     }
-    this.approvedCost.reset();
+    this.approvedDetails.reset();
     this.tempApproveIdStorage = []
   }
+  
+  rejectRemarksFromModal(rejectDetails: any) {
+    this.tempDataReject.appointment_status = "rejected"
+    this.tempDataReject.cost = []
+    this.tempDataReject.terminal_remarks = rejectDetails.value.terminalRemarks
+    this.getDataRequest.putappointmentdata(this.tempDataReject, this.tempId).subscribe((data: any) => {
+    });
+    this.rejectDetails.reset();
 
+  }
+  
   selectAll() {
     if (this.recRequestData[0].selectedAll == false) {
       for (let i = 0; i < this.recRequestData.length; i++) {
@@ -114,8 +129,13 @@ export class UserrequestComponent implements OnInit {
       });
     });
 
-    this.approvedCost = this.fB.group({
-      "requestCost": ["", [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]]
+    this.approvedDetails = this.fB.group({
+      "requestCost": ["", [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
+      "deliveryDate": ["", [Validators.required]]
+    });
+
+    this.rejectDetails = this.fB.group({
+      "terminalRemarks": ["", [Validators.required]]
     });
   }
 }

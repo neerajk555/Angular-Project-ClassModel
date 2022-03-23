@@ -65,6 +65,8 @@
             <button
               type="button"
               class="btn btn-danger btn-sm"
+              data-bs-toggle="modal"
+              data-bs-target="#remarks"
               (click)="rejectRequest(item, item.id)"
             >
               Reject
@@ -85,8 +87,8 @@
   >
     <div class="modal-dialog">
       <form
-        [formGroup]="approvedCost"
-        (ngSubmit)="approveFromModal(approvedCost)"
+        [formGroup]="approvedDetails"
+        (ngSubmit)="approveFromModal(approvedDetails)"
       >
         <div class="modal-content">
           <div class="modal-header">
@@ -109,12 +111,21 @@
                 required
               />
             </div>
+            <div class="input-group mt-1">
+              <span class="input-group-text">Enter Delivery Date</span>
+              <input
+                class="form-control"
+                type="date"
+                formControlName="deliveryDate"
+                required
+              />
+            </div>
             <div class="modal-footer">
               <button
                 type="submit"
                 class="btn btn-primary"
                 data-bs-dismiss="modal"
-                [disabled]="approvedCost.invalid"
+                [disabled]="approvedDetails.invalid"
               >
                 Approve
               </button>
@@ -135,8 +146,8 @@
   >
     <div class="modal-dialog">
       <form
-        [formGroup]="approvedCost"
-        (ngSubmit)="approveFromModalSelected(approvedCost)"
+        [formGroup]="approvedDetails"
+        (ngSubmit)="approveFromModalSelected(approvedDetails)"
       >
         <div class="modal-content">
           <div class="modal-header">
@@ -159,14 +170,73 @@
                 required
               />
             </div>
+            <div class="input-group mt-1">
+              <span class="input-group-text">Enter Delivery Date</span>
+              <input
+                class="form-control"
+                type="date"
+                formControlName="deliveryDate"
+                required
+              />
+            </div>
             <div class="modal-footer">
               <button
                 type="submit"
                 class="btn btn-primary"
                 data-bs-dismiss="modal"
-                [disabled]="approvedCost.invalid"
+                [disabled]="approvedDetails.invalid"
               >
                 Approve
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal for remarks selected-->
+  <div
+    class="modal fade"
+    id="remarks"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <form
+        [formGroup]="rejectDetails"
+        (ngSubmit)="rejectRemarksFromModal(rejectDetails)"
+      >
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"></h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+
+          <div class="modal-body">
+            <div class="input-group mt-1">
+              <span class="input-group-text">Enter Remarks</span>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="terminalRemarks"
+                required
+              />
+            </div>
+            <div class="modal-footer">
+              <button
+                type="submit"
+                class="btn btn-primary"
+                data-bs-dismiss="modal"
+                [disabled]="rejectDetails.invalid"
+              >
+                Reject
               </button>
             </div>
           </div>
