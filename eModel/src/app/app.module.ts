@@ -22,6 +22,8 @@ import { MainLandingPageComponent } from './main-landing-page/main-landing-page.
 import { ContainersComponent } from './containers/containers.component';
 import { BookingService } from './booking.service';
 import { UserrequestComponent } from './userrequest/userrequest.component';
+import { AdminTerminalComponent } from './admin-terminal/admin-terminal.component';
+import { AdminUserComponent } from './admin-user/admin-user.component';
 
 
 
@@ -41,9 +43,10 @@ import { UserrequestComponent } from './userrequest/userrequest.component';
     MainLoginComponent,
     ForgotPasswordComponent,
     MainLandingPageComponent,
-    ContainersComponent,
-    UserrequestComponent
-
+    UserrequestComponent,
+    AdminTerminalComponent,
+    AdminUserComponent,
+    ContainersComponent
   ],
   imports: [
     BrowserModule,

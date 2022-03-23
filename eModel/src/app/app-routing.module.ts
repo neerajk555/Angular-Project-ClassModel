@@ -13,11 +13,16 @@ import { MainLoginComponent } from './main-login/main-login.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { TerminalComponent } from './terminal/terminal.component';
 import { UserrequestComponent } from './userrequest/userrequest.component';
+import { AdminTerminalComponent } from './admin-terminal/admin-terminal.component';
+import { AdminUserComponent } from './admin-user/admin-user.component';
 
 const routes: Routes = [
   {path:'home',component:MainLandingPageComponent},
   {path:'InitialLogin',component:InitialLoginComponent},
   {path:'mainlogin',component:MainLoginComponent},
+  {path:'admin-terminal',component:AdminTerminalComponent},
+  {path:'admin-user',component:AdminUserComponent},
+  {path:'admin',component:AdminControlComponent},
   {path:'InitialLanding',component:InitialLandingComponent,children:[
     {path:'watchlist',component:ContainerWatchlistComponent},
     {path:'bookings',component:ContainerBookingComponent},
