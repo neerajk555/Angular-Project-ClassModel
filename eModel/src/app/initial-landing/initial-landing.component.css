@@ -76,6 +76,13 @@
     color: white;
     cursor: pointer;
 }
+.notifications{
+    max-height: 400px;
+    width: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border: 1px solid black;
+}
 @keyframes slideright {
     from {left: -20%;}
     to {left: 0%;}

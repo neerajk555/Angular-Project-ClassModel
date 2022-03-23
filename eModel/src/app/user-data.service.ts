@@ -52,4 +52,12 @@ export class UserDataService {
     return this.ht.get(this.urls.terminal_details);
   }
 
+
+  getNotifications(){
+    return this.ht.get(this.urls.notifications)
+  }
+  postNotification(data:any){
+    return this.ht.post(this.urls.notifications, data);
+  }
+
 }
