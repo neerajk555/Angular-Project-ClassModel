@@ -12,25 +12,31 @@
       "user_document": "../assets/images/user/usercard.png",
       "user_profilephoto": "../assets/images/user/profile.png",
       "user_company_name": "ABC XYZ",
-      "user_watchlist_ids": [],
+      "user_watchlist_ids": [
+        "CON00001",
+        "CON00002"
+      ],
       "user_status": true,
       "user_token": "",
       "authorize": false
     },
     {
-      "id": 82,
-      "user_first_name": "mosh",
-      "user_last_name": "jonson",
-      "user_contact": "78945612345",
-      "user_emailid": "mjonson@son.in",
-      "user_username": "mjonson",
-      "user_password": "123",
+      "id": 2,
+      "userid": "USR100002",
+      "user_first_name": "Leanne",
+      "user_last_name": "Jackson",
+      "user_contact": "7788994455",
+      "user_emailid": "Sincere@april.biz",
+      "user_username": "LJackson",
+      "user_password": "12345",
       "user_document": "../assets/images/user/usercard.png",
       "user_profilephoto": "../assets/images/user/profile.png",
-      "user_company_name": "advent",
+      "user_company_name": "ABC XYZ",
+      "user_watchlist_ids": [],
       "user_status": true,
       "user_token": "",
-      "authorize": false
+      "authorize": false,
+      "status": true
     }
   ],
   "card_details": [
@@ -74,7 +80,7 @@
       "terminal_email": "asd@asd.asd",
       "terminal_username": "terminal1",
       "terminal_password": "12345",
-      "terminal_location": "7th St",
+      "terminal_location": "dfg",
       "city": "Oakland",
       "country": "United States",
       "zipcode": "94607",
@@ -86,10 +92,10 @@
     },
     {
       "id": 2,
-      "terminal_id": "TI1000012",
+      "terminal_id": "TI100002",
       "terminal_name": "EVERPORT North",
-      "terminal_mobile": "+178946",
-      "terminal_email": "aas@aas.asd",
+      "terminal_mobile": "+178943456",
+      "terminal_email": "asd@asd.asd",
       "terminal_username": "terminal2",
       "terminal_password": "12345",
       "terminal_location": "7th St",
@@ -101,7 +107,25 @@
       "description": "",
       "terminal_status": "Active",
       "token": ""
-    }
+    },
+    {
+      "id": 4,
+      "terminal_id": "TI0002",
+      "terminal_name": "Mudra",
+      "terminal_mobile": "1234567890",
+      "terminal_email": "abc@gmail.com",
+      "terminal_username": "Mudra123",
+      "terminal_password": 4003,
+      "terminal_location": "Gujarat",
+      "city": "KUtch",
+      "country": "India",
+      "zipcode": 320004,
+      "terminal_logo": "../assets/images/terminallogo.png",
+      "fax": "",
+      "description": "",
+      "terminal_status": "Active",
+      "token": ""
+    },
   ],
   "container_details": [
     {
@@ -116,8 +140,24 @@
       "id": 2,
       "con_id": "CON00002",
       "contype_id": "CTI0002",
-      "terminal_id_origin": "TI100001",
-      "terminal_id_current": "TI100001",
+      "terminal_id_origin": "TI100002",
+      "terminal_id_current": "TI100002",
+      "status": "Available"
+    },
+    {
+      "id": 3,
+      "con_id": "CON00003",
+      "contype_id": "CTI0003",
+      "terminal_id_origin": "TI100003",
+      "terminal_id_current": "TI100003",
+      "status": "Available"
+    },
+    {
+      "id": 4,
+      "con_id": "CON00004",
+      "contype_id": "CTI0004",
+      "terminal_id_origin": "TI100004",
+      "terminal_id_current": "TI100004",
       "status": "Available"
     },
     {
@@ -135,6 +175,34 @@
       "terminal_id_origin": "TI100002",
       "terminal_id_current": "TI100001",
       "status": "Available"
+    }
+  ],
+  "status_details": [
+    {
+      "id": 1,
+      "status_id": "ST100001",
+      "con_id": "CON00001",
+      "con_loaded": true,
+      "container_status": "Shiping",
+      "appointment_id": "APT100001",
+      "destination": "trsrdcg",
+      "departure_date": "",
+      "ship_id": "SP0001",
+      "arriving_date": "",
+      "receiver_delivery_date": "1-12-2022"
+    },
+    {
+      "id": 1,
+      "status_id": "ST100002",
+      "con_id": "CON00002",
+      "con_loaded": false,
+      "container_status": "Shiping",
+      "appointment_id": "APT100001",
+      "destination": "trsrdcg",
+      "departure_date": "1-12-2022",
+      "ship_id": "SP0001",
+      "arriving_date": "1-12-2022",
+      "receiver_delivery_date": ""
     }
   ],
   "appointment_details": [
@@ -155,7 +223,11 @@
       "receiver_fullname": "ABC",
       "receiver_phone": 123456789,
       "receiver_mail": "a@b.com",
-      "appointment_status": "Approved"
+      "appointment_status": "Approved",
+      "destination": "Long Island",
+      "selected": false,
+      "selectedAll": false,
+      "deliveryDate": "2022-03-11"
     },
     {
       "id": 2,
@@ -174,51 +246,87 @@
       "receiver_fullname": "PQR",
       "receiver_phone": 123456789,
       "receiver_mail": "a@b.com",
-      "appointment_status": "Approved"
+      "appointment_status": "Approved",
+      "destination": "Long Island",
+      "selected": false,
+      "selectedAll": false,
+      "deliveryDate": "2022-03-11"
     },
     {
-      "pickup_date": "2022-03-25",
-      "delivery_date": "2022-03-31",
-      "receiver_fullname": "Muskan",
-      "receiver_mail": "mg@gmail.comm",
-      "receiver_phone": "1234567891",
       "id": 3
+      "container_id": "CON00002",
+      "pickup_date": "22-03-2022",
+      "sending_date": "22-03-2022",
+      "delivery_terminal_id": "TI100001",
+      "delivery_date": "",
+      "user_remarks": "Ok. Nice.",
+      "cost": [],
+      "terminal_remarks": "",
+      "datetime": "",
+      "receiver_fullname": "",
+      "receiver_phone": "",
+      "receiver_mail": "",
+      "appointment_status": "rejected",
+      "destination": "Oakland",
+      "selected": false,
+      "selectedAll": false,
+      "deliveryDate": "2022-03-03"
+    },
+    {
+      "id": 4,
+      "appointment_id": "APT100003",
+      "user_id": "USR100003",
+      "container_id": "CON00003",
+      "pickup_date": "22-03-2022",
+      "sending_date": "22-03-2022",
+      "delivery_terminal_id": "TI100002",
+      "pickup_date": "11-3-2022",
+      "sending_date": "",
+      "delivery_terminal_id": "TI100001",
+      "delivery_date": "",
+      "user_remarks": "Ok. Nice.",
+      "cost": [],
+      "terminal_remarks": "",
+      "datetime": "",
+      "receiver_fullname": "",
+      "receiver_phone": "",
+      "receiver_mail": "",
+      "appointment_status": "",
+      "payment_id": "PT001"
+      "destination": "Long Island",
+      "selected": false,
+      "selectedAll": false,
+      "deliveryDate": "2022-03-03"
     }
   ],
   "payment_details": [
     {
       "id": 1,
-      "payment_id": "",
+      "payment_id": "PT001",
       "payment_mode": "ATM",
-      "payment_amount": "",
+      "payment_amount": 2000,
       "issued_by": "eModal",
       "Description": "",
-      "date": "",
-      "appointment_id": "APT100001"
-    }
-  ],
-  "status_details": [
-    {
-      "id": 1,
-      "status_id": "ST100001",
-      "con_id": "CON00001",
-      "container_status": "Available",
-      "booking_date": "",
-      "payment_id": "",
-      "pickup_date": "",
-      "departure_date": "",
-      "ship_id": "",
-      "arriving_date": "",
-      "terminal_id": "",
-      "receiver_delivery_date": ""
+      "date": "21/03/2022"
     }
   ],
   "feedback_details": [
     {
       "id": 1,
       "usertype": "",
+      "userid": "",
       "feedaback_type": "",
       "description": "",
+      "read_status": true
+      "feedback_time": ""
+    },
+    {
+      "id": 38,
+      "usertype": "",
+      "userid": "",
+      "feedaback_type": "akjef",
+      "description": "siuvuefh",
+      "feedback_time": "2022-03-23T14:27:14.729Z",
       "read_status": false
     }
   ],
