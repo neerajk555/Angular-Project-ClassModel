@@ -111,7 +111,7 @@ export class InitialLoginComponent implements OnInit {
           console.log(this.userFormData.value.username);
           this.flag = true;
           this.ds.loginid=this.terminalInfo[i].id;
-          this.router.navigateByUrl('/TerminalLanding');
+          this.router.navigateByUrl('/InitialLanding/userrequests');
           break;
         }
       }
@@ -126,7 +126,7 @@ export class InitialLoginComponent implements OnInit {
           console.log(this.userFormData.value.username);
           this.flag = true;
           this.ds.loginid=this.adminInfo[i].id;
-          this.router.navigateByUrl('/InitialLanding');
+          this.router.navigateByUrl('/InitialLanding/admin-terminal');
           break;
         }
       }

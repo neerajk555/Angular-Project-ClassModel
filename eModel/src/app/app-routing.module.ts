@@ -15,27 +15,30 @@ import { TerminalComponent } from './terminal/terminal.component';
 import { UserrequestComponent } from './userrequest/userrequest.component';
 import { AdminTerminalComponent } from './admin-terminal/admin-terminal.component';
 import { AdminUserComponent } from './admin-user/admin-user.component';
+import { FeedbackComponent } from './feedback/feedback.component';
+import { ContainersComponent } from './containers/containers.component';
+import { UserauthGuard } from './userauth.guard';
+import { TerminalauthGuard } from './terminalauth.guard';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   {path:'home',component:MainLandingPageComponent},
   {path:'InitialLogin',component:InitialLoginComponent},
   {path:'InitialLogin?admin',component:InitialLoginComponent},
   {path:'mainlogin',component:MainLoginComponent},
-  {path:'TerminalLanding',component:TerminalComponent},
-  {path:'admin-terminal',component:AdminTerminalComponent},
-  {path:'admin-user',component:AdminUserComponent},
-  {path:'admin',component:AdminControlComponent},
-  {path:'InitialLanding',component:InitialLandingComponent,children:[
-    {path:'watchlist',component:ContainerWatchlistComponent},
-    {path:'bookings',component:ContainerBookingComponent},
-    {path:'profile',component:UserInfoComponent},
-    {path:'userrequests',component:UserrequestComponent},
-    {path:'',component:ContainerWatchlistComponent}
-  ]},
   {path:'UserRegistration',component:UserRegistrationComponent},
-  {path:'userInfo',component:UserInfoComponent},
   {path:'ForgotPassword',component:ForgotPasswordComponent},
-  {path:'Terminal',component:TerminalComponent},
+  {path:'InitialLanding',component:InitialLandingComponent,children:[
+    {path:'watchlist',component:ContainerWatchlistComponent,canActivate:[UserauthGuard]},
+    {path:'bookings',component:ContainerBookingComponent,canActivate:[UserauthGuard]},
+    {path:'',component:ContainerWatchlistComponent,canActivate:[UserauthGuard]},
+    {path:'feedback',component:FeedbackComponent},
+    {path:'profile',component:UserInfoComponent},
+    {path:'userrequests',component:UserrequestComponent,canActivate:[TerminalauthGuard]},
+    {path:'Containers',component:ContainersComponent,canActivate:[TerminalauthGuard]},
+    {path:'admin-terminal',component:AdminTerminalComponent,canActivate:[AuthGuard]},
+    {path:'admin-user',component:AdminUserComponent,canActivate:[AuthGuard]},
+  ]},
   {path:'',component:MainLandingPageComponent}
 ];
 
