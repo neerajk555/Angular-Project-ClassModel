@@ -14,11 +14,24 @@ import { Router } from '@angular/router';
   styleUrls: ['./container-booking.component.css']
 })
 export class ContainerBookingComponent implements OnInit {
+ 
 
-  constructor(public getAppointmentData: BookingService, private modalService: NgbModal, private http: HttpClient, public getgetAppointmentData: UserDataService, private fb: FormBuilder, private router: Router) { }
+  constructor(
+    public getAppointmentData: BookingService,
+    private modalService: NgbModal,
+    private fb: FormBuilder) { }
+ 
   recDataTerminal: any;
-  recContainerData:any;
-  requestForm:any;
+  recAppointmentData: any;
+  payment: any;
+  receiver: any;
+  value: any;
+  requestForm: any;
+  recContainerData: any;
+  closeResult = '';
+  source: any;
+  destination: any;
+  
   fieldsForTable = [
     "Appointment Id",
     "Container Id",
@@ -27,25 +40,75 @@ export class ContainerBookingComponent implements OnInit {
     "Source",
     "Destination",
     "Pickup Date",
-    "Delivery Date",
+    "Sending Date",
     "Cost",
-    "Remark"
+    "Terminal Remark"
   ]
-  temp1: any
-  temp(){
-    console.log(this.temp1);
-    
+
+  formPostData: any = {
+    "id": 0,
+    "appointment_id": "",
+    "user_id": "USR100001",
+    "container_id": "",
+    "pickup_date": "",
+    "sending_date": "",
+    "source_terminal_id": "",
+    "delivery_terminal_id": "",
+    "delivery_date": "",
+    "user_remarks": "",
+    "cost": "requested",
+    "terminal_remarks": "NA",
+    "datetime": "",
+    "receiver_fullname": "",
+    "receiver_phone": "",
+    "receiver_mail": "",
+    "appointment_status": "requested"
   }
 
-  recAppointmentData: any;
-  payment: any;
-  receiver: any;
-  value: any;
-  myForm: any;
-  formIsNew: any;
-  source: any;
-  destination: any;
-  getcontainer:any;
+  onSubmit(requestForm: any) {
+    let idOrigin = Math.floor(Math.random() * 1000000000)
+    let idAppointment = Math.floor(Math.random() * 1000000).toString()
+    idAppointment = "APT" + idAppointment
+    let idSource: any
+    let idDestination: any
+    let idContainer: any
+    
+    for (let i = 0; i < this.recDataTerminal.length; i++) {
+      if (requestForm.value.source_terminal_id == this.recDataTerminal[i].city) {
+        idSource = this.recDataTerminal[i].terminal_id
+      }
+      
+      if (requestForm.value.delivery_terminal_id == this.recDataTerminal[i].city) {
+        idDestination = this.recDataTerminal[i].terminal_id
+      }
+    }
+
+    for (let i = 0; i < this.recContainerData.length; i++) {
+      if (requestForm.value.container_id == this.recContainerData[i].contype_type) {
+        idContainer = this.recContainerData[i].contype_id
+      }
+    }
+
+    this.formPostData.id = idOrigin
+    this.formPostData.appointment_id = idAppointment
+    this.formPostData.source_terminal_id = idSource
+    this.formPostData.delivery_terminal_id = idDestination
+    this.formPostData.container_id = idContainer
+    this.formPostData.pickup_date = requestForm.value.pickup_date
+    this.formPostData.sending_date = requestForm.value.sending_date
+    this.formPostData.user_remarks = requestForm.value.user_remarks
+    this.formPostData.receiver_fullname = requestForm.value.receiver_fullname
+    this.formPostData.receiver_phone = requestForm.value.receiver_phone
+    this.formPostData.receiver_mail = requestForm.value.receiver_mail
+
+    this.getAppointmentData.postAppointmentDetails(this.formPostData).subscribe((data)=>{
+      console.log(data);   
+    })
+    this.requestForm.reset();
+    window.location.reload()
+  }
+
+  //==================================================================================================================================
   expand(index: any) {
     this.recAppointmentData[index].loadRow = true;
   }
@@ -54,56 +117,21 @@ export class ContainerBookingComponent implements OnInit {
     this.recAppointmentData[index].loadRow = false;
   }
 
-  closeResult = '';
   open(content: any, data: any) {
-
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', size: 'xl', backdrop: 'static' }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed`;
     });
   }
-  dest:any=[];
-
-  onChange(val:any){
-    this.dest=[];
-    for(let i=0; i<this.recDataTerminal.length; i++){
-      let str =JSON.stringify(this.recDataTerminal[i].terminal_name) +"," + JSON.stringify(this.recDataTerminal[i].city);
-      let s = "";
-      for(let k=0; k<str.length; k++){
-        if(str[k]!='"'){
-          s = s + str[k];
-        }
-      }
-
-      if(val != s){
-        let element:any = {};
-        element.terminal_name = this.recDataTerminal[i].terminal_name;
-        element.city = this.recDataTerminal[i].city;
-        this.dest.push(element);
-      }
-    }
-
-  }
-  
-  onSubmit(data: any) {
-    console.warn(data);
-    this.getAppointmentData.ReceiverData(data).subscribe((result) => {
-      console.warn(result)
-    }
-    )
-    //this.modalService.dismissAll();
-  }
-
 
   ngOnInit(): void {
-    this.getgetAppointmentData.getterminal().subscribe((data: any) => {
+    this.getAppointmentData.getTerminalDetails().subscribe((data: any) => {
       this.recDataTerminal = data
-      console.log(this.recDataTerminal); 
     });
-    
+
     this.getAppointmentData.getContainerDetails().subscribe((data: any) => {
-      this.recContainerData = data;
+      this.recContainerData = data
     });
 
     this.getAppointmentData.getAppointmentDetails().subscribe((data) => {
@@ -129,41 +157,24 @@ export class ContainerBookingComponent implements OnInit {
           numD++
         });
         this.getAppointmentData.getContainerDetailsById(containerString).subscribe((data: any) => {
-          // console.log(data);
-          
           this.recAppointmentData[numC] = { ...this.recAppointmentData[numC], "containerType": data[0].contype_type }
-          numC++;
+          numC++
         });
-        
+
       });
-      // console.log(numS);
-      
-      // console.log(this.recAppointmentData);
     });
 
-    // this.getAppointmentData.payment().subscribe((data) => {
-    //   this.payment = data
-    // });
-    
+    this.requestForm = this.fb.group({
+      "source_terminal_id": ["", [Validators.required]],
+      "delivery_terminal_id": ["", [Validators.required]],
+      "container_id": [, [Validators.required]],
+      "pickup_date": ["", [Validators.required]],
+      "sending_date": ["", [Validators.required]],
+      "user_remarks": ["", [Validators.required]],
+      "receiver_fullname": ["", [Validators.required]],
+      "receiver_phone": ["", [Validators.required]],
+      "receiver_mail": ["", [Validators.required]]
+    });
+
   }
-
- 
-
-  // selected_terminal(val:any){
-  //   let T_Id;
-  //   for(let i=0; i<this.dest.length; i++){
-  //     let str =JSON.stringify(this.recDataTerminal[i].terminal_id) +"," + JSON.stringify(this.getcontainer[i].terminal_id_origin);
-  //     let s = "";
-  //     for(let k=0; k<str.length; k++){
-  //       if(str[k]!='"'){
-  //         s = s + str[k];
-  //       }
-  //     }
-
-  //     if(val == s){
-  //       T_Id = this.dest[i].terminal_id;
-  //     }
-  //   }
-  //   alert(T_Id);
-  // }
 }
