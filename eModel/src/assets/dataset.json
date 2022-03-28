@@ -125,7 +125,7 @@
       "description": "",
       "terminal_status": "Active",
       "token": ""
-    },
+    }
   ],
   "container_details": [
     {
@@ -253,7 +253,7 @@
       "deliveryDate": "2022-03-11"
     },
     {
-      "id": 3
+      "id": 3,
       "container_id": "CON00002",
       "pickup_date": "22-03-2022",
       "sending_date": "22-03-2022",
@@ -280,9 +280,6 @@
       "pickup_date": "22-03-2022",
       "sending_date": "22-03-2022",
       "delivery_terminal_id": "TI100002",
-      "pickup_date": "11-3-2022",
-      "sending_date": "",
-      "delivery_terminal_id": "TI100001",
       "delivery_date": "",
       "user_remarks": "Ok. Nice.",
       "cost": [],
@@ -292,7 +289,7 @@
       "receiver_phone": "",
       "receiver_mail": "",
       "appointment_status": "",
-      "payment_id": "PT001"
+      "payment_id": "PT001",
       "destination": "Long Island",
       "selected": false,
       "selectedAll": false,
@@ -317,7 +314,7 @@
       "userid": "",
       "feedaback_type": "",
       "description": "",
-      "read_status": true
+      "read_status": true,
       "feedback_time": ""
     },
     {
