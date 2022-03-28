@@ -7,7 +7,7 @@
     </svg>
   </button>
   <div class="my-auto">
-    <img class="logo mt-2" [src]="logo" >
+    <img class="logo mt-2" [src]="logo">
   </div>
 
   <!--<div class="ms-auto">
@@ -23,10 +23,10 @@
   <div ngbDropdown class="d-inline-block ms-auto">
     <button id="dropdownForm1" class="px-3 options" ngbDropdownToggle>
       <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-bell"
-      viewBox="0 0 16 16">
-      <path
-        d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z" />
-    </svg>
+        viewBox="0 0 16 16">
+        <path
+          d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z" />
+      </svg>
     </button>
     <div style="padding: 0px; border: 1px solid black;" ngbDropdownMenu aria-labelledby="dropdownForm1">
       <h4 style="text-align: center;">Notifications</h4>
@@ -39,15 +39,6 @@
       </div>
     </div>
   </div>
-
-
-
-
-
-
-
-
-
 
   <!-- <button title="User Profile" class="options my-auto" (click)="open(content)">
     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-person-fill"
@@ -64,7 +55,8 @@
     </button>
     <div ngbDropdownMenu aria-labelledby="dropdownForm1" class="mt-2 px-4 py-3 ">
       <div class="d-flex m-2">
-        <img [src]="this.userimg" height="90" width="90" alt="Profile" class="rounded-circle mx-2">
+        <img [src]="this.userimg" height="90" width="90" alt="Profile" class="rounded-circle mx-2"
+          *ngIf="this.logintype!='admin'">
         <div class="mx-2">
           <p class="text-truncate m-0 p-0"><strong><u>Username</u></strong><br> {{this.username}}</p>
           <p class="text-truncate mt-1 p-0"><strong><u>Name</u></strong><br> {{this.userFullName}}</p>
@@ -82,15 +74,21 @@
   <button class="nav-btn" (click)="ShowMenu()" routerLink="watchlist" *ngIf="this.logintype=='user'">WATCHLIST</button>
   <button class="nav-btn" (click)="ShowMenu()" routerLink="bookings" *ngIf="this.logintype=='user'">BOOKING</button>
   <!-- Terminal Side -->
-  <button class="nav-btn" (click)="ShowMenu()" routerLink="userrequests" *ngIf="this.logintype=='terminal'">REQUESTS</button>
-  <button class="nav-btn" (click)="ShowMenu()" routerLink="Containers" *ngIf="this.logintype=='terminal'">CONTAINERS</button>
+  <button class="nav-btn" (click)="ShowMenu()" routerLink="userrequests"
+    *ngIf="this.logintype=='terminal'">REQUESTS</button>
+  <button class="nav-btn" (click)="ShowMenu()" routerLink="Containers"
+    *ngIf="this.logintype=='terminal'">CONTAINERS</button>
   <!--User & Terminal Both  -->
   <button class="nav-btn" (click)="ShowMenu()" routerLink="feedback" *ngIf="this.logintype!='admin'">FEEDBACK</button>
   <button class="nav-btn" (click)="ShowMenu()" routerLink="profile" *ngIf="this.logintype!='admin'">PROFILE</button>
   <!-- Admin Side -->
+  <button class="nav-btn" (click)="ShowMenu()" routerLink="admin-terminal"
+    *ngIf="this.logintype=='admin'">TERMINALS</button>
   <button class="nav-btn" (click)="ShowMenu()" routerLink="admin-user" *ngIf="this.logintype=='admin'">USERS</button>
-  <button class="nav-btn" (click)="ShowMenu()" routerLink="admin-terminal" *ngIf="this.logintype=='admin'">TERMINALS</button>
-  <button class="nav-btn" (click)="ShowMenu()" routerLink="payments" *ngIf="this.logintype=='admin'">PAYMENTS</button>
+  <button class="nav-btn" (click)="ShowMenu()" routerLink="admin-payment"
+    *ngIf="this.logintype=='admin'">PAYMENTS</button>
+  <button class="nav-btn" (click)="ShowMenu()" routerLink="admin-feedback"
+    *ngIf="this.logintype=='admin'">FEEDBACKS</button>
 </div>
 <!-- Side Menubar End -->
 
@@ -112,9 +110,7 @@
 </ng-template>
 <!-- User Info Modal End -->
 
-
-
-<div [ngClass]="show ? 'slideright' : 'slideleft'" class="menu-bar">
+<!-- <div [ngClass]="show ? 'slideright' : 'slideleft'" class="menu-bar">
     <button routerLink="/userInfo"  class="nav-btn">EMODAL COMMUNITY PORTAL</button>
-</div>
+</div> -->
 <router-outlet></router-outlet>

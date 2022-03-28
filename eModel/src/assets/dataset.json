@@ -1,55 +1,34 @@
 {
   "user_details": [
     {
-      "id": 1,
-      "userid": "USR100001",
-      "user_first_name": "Leanne",
-      "user_last_name": "Jackson",
-      "user_contact": "7788994455",
-      "user_emailid": "Sincere@april.biz",
-      "user_username": "LJackson",
-      "user_password": "12345",
+      "user_id": 32341,
+      "user_firstname": "Nikunj",
+      "user_lastname": "Katariya",
+      "user_contact": "8264632490",
+      "user_email": "nikunjkatariya@gmail.com",
+      "user_username": "nnkatariya",
+      "user_password": "Nik123",
       "user_document": "../assets/images/user/usercard.png",
       "user_profilephoto": "../assets/images/user/profile.png",
-      "user_company_name": "ABC XYZ",
-      "user_watchlist_ids": [
-        "CON00001",
-        "CON00002"
-      ],
+      "user_company_name": "",
+      "user_watchlist": [],
       "user_status": true,
       "user_token": "",
-      "authorize": false
-    },
-    {
-      "id": 2,
-      "userid": "USR100002",
-      "user_first_name": "Leanne",
-      "user_last_name": "Jackson",
-      "user_contact": "7788994455",
-      "user_emailid": "Sincere@april.biz",
-      "user_username": "LJackson",
-      "user_password": "12345",
-      "user_document": "../assets/images/user/usercard.png",
-      "user_profilephoto": "../assets/images/user/profile.png",
-      "user_company_name": "ABC XYZ",
-      "user_watchlist_ids": [],
-      "user_status": true,
-      "user_token": "",
-      "authorize": false,
-      "status": true
+      "user_authentication": false,
+      "user_registration_date": "Mon Mar 28 2022 17:38:10 GMT+0530 (India Standard Time)",
+      "id": 3
     }
   ],
   "card_details": [
     {
-      "id": 1,
-      "cardid": "CD10001",
-      "userid": "USR100001",
-      "card_typr": "ATM",
+      "card_id": 1,
+      "userid": 32341,
+      "card_type": "ATM",
       "card_title": "SBI Card",
       "card_bank": "SBI",
       "card_number": "1234 1332 4567 8974",
       "card_expiry": "04/22",
-      "card_nameoncard": "Jackson Leanne",
+      "card_holdername": "Jackson Leanne",
       "card_cvv": "514"
     }
   ],
@@ -69,6 +48,14 @@
       "contype_height": "20",
       "contype_width": "40",
       "contype_code": "20SL40"
+    },
+    {
+      "id": 3,
+      "contype_id": "CTI0003",
+      "contype_type": "Water",
+      "contype_height": "20",
+      "contype_width": "40",
+      "contype_code": "20WA40"
     }
   ],
   "terminal_details": [
@@ -324,7 +311,7 @@
       "feedaback_type": "akjef",
       "description": "siuvuefh",
       "feedback_time": "2022-03-23T14:27:14.729Z",
-      "read_status": false
+      "read_status": true
     }
   ],
   "admin_master": [
@@ -344,28 +331,28 @@
       "sendto_id": 82,
       "date": "",
       "description": "This is a notification",
-      "status":false
+      "status": false
     },
     {
       "id": 2,
       "sendto_id": 1,
       "date": "",
       "description": "This is another notification",
-      "status":false
+      "status": false
     },
     {
       "id": 3,
       "sendto_id": 1,
       "date": "",
       "description": "This is some other notification",
-      "status":false
+      "status": false
     },
     {
       "id": 4,
       "sendto_id": 82,
       "date": "",
       "description": "This is 4th notification",
-      "status":false
+      "status": false
     }
   ]
 }

@@ -34,6 +34,9 @@ export class InitialLandingComponent implements OnInit {
       else if(this.logintype=="terminal"){
         this.usrds.getterminalDataById(this.loginid).subscribe(data=> this.showdata(data));
       }
+      else if(this.logintype=="admin"){
+        this.usrds.getadminDataById(this.loginid).subscribe(data=> this.showdata(data));
+      }
     }
     else{
       this.router.navigate(['/','mainlogin']);
@@ -57,14 +60,16 @@ export class InitialLandingComponent implements OnInit {
       this.userimg=data.user_profilephoto;
       this.userFullName=data.user_first_name+" "+data.user_last_name;
     }
+    if(this.logintype=="admin")
+    {
+      this.username=data.admin_username;
+      this.userFullName=data.admin_first_name+" "+data.admin_last_name;
+    }
   }
 
   notifications:any = [];
   
   notify(data:any){
-
-
-
     for(let i=data.length-1; i>=0; i--){
       if(data[i].sendto_id == this.loginid){
         let element:any = {};
@@ -102,11 +107,6 @@ export class InitialLandingComponent implements OnInit {
     this.modalService.dismissAll();
     this.router.navigate(['/','home']);
   }
-
-
-
-
-
 
   /////////// Function for posting a new notifiction by Terminal 
   ////// I have writter it here because the terminal component is still pending, but you 

@@ -25,7 +25,7 @@ export class UserDataService {
     "paymentdata":"http://localhost:3000/payment_details/",
     "statusdata":"http://localhost:3000/status_details/",
     "feedbackdata":"http://localhost:3000/feedback_details/",
-    "terminal_details":"http://localhost:3000/terminal_details",
+    "terminal_details":"http://localhost:3000/terminal_details/",
     "admindata":"http://localhost:3000/admin_master/",
     "notifications":"http://localhost:3000/notification_details/"
   }
@@ -47,6 +47,9 @@ export class UserDataService {
   getadminData()
   {
     return this.ht.get(this.urls.admindata);
+  }
+  getadminDataById(data: any){
+    return this.ht.get(this.urls.admindata + data);
   }
   getterminal(){
     return this.ht.get(this.urls.terminal_details);
