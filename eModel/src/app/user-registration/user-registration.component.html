@@ -5,14 +5,12 @@
                 <div class="card rounded-3">
                     <div class="brand-logo d-flex justify-content-center mb-5">
                         <a href="http://localhost:4200/" class="pointer">
-                            <img src="../assets/images/logos/logo-image.png" class="logo-advent">
+                            <img [src]="this.logopath" class="logo-advent">
                         </a>
                     </div>
                     <!-- <img src="../assets/images/logos/logo.png" class="logo" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;" alt="Sample photo"> -->
                     <div class="card-body p-4 p-md-5">
                         <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2 text-center">SignUp</h3>
-
-
                         <div class="modal-body">
                             <form [formGroup]="UserFormData" (ngSubmit)="PostUserFormData()">
                                 <div class="form-row row">
@@ -34,14 +32,6 @@
                                     </div>
                                 </div><br>
                                 <div class="form-group">
-                                    <label>User Name</label>
-                                    <input type="text" class="form-control" formControlName="username"
-                                        [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
-                                    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-                                        <div *ngIf="f.username.errors.required">User Name is required</div>
-                                    </div>
-                                </div><br>
-                                <div class="form-group">
                                     <label>Phone Number</label>
                                     <input type="text" class="form-control" formControlName="phoneNumber"
                                         [ngClass]="{ 'is-invalid': submitted && f.phoneNumber.errors }" />
@@ -59,27 +49,11 @@
                                     </div>
                                 </div><br>
                                 <div class="form-group">
-                                    <label>Document</label>
-                                    <input type="file" class="form-control" formControlName="Document"
-                                        [ngClass]="{ 'is-invalid': submitted && f.Document.errors }" />
-                                    <div *ngIf="submitted && f.Document.errors" class="invalid-feedback">
-                                        <div *ngIf="f.Document.errors.required">Upload Document</div>
-                                    </div>
-                                </div><br>
-                                <div class="form-group">
-                                    <label>Profile</label>
-                                    <input type="file" class="form-control" formControlName="profile"
-                                        [ngClass]="{ 'is-invalid': submitted && f.profile.errors }" />
-                                    <div *ngIf="submitted && f.profile.errors" class="invalid-feedback">
-                                        <div *ngIf="f.profile.errors.required">Upload Profile Photo</div>
-                                    </div>
-                                </div><br>
-                                <div class="form-group">
-                                    <label>Company Name</label>
-                                    <input type="text" class="form-control" formControlName="companyName"
-                                        [ngClass]="{ 'is-invalid': submitted && f.companyName.errors }" />
-                                    <div *ngIf="submitted && f.companyName.errors" class="invalid-feedback">
-                                        <div *ngIf="f.companyName.errors.required">Company Name is required</div>
+                                    <label>User Name</label>
+                                    <input type="text" class="form-control" formControlName="username"
+                                        [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                                    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                                        <div *ngIf="f.username.errors.required">User Name is required</div>
                                     </div>
                                 </div><br>
                                 <div class="form-group">
@@ -114,7 +88,6 @@
                                         </div>
                                     </div>
                                 </div><br>
-
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-10">
@@ -127,27 +100,27 @@
                                                     required</div>
                                             </div>
                                         </div>
-                                        <div class="col-md-1 padontop">
-                                            <a (click)="ConfirmShowPassword('show')" *ngIf="Confirmflag">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
-                                                    fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
-                                                    <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
-                                                    <path
-                                                        d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
-                                                </svg>
-                                            </a>
-                                            <a (click)="ConfirmShowPassword('hide')" *ngIf="!Confirmflag">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
-                                                    fill="currentColor" class="bi bi-eye-slash-fill"
-                                                    viewBox="0 0 16 16">
-                                                    <path
-                                                        d="m10.79 12.912-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7.029 7.029 0 0 0 2.79-.588zM5.21 3.088A7.028 7.028 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474L5.21 3.089z" />
-                                                    <path
-                                                        d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829l-2.83-2.829zm4.95.708-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6-12-12 .708-.708 12 12-.708.708z" />
-                                                </svg>
-                                            </a>
-                                        </div>
                                     </div>
+                                </div><br>
+                                <div class="form-group">
+                                    <label>Document</label>
+                                    <input type="file" class="form-control" formControlName="Document"
+                                        [ngClass]="{ 'is-invalid': submitted && f.Document.errors }" />
+                                    <div *ngIf="submitted && f.Document.errors" class="invalid-feedback">
+                                        <div *ngIf="f.Document.errors.required">Upload Document</div>
+                                    </div>
+                                </div><br>
+                                <div class="form-group">
+                                    <label>Profile</label>
+                                    <input type="file" class="form-control" formControlName="profile"
+                                        [ngClass]="{ 'is-invalid': submitted && f.profile.errors }" />
+                                    <div *ngIf="submitted && f.profile.errors" class="invalid-feedback">
+                                        <div *ngIf="f.profile.errors.required">Upload Profile Photo</div>
+                                    </div>
+                                </div><br>
+                                <div class="form-group">
+                                    <label>Company Name</label>
+                                    <input type="text" class="form-control" formControlName="companyName"/>
                                 </div><br>
                                 <div class="modal-footer">
                                     <button type="submit" class="btn btn-primary">Submit</button>

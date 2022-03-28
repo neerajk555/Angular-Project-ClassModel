@@ -8,10 +8,8 @@ export class WatchlistService {
 
   constructor(public http: HttpClient) { }
   url = {
-
     "pay-data": "http://localhost:3000/pay-data",
     "containerWatchlist": "http://localhost:3000/status_details/"
-
   }
 
   delete(i: any) {

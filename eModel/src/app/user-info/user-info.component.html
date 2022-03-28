@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-sm-3">
             <div class="card">
-                <div class="card-body">
+                <div class="card-body ">
                     <img class="user-logo" src="../../assets/images/logos/userlogo.png" alt="">
                 </div>
             </div>
@@ -42,9 +42,11 @@
                     <label class="userinfo">Confirm Password :</label>
                     <input type="password" [disabled]='toggleButton' class="userinfo-input" id="myText"
                         placeholder="Patel" name="lname"><br>
-                    <button class="btn btn-primary" style="margin-top: 40px; margin-left: 260px;">Edit</button>
-                    <button type="btn btn-success" style="margin-top: 40px;" (click)="disable()"
-                        class="btn btn-success">Save</button>
+                    <div>
+                        <button class="btn btn-primary" style="margin-top: 40px; ">Edit</button>
+                        <button type="btn btn-success" style="margin-top: 40px;" (click)="disable()"
+                            class="btn btn-success">Save</button>
+                    <div>
                 </div>
             </div>
         </div>

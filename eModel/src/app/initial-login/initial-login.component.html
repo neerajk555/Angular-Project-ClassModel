@@ -1,21 +1,21 @@
 <!-- <p>initial-login works!</p>
-
-
 <form>
     <div class="form-group">
-      <label for="exampleInputEmail1">Email address</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+            placeholder="Enter email">
     </div>
     <div class="form-group">
-      <label for="exampleInputPassword1">Password</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
+</form>
 
-  <div class="text-center">
-  <button id="btnLogin" type="submit" name="submit" class=" btn btn-block mybtn submit-color tx-tfm" value="login" disabled=""><b>LOGIN</b></button>
-  </div> -->
+<div class="text-center">
+    <button id="btnLogin" type="submit" name="submit" class=" btn btn-block mybtn submit-color tx-tfm" value="login"
+        disabled=""><b>LOGIN</b></button>
+</div> -->
 
 <div *ngIf="showLoadingIndicator" class="loader"></div>
 <section class="vh-100 w-100" *ngIf="!showLoadingIndicator">
@@ -30,6 +30,7 @@
                                     <img [src]="logopath" class="logo">
                                 </a>
                             </div>
+                            <label class="text-align-center">{{this.logintype}}</label>
                             <form [formGroup]="userFormData" (ngSubmit)="AuthCheck()">
                                 <div class="form-white mb-3">
                                     <label class="form-label mb-0">Username</label>
@@ -51,15 +52,12 @@
                                 </div>
                                 <h6 class=" mb-3 pb-lg-2 d-flex justify-content-end" style="font-size: 14px;">
                                     <em><strong>Forgot your <a class="text-blue-50 text-decoration-none"
-                                                routerLink="/ForgotPassword">Username</a> or <a
-                                                class="text-blue-50 text-decoration-none"
                                                 routerLink="/ForgotPassword">Password?</a></strong></em>
                                 </h6>
 
                                 <button class="btn btn-md btn-success col-12 fw-bold" type="submit">LOGIN</button>
                             </form>
                         </div>
-
                         <div>
                             <p class="d-flex text-black justify-content-end" style="font-size: 15px;"
                                 *ngIf="this.logintype=='user'">Don't have an
@@ -67,11 +65,9 @@
                                     class="text-blue-50 text-decoration-none"> Register Now</a>
                             </p>
                         </div>
-
-
                     </div>
                     <div *ngIf="alertmsg" class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <strong>USERNAME AND PAASWORD IS WRONG!</strong>
+                        <strong>USERNAME OR PAASWORD IS WRONG!</strong>
                         <button type="button" class="close cross" data-dismiss="alert" aria-label="Close"
                             (click)="closealert()">
                             <span aria-hidden="true">&times;</span>

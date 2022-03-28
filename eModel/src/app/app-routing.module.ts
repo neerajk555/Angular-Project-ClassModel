@@ -24,9 +24,9 @@ import { AdminFeedbackComponent } from './admin-feedback/admin-feedback.componen
 
 const routes: Routes = [
   {path:'home',component:MainLandingPageComponent},
+  {path:'mainlogin',component:MainLoginComponent},
   {path:'InitialLogin',component:InitialLoginComponent},
   {path:'InitialLogin?admin',component:InitialLoginComponent},
-  {path:'mainlogin',component:MainLoginComponent},
   {path:'UserRegistration',component:UserRegistrationComponent},
   {path:'ForgotPassword',component:ForgotPasswordComponent},
   {path:'InitialLanding',component:InitialLandingComponent,children:[
@@ -39,8 +39,8 @@ const routes: Routes = [
     {path:'Containers',component:ContainersComponent,canActivate:[TerminalauthGuard]},
     {path:'admin-terminal',component:AdminTerminalComponent,canActivate:[AuthGuard]},
     {path:'admin-user',component:AdminUserComponent,canActivate:[AuthGuard]},
-    {path:'admin-payment',component:AdminPaymentComponent},
-    {path:'admin-feedback',component:AdminFeedbackComponent}
+    {path:'admin-payment',component:AdminPaymentComponent,canActivate:[AuthGuard]},
+    {path:'admin-feedback',component:AdminFeedbackComponent,canActivate:[AuthGuard]}
   ]},
   {path:'',component:MainLandingPageComponent}
 ];
