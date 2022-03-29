@@ -272,7 +272,7 @@
       "receiver_fullname": "Muskan",
       "receiver_phone": "1234678912",
       "receiver_mail": "mg@gmail.com",
-      "appointment_status": "requested"
+      "appointment_status": "requested",
       "payment_id": "PT001",
       "destination": "Long Island",
       "selected": false,
