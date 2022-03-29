@@ -12,7 +12,7 @@ export class UserDataService {
   constructor(private ht: HttpClient) { }
 
   logintype = "user";
-  loginid = "1";
+  loginid = "3";
   user: any;
 
   urls={

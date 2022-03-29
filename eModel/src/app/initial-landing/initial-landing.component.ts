@@ -58,7 +58,7 @@ export class InitialLandingComponent implements OnInit {
     {
       this.username=data.user_username;
       this.userimg=data.user_profilephoto;
-      this.userFullName=data.user_first_name+" "+data.user_last_name;
+      this.userFullName=data.user_firstname+" "+data.user_lastname;
     }
     if(this.logintype=="admin")
     {
@@ -124,12 +124,5 @@ export class InitialLandingComponent implements OnInit {
     
     this.usrds.postNotification(newNotification).subscribe((data) => console.log(data));
   }
-
-  ///////////////
-
-
-
-
-  
 }
 

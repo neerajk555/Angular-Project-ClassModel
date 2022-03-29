@@ -8,7 +8,7 @@
         </div>
         <div class="modal-body">
             <form class="formControl" name="formcontrol">
-                Add containar id -<input type="text" [(ngModel)]="containerIds" name="containerIds" #contid>
+                Add Containar Id -<input type="text" [(ngModel)]="containerIds" name="containerIds" #contid>
             </form>
         </div>
         <div class="modal-footer">
@@ -40,9 +40,6 @@
     </div>
   -->
 </nav>
-
-
-
 
 <table class="table" id="contentToConvert">
     <thead class="thead-light">
@@ -94,7 +91,6 @@
                                             <h6>Container ID</h6>
                                             <p>{{container.con_id}}</p>
                                         </div>
-
                                         <div class="w-50">
                                             <h6>Loaded OR Empty</h6>
                                             <p *ngIf="container.con_loaded">Loaded</p>
@@ -103,7 +99,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="card w-50">
                                 <div class="card-body">
                                     <h5 class="card-title">Container Status</h5>
@@ -116,17 +111,14 @@
                                             <h6>Destination</h6>
                                             <p>{{container.destination}}</p>
                                         </div>
-
                                         <div class="col" *ngIf="container.departure_date != ''">
                                             <h6>Departher Date</h6>
                                             <p>{{container.departure_date}}</p>
                                         </div>
-
                                         <div class="col">
                                             <h6>Ship Id</h6>
                                             <p>{{container.ship_id}}</p>
                                         </div>
-
                                         <div class="col" *ngIf="container.arriving_date != ''">
                                             <h6>Arriving Date</h6>
                                             <p>{{container.arriving_date}}</p>

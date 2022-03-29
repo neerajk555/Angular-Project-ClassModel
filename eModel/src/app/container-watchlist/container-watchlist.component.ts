@@ -1,10 +1,9 @@
 import { WatchlistService } from '../watchlist.service';
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-
+import { UserDataService } from '../user-data.service';
 
 import { HttpClient } from '@angular/common/http';
-import { UserDataService } from '../user-data.service';
 
 declare var jsPDF: any;
 @Component({
@@ -16,36 +15,64 @@ export class ContainerWatchlistComponent implements OnInit {
   public isCollapsed = false;
   closeResult = '';
 
-  constructor(private wS: WatchlistService, private modalService: NgbModal, private http: HttpClient, private uS: UserDataService) { }
+  constructor(private wS: WatchlistService, 
+    private modalService: NgbModal, 
+    private http: HttpClient, 
+    private usrds: UserDataService) { }
 
-  watchlist: any;
+  watchlist: any[] = [];
   containerIds = "";
 
   saveToWatchlist(data: any) {
-    data = data.map((v: any) => ({ ...v, loadRow: false, isChecked: false }));
-    this.watchlist = data;
-    console.log(this.watchlist);
+    this.wldata = data;
+    let j = 0;
+    while (j < this.wlids.length) {
+      for (let i = 0; i < this.wldata.length; i++) {
+        if (this.wldata[i].con_id == this.wlids[j]) {
+          this.watchlist.push(this.wldata[i]);
+          // console.log(this.wldata[i]);
+          j++;
+          continue;
+        }
+      }
+    }
+    this.watchlist = this.watchlist.map((v: any) => ({ ...v, loadRow: false, isChecked: false }));
+    // data = data.map((v: any) => ({ ...v, loadRow: false, isChecked: false }));
+    // this.watchlist = data;
+    // console.log(this.watchlist);
+  }
 
-  }
   changeState(i: any) {
-    this.watchlist[i].isChacked = !this.watchlist[i].isChacked;
+    this.watchlist[i].isChecked = !this.watchlist[i].isChecked;
   }
+
   deletwSelectedRows() {
-    for (var i in this.watchlist) {
-      if (this.watchlist[i].isChacked) {
-        this.wS.delete(this.watchlist[i].id).subscribe();
+    for (let i = 0; i < this.watchlist.length; i++) {
+      if (this.watchlist[i].isChecked) {
+        // this.wS.delete(this.watchlist[i].id).subscribe();
+        console.log(this.watchlist[i].con_id);
+        console.log(this.usrds.user);
+        this.usrds.user.user_watchlist.pop(this.watchlist[i].con_id);
+        console.log(this.usrds.user);
+        this.usrds.putUserData(this.usrds.user, this.usrds.user.id).subscribe((data) => console.log(data));
         this.watchlist.splice(i, 1);
       }
     }
   }
-
+  wlids: any;
   updateUser(data: any) {
-    this.uS.user = data;
+    this.usrds.user = data;
+    this.wlids = this.usrds.user.user_watchlist;
   }
-
+  wldata: any;
   ngOnInit(): void {
+    // this.usrds.getUserDataById(this.usrds.loginid).subscribe((data)=>{
+    // this.wldata=data;
+    // console.log(this.wldata.user_watchlist);
+    // });
+    this.usrds.getUserDataById(this.usrds.loginid).subscribe((data) => this.updateUser(data));
     this.wS.getContainerWatchlist().subscribe((data) => this.saveToWatchlist(data));
-    this.uS.getUserDataById(this.uS.loginid).subscribe((data) => this.updateUser(data));
+
   }
 
   expand(index: any) {
@@ -55,6 +82,7 @@ export class ContainerWatchlistComponent implements OnInit {
   collapse(index: any) {
     this.watchlist[index].loadRow = false;
   }
+
   open(content: any) {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
@@ -62,6 +90,7 @@ export class ContainerWatchlistComponent implements OnInit {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
+
   value: any;
 
   updateWatchList(data: any, conid: any) {
@@ -79,23 +108,21 @@ export class ContainerWatchlistComponent implements OnInit {
     }
     return false;
   }
+
   addContainer(conid: any) {
     //console.log(this.containerIds);
     if (conid != '') {
       // console.log(conid);
-      // console.log(this.uS.user.user_watchlist_ids);
-      if (!this.isPresent(conid, this.uS.user.user_watchlist_ids)) {
-        this.uS.user.user_watchlist_ids.push(conid);
-        this.uS.putUserData(this.uS.user, this.uS.user.id).subscribe((data) => console.log(data));
+      // console.log(this.usrds.user.user_watchlist);
+      if (!this.isPresent(conid, this.usrds.user.user_watchlist)) {
+        this.usrds.user.user_watchlist.push(conid);
+        this.usrds.putUserData(this.usrds.user, this.usrds.user.id).subscribe((data) => console.log(data));
         this.wS.getContainerById(conid).subscribe((data) => this.updateWatchList(data, conid));
       }
-
-
     }
     this.modalService.dismissAll();
     // this.wS.getConid(conid).subscribe((saveToWatchlist) => {this.value=saveToWatchlist})
     // console.log(this.value);
-
   }
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {

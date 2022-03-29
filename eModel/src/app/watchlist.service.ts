@@ -13,7 +13,8 @@ export class WatchlistService {
   }
 
   delete(i: any) {
-    return this.http.get(this.url['containerWatchlist'] + i);
+    
+    return this.http.delete(this.url['containerWatchlist'] + i);
   }
   getData() {
     return this.http.get(this.url['pay-data']);
