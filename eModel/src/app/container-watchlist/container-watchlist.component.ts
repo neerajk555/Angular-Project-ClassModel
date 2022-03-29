@@ -18,7 +18,6 @@ export class ContainerWatchlistComponent implements OnInit {
 
   constructor(private wS: WatchlistService, private modalService: NgbModal, private http: HttpClient, private uS: UserDataService) { }
 
-
   watchlist: any;
   containerIds = "";
 

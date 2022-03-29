@@ -1,4 +1,79 @@
-<div class="container mt-5">
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="card">
+                <div class="card-body ">
+                    <img class="user-logo" src="../../assets/images/logos/userlogo.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-5">
+            <div class="card">
+                <div class="card-body">
+                    <h5 style="color:#0088e8; font-size: 16px;">User Information</h5>
+                    <label class="userinfo">First Name :</label>
+                    <input type="text" class="userinfo-input" [disabled]='toggleButton' placeholder="Jasmin"
+                        name="fname"><br>
+                    <label class="userinfo">Last Name :</label>
+                    <input type="text" class="userinfo-input" [disabled]='toggleButton' placeholder="Patel"
+                        name="lname">
+                    <br>
+                    <label class="userinfo">Phone :</label>
+                    <input type="text" class="userinfo-input" id="myText" placeholder="XXX XXX XXX X" name="lname"><br>
+                    <button class="btn btn-primary" style="margin-top: 80px; margin-left: 370px;">Edit</button>
+                    <button type="btn btn-success" style="margin-top: 80px; " (click)="disable()"
+                        class="btn btn-success">Save</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 style="color:#0088e8;font-size: 16px;">Login information</h5>
+                    <label class="userinfo">Email :</label>
+                    <input type="email" [disabled]='toggleButton' class="userinfo-input" id="myText"
+                        placeholder="abc@gmail.com" name="fname"><br>
+                    <label class="userinfo">Current Password :</label>
+                    <input type="password" [disabled]='toggleButton' class="userinfo-input" id="myText"
+                        placeholder="Patel" name="lname"><br>
+                    <label class="userinfo">New Password :</label>
+                    <input type="password" [disabled]='toggleButton' class="userinfo-input" id="myText"
+                        placeholder="Patel" name="lname"><br>
+                    <label class="userinfo">Confirm Password :</label>
+                    <input type="password" [disabled]='toggleButton' class="userinfo-input" id="myText"
+                        placeholder="Patel" name="lname"><br>
+                    <div>
+                        <button class="btn btn-primary" style="margin-top: 40px; ">Edit</button>
+                        <button type="btn btn-success" style="margin-top: 40px;" (click)="disable()"
+                            class="btn btn-success">Save</button>
+                    <div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- <img class="user-logo" src="../../assets/images/logos/userlogo.png" alt="">
+    <div class="body-text" style="text-align: center;">
+    <h5 style="color:#0088e8; font-size: 16px; margin-top: 30px;">User Information</h5>
+    <label class="userinfo">First Name:</label>
+    <input type="text" class="userinfo-input" [disabled]='toggleButton' placeholder="Jasmin" name="fname"><br>
+    <label class="userinfo">Last Name:</label>
+    <input type="text" class="userinfo-input" [disabled]='toggleButton' placeholder="Patel" name="lname">
+    <br>
+    <label class="userinfo">Phone:</label>
+    <input type="text" class="userinfo-input" id="myText" placeholder="XXX XXX XXX X" name="lname">
+
+    <h5 style="color:#0088e8;font-size: 16px; margin-top: 15px;">Login information</h5>
+        <label class="userinfo">Email :</label>
+        <input type="email" [disabled]='toggleButton' class="userinfo-input" id="myText" placeholder="abc@gmail.com" name="fname"><br>
+        <label class="userinfo">Password</label>
+        <input type="password" [disabled]='toggleButton' class="userinfo-input" id="myText" placeholder="Patel" name="lname"><br>
+        <button class="btn btn-primary">Edit</button>
+        <button type="btn btn-success" (click)="disable()" class="btn btn-success">Save</button>
+    </div> -->
+
+<!--<div class="container mt-5">
     <h5 style="color:#0088e8; font-size: 16px;">User Information</h5>
     <label >First Name</label>
     <input type="text" class="userinfo" [disabled]='toggleButton' name="fname" [value]="this.userdata.fname">
@@ -13,19 +88,19 @@
     </button>
     <br><br>
     <form class="form-inline">
-        <label>Phone</label>
+        <label>Phone</label>-->
         <!-- <select id="myText" [disabled]='toggleButton'>
             <option value="us">US(+1)</option>
             <option value="india">INDIA(+91)</option>
             <option value="uk">UK(+44)</option>
             <option value="germany">Germany(+49)</option>
         </select> -->
-        <input type="text" class="userinfo" id="myText" name="lname" [disabled]='toggleButton' [value]="this.userdata.phone">
+        <!--<input type="text" class="userinfo" id="myText" name="lname" [disabled]='toggleButton' [value]="this.userdata.phone">
     </form>
-    <button (click)="disable()" class="btn btn-success" type="button" *ngIf="!toggleButton">Save</button>
+    <button (click)="disable()" class="btn btn-success" type="button" *ngIf="!toggleButton">Save</button>-->
 </div>
 
-<div class="container">
+<!--<div class="container">
     <h5 style="color:#0088e8;font-size: 16px;">Login information</h5>
     <form>
         <label>Email :</label><button class="edit-btn1" (click)="loginenable()" *ngIf="logintoggleButton">
@@ -42,4 +117,4 @@
         <input type="password" [disabled]='logintoggleButton' class="userinfo" id="myText" name="lname" [value]="this.userdata.password">
         <button type="button" (click)="logindisable()" class="btn btn-success" *ngIf="!logintoggleButton">Save</button>
     </form>
-</div>
+</div>-->
