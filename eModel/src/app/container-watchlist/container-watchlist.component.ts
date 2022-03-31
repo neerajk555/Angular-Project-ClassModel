@@ -15,14 +15,47 @@ export class ContainerWatchlistComponent implements OnInit {
   public isCollapsed = false;
   closeResult = '';
 
-  constructor(private wS: WatchlistService, 
-    private modalService: NgbModal, 
-    private http: HttpClient, 
+  constructor(private wS: WatchlistService,
+    private modalService: NgbModal,
+    private http: HttpClient,
     private usrds: UserDataService) { }
 
   watchlist: any[] = [];
   containerIds = "";
 
+  changeState(i: any) {
+    this.watchlist[i].isChecked = !this.watchlist[i].isChecked;
+  }
+
+  deletwSelectedRows() {
+    for (let i = 0; i < this.watchlist.length; i++) {
+      if (this.watchlist[i].isChecked) {
+        // this.wS.delete(this.watchlist[i].id).subscribe();
+        // console.log(this.watchlist[i].con_id);
+        // console.log(this.usrds.user);
+        this.removeat(this.watchlist[i].con_id);
+        // this.usrds.user.user_watchlist.pop(this.watchlist[i].con_id);
+        // console.log(this.usrds.user);
+        this.usrds.putUserData(this.usrds.user, this.usrds.user.id).subscribe();
+        this.watchlist.splice(i, 1);
+      }
+    }
+  }
+
+  removeat(element: string) {
+    // console.log(element);
+    this.usrds.user.user_watchlist.forEach((value: any, index: any) => {
+      if (value == element) this.usrds.user.user_watchlist.splice(index, 1);
+    });
+  }
+
+  wlids: any;
+  wldata: any;
+  updateUser(data: any) {
+    this.usrds.user = data;
+    this.wlids = this.usrds.user.user_watchlist;
+    this.wS.getContainerWatchlist().subscribe((dt) => this.saveToWatchlist(dt));
+  }
   saveToWatchlist(data: any) {
     this.wldata = data;
     let j = 0;
@@ -41,38 +74,12 @@ export class ContainerWatchlistComponent implements OnInit {
     // this.watchlist = data;
     // console.log(this.watchlist);
   }
-
-  changeState(i: any) {
-    this.watchlist[i].isChecked = !this.watchlist[i].isChecked;
-  }
-
-  deletwSelectedRows() {
-    for (let i = 0; i < this.watchlist.length; i++) {
-      if (this.watchlist[i].isChecked) {
-        // this.wS.delete(this.watchlist[i].id).subscribe();
-        console.log(this.watchlist[i].con_id);
-        console.log(this.usrds.user);
-        this.usrds.user.user_watchlist.pop(this.watchlist[i].con_id);
-        console.log(this.usrds.user);
-        this.usrds.putUserData(this.usrds.user, this.usrds.user.id).subscribe((data) => console.log(data));
-        this.watchlist.splice(i, 1);
-      }
-    }
-  }
-  wlids: any;
-  updateUser(data: any) {
-    this.usrds.user = data;
-    this.wlids = this.usrds.user.user_watchlist;
-  }
-  wldata: any;
   ngOnInit(): void {
     // this.usrds.getUserDataById(this.usrds.loginid).subscribe((data)=>{
     // this.wldata=data;
     // console.log(this.wldata.user_watchlist);
     // });
     this.usrds.getUserDataById(this.usrds.loginid).subscribe((data) => this.updateUser(data));
-    this.wS.getContainerWatchlist().subscribe((data) => this.saveToWatchlist(data));
-
   }
 
   expand(index: any) {
@@ -109,21 +116,33 @@ export class ContainerWatchlistComponent implements OnInit {
     return false;
   }
 
+  watchPresent(item: any, data: any) {
+    for (let i = 0; i < data.length; i++) {
+      if (data[i].con_id == item) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   addContainer(conid: any) {
-    //console.log(this.containerIds);
+    // console.log(this.containerIds);
     if (conid != '') {
       // console.log(conid);
       // console.log(this.usrds.user.user_watchlist);
-      if (!this.isPresent(conid, this.usrds.user.user_watchlist)) {
-        this.usrds.user.user_watchlist.push(conid);
-        this.usrds.putUserData(this.usrds.user, this.usrds.user.id).subscribe((data) => console.log(data));
-        this.wS.getContainerById(conid).subscribe((data) => this.updateWatchList(data, conid));
+      if (this.watchPresent(conid, this.wldata)) {
+        if (!this.isPresent(conid, this.usrds.user.user_watchlist)) {
+          this.usrds.user.user_watchlist.push(conid);
+          this.usrds.putUserData(this.usrds.user, this.usrds.user.id).subscribe((data) => console.log(data));
+          this.wS.getContainerById(conid).subscribe((data) => this.updateWatchList(data, conid));
+        }
       }
     }
     this.modalService.dismissAll();
     // this.wS.getConid(conid).subscribe((saveToWatchlist) => {this.value=saveToWatchlist})
     // console.log(this.value);
   }
+
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';

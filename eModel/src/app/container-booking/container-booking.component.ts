@@ -56,7 +56,6 @@ export class ContainerBookingComponent implements OnInit {
 
   closeResult = '';
   open(content: any, data: any) {
-
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', size: 'xl', backdrop: 'static' }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {

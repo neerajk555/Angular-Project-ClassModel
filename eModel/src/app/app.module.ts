@@ -27,6 +27,7 @@ import { AdminUserComponent } from './admin-user/admin-user.component';
 import { AdminPaymentComponent } from './admin-payment/admin-payment.component';
 import { AdminFeedbackComponent } from './admin-feedback/admin-feedback.component';
 import { FeedbackComponent } from './feedback/feedback.component';
+import { StatusComponent } from './status/status.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { FeedbackComponent } from './feedback/feedback.component';
     AdminPaymentComponent,
     AdminFeedbackComponent,
     ContainersComponent,
-    FeedbackComponent
+    FeedbackComponent,
+    StatusComponent
   ],
   imports: [
     BrowserModule,
