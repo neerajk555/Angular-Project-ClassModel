@@ -15,10 +15,24 @@ import { Router } from '@angular/router';
 })
 export class ContainerBookingComponent implements OnInit {
 
-  constructor(public getAppointmentData: BookingService, private modalService: NgbModal, private http: HttpClient, public getgetAppointmentData: UserDataService, private fb: FormBuilder, private router: Router) { }
+  constructor(
+    public getAppointmentData: BookingService,
+    private modalService: NgbModal,
+    private fb: FormBuilder,
+    private usrds: UserDataService,
+    private router:Router) { }
+
   recDataTerminal: any;
-  recContainerData:any;
-  requestForm:any;
+  recAppointmentData: any;
+  payment: any;
+  receiver: any;
+  value: any;
+  requestForm: any;
+  recContainerData: any;
+  closeResult = '';
+  source: any;
+  destination: any;
+
   fieldsForTable = [
     "Appointment Id",
     "Container Id",
@@ -27,25 +41,78 @@ export class ContainerBookingComponent implements OnInit {
     "Source",
     "Destination",
     "Pickup Date",
-    "Delivery Date",
+    "Sending Date",
     "Cost",
-    "Remark"
+    "Terminal Remark"
   ]
-  temp1: any
-  temp(){
-    console.log(this.temp1);
-    
+
+  formPostData: any;
+
+  onSubmit(requestForm: any) {
+    // let idOrigin = Math.floor(Math.random() * 1000000000)
+    let idAppointment = Math.floor(Math.random() * 1000000).toString()
+    idAppointment = "APT" + idAppointment
+    // let idSource: any
+    // let idDestination: any
+    // let idContainer: any
+    console.log(requestForm.value);
+
+    // for (let i = 0; i < this.recDataTerminal.length; i++) {
+    //   if (requestForm.value.source_terminal_id == this.recDataTerminal[i].city) {
+    //     idSource = this.recDataTerminal[i].terminal_id
+    //   }
+    //   if (requestForm.value.delivery_terminal_id == this.recDataTerminal[i].city) {
+    //     idDestination = this.recDataTerminal[i].terminal_id
+    //   }
+    // }
+    // for (let i = 0; i < this.recContainerData.length; i++) {
+    //   if (requestForm.value.container_id == this.recContainerData[i].contype_type) {
+    //     idContainer = this.recContainerData[i].contype_id
+    //   }
+    // }
+    //============================================
+
+    this.formPostData = {
+      "appointment_id": idAppointment,
+      "user_id": this.usrds.loginid,
+      "container_id": requestForm.value.container_id,
+      "pickup_date": requestForm.value.pickup_date,
+      "sending_date": requestForm.value.sending_date,
+      "source_terminal_id": requestForm.value.source_terminal_id,
+      "delivery_terminal_id": requestForm.value.delivery_terminal_id,
+      "delivery_date": "",
+      "user_remarks": requestForm.value.user_remarks,
+      "cost": 0,
+      "terminal_remarks": "",
+      "datetime": Date(),
+      "receiver_fullname": requestForm.value.receiver_fullname,
+      "receiver_phone": requestForm.value.receiver_phone,
+      "receiver_mail": requestForm.value.receiver_mail,
+      "appointment_status": "Requested",
+      "request_response_date": "",
+      "payment_id": "",
+      "payment_date": ""
+    }
+    // this.formPostData.appointment_id = 
+    // this.formPostData.source_terminal_id = idSource
+    // this.formPostData.delivery_terminal_id = idDestination
+    // this.formPostData.container_id = idContainer
+    // this.formPostData.pickup_date = requestForm.value.pickup_date
+    // this.formPostData.sending_date = requestForm.value.sending_date
+    // this.formPostData.user_remarks = requestForm.value.user_remarks
+    // this.formPostData.receiver_fullname = requestForm.value.receiver_fullname
+    // this.formPostData.receiver_phone = requestForm.value.receiver_phone
+    // this.formPostData.receiver_mail = requestForm.value.receiver_mail
+
+    this.getAppointmentData.postAppointmentDetails(this.formPostData).subscribe((data) => {
+      console.log(data);
+    })
+    this.requestForm.reset();
+    this.modalService.dismissAll();
+    // window.location.reload()
   }
 
-  recAppointmentData: any;
-  payment: any;
-  receiver: any;
-  value: any;
-  myForm: any;
-  formIsNew: any;
-  source: any;
-  destination: any;
-  getcontainer:any;
+  //==================================================================================================================================
   expand(index: any) {
     this.recAppointmentData[index].loadRow = true;
   }
@@ -54,7 +121,6 @@ export class ContainerBookingComponent implements OnInit {
     this.recAppointmentData[index].loadRow = false;
   }
 
-  closeResult = '';
   open(content: any, data: any) {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', size: 'xl', backdrop: 'static' }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
@@ -62,50 +128,15 @@ export class ContainerBookingComponent implements OnInit {
       this.closeResult = `Dismissed`;
     });
   }
-  dest:any=[];
-
-  onChange(val:any){
-    this.dest=[];
-    for(let i=0; i<this.recDataTerminal.length; i++){
-      let str =JSON.stringify(this.recDataTerminal[i].terminal_name) +"," + JSON.stringify(this.recDataTerminal[i].city);
-      let s = "";
-      for(let k=0; k<str.length; k++){
-        if(str[k]!='"'){
-          s = s + str[k];
-        }
-      }
-
-      if(val != s){
-        let element:any = {};
-        element.terminal_name = this.recDataTerminal[i].terminal_name;
-        element.city = this.recDataTerminal[i].city;
-        this.dest.push(element);
-      }
-    }
-
-  }
-  
-  onSubmit(data: any) {
-    console.warn(data);
-    this.getAppointmentData.ReceiverData(data).subscribe((result) => {
-      console.warn(result)
-    }
-    )
-    //this.modalService.dismissAll();
-  }
-
 
   ngOnInit(): void {
-    this.getgetAppointmentData.getterminal().subscribe((data: any) => {
+    this.getAppointmentData.getTerminalDetails().subscribe((data: any) => {
       this.recDataTerminal = data
-      console.log(this.recDataTerminal); 
     });
-    
-    this.getAppointmentData.getContainerDetails().subscribe((data: any) => {
-      this.recContainerData = data;
-    });
-
-    this.getAppointmentData.getAppointmentDetails().subscribe((data) => {
+    // this.getAppointmentData.getContainerDetails().subscribe((data: any) => {
+    //   this.recContainerData = data
+    // });
+    this.getAppointmentData.getAppointmentDetailsByUserId(this.usrds.loginid).subscribe((data) => {
       this.recAppointmentData = data;
       let numS = 0
       let numD = 0
@@ -113,11 +144,10 @@ export class ContainerBookingComponent implements OnInit {
       this.recAppointmentData.forEach((element: any) => {
         let sourceId = element.source_terminal_id;
         let destinationId = element.delivery_terminal_id;
-        let containerTypeId = element.container_id;
-
+        let containerId = element.container_id;
         let sourceString = `?terminal_id=${sourceId}`
         let destinationString = `?terminal_id=${destinationId}`
-        let containerString = `?contype_id=${containerTypeId}`
+        let containerString = `?con_id=${containerId}`
 
         this.getAppointmentData.getTerminalDetailsById(sourceString).subscribe((data: any) => {
           this.recAppointmentData[numS] = { ...this.recAppointmentData[numS], "source": data[0].city }
@@ -127,42 +157,56 @@ export class ContainerBookingComponent implements OnInit {
           this.recAppointmentData[numD] = { ...this.recAppointmentData[numD], "destination": data[0].city }
           numD++
         });
-        this.getAppointmentData.getContainerDetailsById(containerString).subscribe((data: any) => {
-          // console.log(data);
-          
-          this.recAppointmentData[numC] = { ...this.recAppointmentData[numC], "containerType": data[0].contype_type }
-          numC++;
+        this.getAppointmentData.getContainerByConId(containerString).subscribe((data: any) => {
+          // console.log(data[0].contype_id);
+          this.getAppointmentData.getContypedataById(data[0].contype_id).subscribe((contype: any) => {
+            this.recAppointmentData[numC] = { ...this.recAppointmentData[numC], "containerType": contype[0].contype_type }
+            numC++
+          });
         });
-        
+
       });
-      // console.log(numS);
-      
-      // console.log(this.recAppointmentData);
     });
 
-    // this.getAppointmentData.payment().subscribe((data) => {
-    //   this.payment = data
-    // });
-    
+    this.requestForm = this.fb.group({
+      "source_terminal_id": ["", [Validators.required]],
+      "delivery_terminal_id": ["", [Validators.required]],
+      "container_id": [, [Validators.required]],
+      "pickup_date": ["", [Validators.required]],
+      "sending_date": ["", [Validators.required]],
+      "user_remarks": ["", [Validators.required]],
+      "receiver_fullname": ["", [Validators.required]],
+      "receiver_phone": ["", [Validators.required]],
+      "receiver_mail": ["", [Validators.required]]
+    });
   }
 
- 
+  destterminal: any = [];
+  containers: any = [];
+  selectsource = false;
+  listchange(data: any) {
+    this.destterminal = [];
+    this.containers = [];
+    this.selectsource = true;
+    for (let i = 0; i < this.recDataTerminal.length; i++) {
+      if (this.recDataTerminal[i].terminal_id != data) {
+        this.destterminal.push(this.recDataTerminal[i]);
+      }
+    }
+    this.getAppointmentData.getContainerDetailsByTerminalId(data).subscribe((condata: any) => {
+      for (let i = 0; i < condata.length; i++) {
+        this.getAppointmentData.getContypedataById(condata[i].contype_id).subscribe((data: any) => {
+          for (let j = 0; j < data.length; j++) {
+            this.containers.push({ ...condata[i], "contype_type": data[j].contype_type, "contype_height": data[j].contype_height, "contype_width": data[j].contype_width });
+          }
+        });
+      }
+    });
+    // console.log(this.containers);
+  }
 
-  // selected_terminal(val:any){
-  //   let T_Id;
-  //   for(let i=0; i<this.dest.length; i++){
-  //     let str =JSON.stringify(this.recDataTerminal[i].terminal_id) +"," + JSON.stringify(this.getcontainer[i].terminal_id_origin);
-  //     let s = "";
-  //     for(let k=0; k<str.length; k++){
-  //       if(str[k]!='"'){
-  //         s = s + str[k];
-  //       }
-  //     }
-
-  //     if(val == s){
-  //       T_Id = this.dest[i].terminal_id;
-  //     }
-  //   }
-  //   alert(T_Id);
-  // }
+  feePayment(data:any){
+    this.getAppointmentData.paymentdata.push(data);
+    this.router.navigate(['/','payment']);
+  }
 }

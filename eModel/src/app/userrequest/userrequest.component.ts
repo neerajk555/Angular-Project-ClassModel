@@ -66,7 +66,6 @@ export class UserrequestComponent implements OnInit {
       data.request_response_date=Date();
       // console.log(data);
       this.getDataRequest.putappointmentdata(data, this.tempId).subscribe();
-    
     });
     // this.approvedDetails.reset();
     // console.log(this.tempId);

@@ -11,7 +11,7 @@ export class UserDataService {
 
   constructor(private ht: HttpClient) { }
 
-  logintype = "terminal";
+  logintype = "user";
   loginid = "1";
   user: any;
   requests:any;
