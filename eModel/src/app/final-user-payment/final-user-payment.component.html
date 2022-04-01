@@ -62,8 +62,8 @@
     <table>
         <thead>
       <tr>
+        <th scope="col">#</th>
         <th scope="col">Container ID</th>
-        <th scope="col">Trade Type</th>
         <th scope="col">Price</th>
         <th scope="col">Booking Date</th>
       </tr>
@@ -72,9 +72,9 @@
         <tr *ngFor="let c of containers; let i = index">
             <th scope="row">{{i+1}}</th>
             <!-- <td>{{c.id}}</td> -->
-            <td>{{c.Trade_Type}}</td>
-            <td>{{c.Price}}</td>
-            <td>{{c.Date}}</td>
+            <td>{{c.container_id}}</td>
+            <td>{{c.cost}}</td>
+            <td>{{this.todaydate}}</td>
         </tr>
     </tbody>
 </table>

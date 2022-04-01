@@ -32,28 +32,51 @@ export class UserDataService {
   }
 
   getUserData() { return this.ht.get(this.urls.userdata); }
-  getUserDataById(data: any) { return this.ht.get(this.urls.userdata + data); }
+  getUserDataById(data: any) { return this.ht.get(this.urls.userdata+ data); }
   postUserData(data: any) { return this.ht.post(this.urls.userdata, data); }
   
   getterminalData() { return this.ht.get(this.urls.terminaldata); }
   getterminalDataById(data: any) { return this.ht.get(this.urls.terminaldata+'/'+data); }
-  getTerminalDataById(data:any){ return this.ht.get(this.urls.terminaldata+'/?terminal_id='+data); }
-  
+  getTerminalDataById(data:any){ 
+    return this.ht.get(this.urls.terminaldata+'/?terminal_id='+data); 
+  }
   getappointmentdata() { return this.ht.get(this.urls.appointmentdata); }
   getappointmentDataById(data:any) { return this.ht.get(this.urls.appointmentdata+'/'+data); }
   putappointmentdata(data: any, id: any) { return this.ht.put(`${this.urls.appointmentdata}/${id}`, data); }
-  getappointmentByTerminalId(id:any){return this.ht.get(`${this.urls.appointmentdata}/?source_terminal_id=${id}`);}
+  getappointmentByTerminalId(id:any){
+    return this.ht.get(`${this.urls.appointmentdata}/?source_terminal_id=${id}`);
+  }
 
-  putUserData(data: any, index: any) {return this.ht.put(this.urls.userdata+index, data);}
-  putTerminalData(data:any,index:any){return this.ht.put(this.urls.terminaldata+index,data);}
-  getadminData(){return this.ht.get(this.urls.admindata);}
-  getadminDataById(data: any){return this.ht.get(this.urls.admindata + data);}
-  getterminal(){return this.ht.get(this.urls.terminal_details);}
+  putUserData(data: any, index: any) {
+    return this.ht.put(this.urls.userdata+index, data);
+  }
+  putTerminalData(data:any,index:any){
+    return this.ht.put(this.urls.terminaldata+index,data);
+  }
+  getadminData()
+  {
+    return this.ht.get(this.urls.admindata);
+  }
+  getadminDataById(data: any){
+    return this.ht.get(this.urls.admindata + data);
+  }
+  getterminal(){
+    return this.ht.get(this.urls.terminal_details);
+  }
 
-  getNotifications(){return this.ht.get(this.urls.notifications)}
-  postNotification(data:any){return this.ht.post(this.urls.notifications, data);}
 
-  getStatusDataByAppointmentId(data:any){return this.ht.get(`${this.urls.statusdata}?appointment_id=${data}`);}
+  getNotifications(){
+    return this.ht.get(this.urls.notifications)
+  }
+  postNotification(data:any){
+    return this.ht.post(this.urls.notifications, data);
+  }
 
-  putStatusDataById(data:any,index:any){return this.ht.put(`${this.urls.statusdata}/${index}`,data);}
+  getStatusDataByAppointmentId(data:any){
+    return this.ht.get(`${this.urls.statusdata}?appointment_id=${data}`);
+  }
+
+  putStatusDataById(data:any,index:any){
+    return this.ht.put(`${this.urls.statusdata}/${index}`,data);
+  }
 }

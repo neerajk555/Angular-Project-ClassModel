@@ -45,6 +45,7 @@ export class UserRegistrationComponent implements OnInit {
 
   get f() { return this.UserFormData.controls; }
 
+  //Post Data in JSON
   PostUserFormData() {
     this.submitted = true;
     if (this.UserFormData.invalid) {
@@ -77,6 +78,8 @@ export class UserRegistrationComponent implements OnInit {
     this.router.navigate(['/', 'InitialLogin']);
   }
 
+
+  //Show Password
   passType = 'password';
   ConfirmpassType = 'password';
   flag = true;

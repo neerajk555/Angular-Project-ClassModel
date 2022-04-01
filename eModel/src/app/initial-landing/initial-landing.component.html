@@ -9,6 +9,7 @@
   <div class="my-auto">
     <img class="logo mt-2" [src]="logo">
   </div>
+
   <!--<div class="ms-auto">
     <button title="Notifications" class="options my-auto">
       <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-bell"
@@ -52,7 +53,7 @@
         <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
       </svg>
     </button>
-    <div class="mt-2 px-4 py-3"  ngbDropdownMenu aria-labelledby="dropdownForm2">
+    <div ngbDropdownMenu aria-labelledby="dropdownForm2" class="mt-2 px-4 py-3 ">
       <div class="d-flex m-2">
         <img [src]="this.userimg" height="90" width="90" alt="Profile" class="rounded-circle mx-2"
           *ngIf="this.logintype!='admin'">
@@ -75,6 +76,8 @@
   <!-- Terminal Side -->
   <button class="nav-btn" (click)="ShowMenu()" routerLink="userrequests"
     *ngIf="this.logintype=='terminal'">REQUESTS</button>
+  <button class="nav-btn" (click)="ShowMenu()" routerLink="status"
+    *ngIf="this.logintype=='terminal'">STATUS</button>
   <button class="nav-btn" (click)="ShowMenu()" routerLink="Containers"
     *ngIf="this.logintype=='terminal'">CONTAINERS</button>
   <!--User & Terminal Both  -->
@@ -91,7 +94,6 @@
 </div>
 <!-- Side Menubar End -->
 
-<!-- Not In Use Right Now -->
 <!-- User Info Modal -->
 <ng-template #content let-c="close" let-d="dismiss">
   <div class="modal-header">

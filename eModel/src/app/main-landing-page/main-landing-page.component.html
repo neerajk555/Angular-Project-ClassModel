@@ -31,9 +31,10 @@
 
 <!-- HERO -->
 <div class="background">
-    <video autoplay muted loop id="myVideo">
+    <!-- <video autoplay muted loop id="myVideo">
         <source [src]="hero" type="video/mp4">
-    </video>
+    </video> -->
+    <video autoplay muted loop id="myVideo" [src]="hero"></video>
     <div class="content">
         <img style="height: 150px;" [src]="herologo" alt="Advent eModal">
     </div>

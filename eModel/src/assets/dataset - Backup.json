@@ -1,7 +1,6 @@
 {
   "user_details": [
     {
-      "user_id": 32341,
       "user_firstname": "Nikunj",
       "user_lastname": "Katariya",
       "user_contact": "8264632490",
@@ -12,14 +11,14 @@
       "user_profilephoto": "../assets/images/user/profile.png",
       "user_company_name": "",
       "user_watchlist": [
-        "CON00002",
-        "CON00001"
+        "CON00001",
+        "CON00002"
       ],
       "user_status": true,
       "user_token": "",
       "user_authentication": false,
       "user_registration_date": "Mon Mar 28 2022 17:38:10 GMT+0530 (India Standard Time)",
-      "id": 3
+      "id": 1
     }
   ],
   "card_details": [
@@ -107,7 +106,7 @@
       "terminal_username": "Mudra123",
       "terminal_password": 4003,
       "terminal_location": "Gujarat",
-      "city": "KUtch",
+      "city": "Kutch",
       "country": "India",
       "zipcode": 320004,
       "terminal_logo": "../assets/images/terminallogo.png",
@@ -169,12 +168,27 @@
   ],
   "status_details": [
     {
+      "id": 1,
+      "status_id": "ST100001",
+      "appointment_id": "APT100001",
+      "con_id": "CON00001",
+      "con_loaded": true,
+      "con_loaded_date": "2022-04-09 16:59",
+      "container_status": "Shiping",
+      "destination": "trsrdcg",
+      "departure_date": "2022-04-09 20:09",
+      "ship_id": "",
+      "ship_date": "",
+      "arriving_date": "",
+      "receiver_delivery_date": ""
+    },
+    {
       "id": 2,
       "status_id": "ST100002",
       "con_id": "CON00002",
       "con_loaded": false,
       "container_status": "Shiping",
-      "appointment_id": "APT100001",
+      "appointment_id": "APT100002",
       "destination": "trsrdcg",
       "departure_date": "1-12-2022",
       "ship_id": "SP0001",
@@ -184,27 +198,25 @@
   ],
   "appointment_details": [
     {
-      "id": 1,
-      "appointment_id": "APT100001",
+      "id": 736282913,
+      "appointment_id": "APT247152",
       "user_id": "USR100001",
       "container_id": "CTI0001",
-      "pickup_date": "23-03-2022",
-      "sending_date": "23-03-2022",
+      "pickup_date": "2022-03-25",
+      "sending_date": "2022-04-10",
       "source_terminal_id": "TI100001",
-      "delivery_terminal_id": "TI1000012",
-      "delivery_date": "23-03-2022",
-      "user_remarks": "Ok",
-      "cost": 99,
-      "terminal_remarks": "Ok",
+      "delivery_terminal_id": "TI100002",
+      "delivery_date": "2022-04-09",
+      "user_remarks": "Need Urgent Bases",
+      "cost": 800,
+      "terminal_remarks": "We can Help You!",
       "datetime": "23-03-2022",
       "receiver_fullname": "ABC",
-      "receiver_phone": 123456789,
+      "receiver_phone": "123456789",
       "receiver_mail": "a@b.com",
       "appointment_status": "Approved",
-      "destination": "Long Island",
-      "selected": false,
-      "selectedAll": false,
-      "deliveryDate": "2022-03-11"
+      "request_response_date": "Thu Mar 15 2022 01:19:38 GMT+0530 (India Standard Time)",
+      "payment_id": "1"
     },
     {
       "id": 2,
@@ -217,60 +229,35 @@
       "delivery_terminal_id": "TI100001",
       "delivery_date": "23-03-2022",
       "user_remarks": "Ok",
-      "cost": 99,
-      "terminal_remarks": "Ok",
+      "cost": 12323,
+      "terminal_remarks": "",
       "datetime": "23-03-2022",
       "receiver_fullname": "PQR",
       "receiver_phone": 123456789,
       "receiver_mail": "a@b.com",
-      "appointment_status": "Approved",
+      "appointment_status": "Requested",
       "destination": "Long Island",
-      "selected": false,
-      "selectedAll": false,
-      "deliveryDate": "2022-03-11"
+      "deliveryDate": null
     },
     {
       "id": 3,
-      "container_id": "CON00002",
-      "pickup_date": "22-03-2022",
-      "sending_date": "22-03-2022",
-      "delivery_terminal_id": "TI100001",
-      "delivery_date": "",
-      "user_remarks": "Ok. Nice.",
-      "cost": [],
-      "terminal_remarks": "",
-      "datetime": "",
-      "receiver_fullname": "",
-      "receiver_phone": "",
-      "receiver_mail": "",
-      "appointment_status": "rejected",
-      "destination": "Oakland",
-      "selected": false,
-      "selectedAll": false,
-      "deliveryDate": "2022-03-03"
-    },
-    {
-      "id": 4,
       "appointment_id": "APT100003",
       "user_id": "USR100003",
       "container_id": "CON00003",
       "pickup_date": "22-03-2022",
       "sending_date": "22-03-2022",
+      "source_terminal_id": "TI100001",
       "delivery_terminal_id": "TI100002",
       "delivery_date": "",
       "user_remarks": "Ok. Nice.",
-      "cost": [],
+      "cost": 0,
       "terminal_remarks": "",
       "datetime": "",
       "receiver_fullname": "",
       "receiver_phone": "",
       "receiver_mail": "",
-      "appointment_status": "",
-      "payment_id": "PT001",
-      "destination": "Long Island",
-      "selected": false,
-      "selectedAll": false,
-      "deliveryDate": "2022-03-03"
+      "appointment_status": "Requested",
+      "payment_id": ""
     }
   ],
   "payment_details": [

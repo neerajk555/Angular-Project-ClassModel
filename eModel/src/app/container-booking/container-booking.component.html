@@ -32,7 +32,7 @@
                 <tr *ngIf="container.loadRow">
                     <td colspan="7">
                         <div>
-                            <div class="row">
+                            <div class="row d-flex">
                                 <div class="card w-50">
                                     <div class="card-body">
                                         <h5 class="card-title">Container Details</h5>
@@ -41,16 +41,13 @@
                                                 <h6>Container Id</h6>
                                                 <p>{{container.container_id}}</p>
                                             </div>
-
                                             <div class="w-50">
                                                 <h6>Container Type</h6>
                                                 <p>{{container.containerType}}</p>
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
-
                                 <div class="card w-50">
                                     <div class="card-body">
                                         <h5 class="card-title">Receiver Details</h5>
@@ -59,19 +56,20 @@
                                                 <h6>Receiver Name</h6>
                                                 <p>{{container.receiver_fullname}}</p>
                                             </div>
-
-
                                             <div class="col">
                                                 <h6>Delivery Location</h6>
                                                 <p>{{container.destination}}</p>
                                             </div>
-
                                             <div class="col">
                                                 <h6>phone</h6>
                                                 <p>{{container.receiver_phone}}</p>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="col">
+                                    <button class="btn btn-danger" *ngIf="container.appointment_status=='Approved'">Cancel</button>&nbsp;
+                                    <button class="btn btn-info" *ngIf="container.appointment_status=='Approved'" (click)="feePayment(container)">Payment</button>
                                 </div>
                             </div>
                         </div>
@@ -168,7 +166,6 @@
                         <button type="submit" class="btn btn-primary"
                             (click)="modal.dismiss('Cross click')">Submit</button>
                     </div>
-
                 </div>
             
         </form>
@@ -181,26 +178,23 @@
         <h4 class="modal-title" id="modal-basic-title">ADD Booking</h4>
         <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
     </div>
-
     <div class="modal-body">
         <form [formGroup]="requestForm" (ngSubmit)="onSubmit(requestForm)">
             <div class="form-row row">
                 <div class="form-group col-md-6">
                     <label for="sourcelocation">Start Location</label><br />
-                    <select class="form-select" formControlName="source_terminal_id">
-                        <option disabled>Select City</option>
-                        <option [ngValue]="item.city" *ngFor="let item of recDataTerminal">
+                    <select class="form-select" formControlName="source_terminal_id" name="source_terminal_id" (change)="listchange(requestForm.value.source_terminal_id)">
+                        <option disabled>Select Source Terminal</option>
+                        <option [ngValue]="item.terminal_id" *ngFor="let item of recDataTerminal">
                             {{item.terminal_name}},{{ item.city }}
                         </option>
                     </select>
                 </div>
-
                 <div class="form-group col-md-6">
                     <label for="deliverylocation">Destination </label><br />
-                    <select class="form-select" formControlName="delivery_terminal_id">
-                        <option disabled>Select City</option>
-                        
-                        <option [ngValue]="item.city" *ngFor="let item of recDataTerminal">
+                    <select class="form-select" formControlName="delivery_terminal_id" name="delivery_terminal_id">
+                        <option disabled>Select Destination Terminal</option>
+                        <option [ngValue]="item.terminal_id" *ngFor="let item of destterminal">
                             {{item.terminal_name}},{{ item.city }}
                         </option>
                     </select>
@@ -210,12 +204,11 @@
             <div class="form-row row">
                 <div class="form-group col-md-6">
                     <label for="containerId">Containers Available</label><br />
-
                     <div class="input-group">
-                        <select class="form-select" formControlName="container_id">
+                        <select class="form-select" formControlName="container_id" name="container_id">
                             <option disabled>Select Container</option>
-                            <option [ngValue]="item.contype_type" *ngFor="let item of recContainerData">
-                                {{ item.contype_type }}
+                            <option [ngValue]="item.con_id" *ngFor="let item of containers">
+                                Type:{{item.contype_type}}  Height:{{item.contype_height}}  Width:{{item.contype_width}}
                             </option>
                         </select>
                     </div>
@@ -230,7 +223,7 @@
                 <div class="form-group col-md-3">
                     <label for="sendingdate">Sending date</label>
                     <div class="input-group">
-                        <input type="date" id="sendingdate" name="pickup_date" class="form-control"
+                        <input type="date" id="sendingdate" name="sending_date" class="form-control"
                             formControlName="sending_date" />
                     </div>
                 </div>
@@ -239,7 +232,7 @@
             <div class="form-group col-md-12">
                 <label for="remark">Remarks</label>
                 <div class="input-group">
-                    <input id="remark" name="remark" class="form-control" formControlName="user_remarks" />
+                    <input id="remark" name="user_remarks" class="form-control" formControlName="user_remarks" />
                 </div>
             </div>
             <div class="form-row mt-3">
@@ -249,20 +242,20 @@
                     <div class="form-group col-md-4">
                         <label for="receivername">Full Name</label>
                         <div class="input-group">
-                            <input id="receivernamename" name="Receiver_name" class="form-control"
+                            <input id="receivernamename" name="receiver_fullname" class="form-control"
                                 formControlName="receiver_fullname" />
                         </div>
                     </div>
                     <div class="form-group col-md-4">
                         <label for="phone">Contact Number</label>
                         <div class="input-group">
-                            <input id="phone" name="phone" class="form-control" formControlName="receiver_phone" />
+                            <input id="phone" name="receiver_phone" class="form-control" formControlName="receiver_phone" />
                         </div>
                     </div>
                     <div class="form-group col-md-4">
                         <label for="email">Email</label>
                         <div class="input-group">
-                            <input id="email" name="email" class="form-control" formControlName="receiver_mail" />
+                            <input id="email" name="receiver_mail" class="form-control" formControlName="receiver_mail" />
                         </div>
                     </div>
                 </div>
