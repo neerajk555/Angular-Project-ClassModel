@@ -15,10 +15,10 @@ export class UserRegistrationComponent implements OnInit {
   UserFormData: any;
   postuserdata: any;
   submitted = false;
-  logopath="../assets/images/logos/logo-image.png";
+  logopath = "../assets/images/logos/logo-image.png";
 
   public toggleButton: boolean = false;
-  
+
   enable() {
     this.toggleButton = false
   }
@@ -50,27 +50,30 @@ export class UserRegistrationComponent implements OnInit {
     if (this.UserFormData.invalid) {
       return;
     }
-    this.postuserdata =
-    {
-      "user_id": Math.floor(Math.random() * 100000),
-      "user_firstname": this.UserFormData.value.first_name,
-      "user_lastname": this.UserFormData.value.last_name,
-      "user_contact": this.UserFormData.value.phoneNumber,
-      "user_email": this.UserFormData.value.email,
-      "user_username": this.UserFormData.value.username,
-      "user_password": this.UserFormData.value.confirmPassword,
-      "user_document": "../assets/images/user/usercard.png",
-      "user_profilephoto": "../assets/images/user/profile.png",
-      "user_company_name": this.UserFormData.value.companyName,
-      "user_watchlist": [],
-      "user_status": true,
-      "user_token": "",
-      "user_authentication": false,
-      "user_registration_date":Date()
-    }
+    this.ds.getUserData().subscribe((data: any) => {
+      this.postuserdata =
+      {
+        "id": 10000+data.length,
+        "user_firstname": this.UserFormData.value.first_name,
+        "user_lastname": this.UserFormData.value.last_name,
+        "user_contact": this.UserFormData.value.phoneNumber,
+        "user_email": this.UserFormData.value.email,
+        "user_username": this.UserFormData.value.username,
+        "user_password": this.UserFormData.value.confirmPassword,
+        "user_document": "../assets/images/user/usercard.png",
+        "user_profilephoto": "../assets/images/user/profile.png",
+        "user_company_name": this.UserFormData.value.companyName,
+        "user_watchlist": [],
+        "user_status": true,
+        "user_token": "",
+        "user_authentication": false,
+        "user_registration_date": Date()
+      }
+    });
     //  console.log(this.postuserdata); 
-    this.ds.postUserData(this.postuserdata).subscribe((data) => console.log(data));
-    this.ds.logintype="user";
+    // this.ds.postUserData(this.postuserdata).subscribe((data) => console.log(data));
+    this.ds.postUserData(this.postuserdata).subscribe();
+    this.ds.logintype = "user";
     this.router.navigate(['/', 'InitialLogin']);
   }
 
