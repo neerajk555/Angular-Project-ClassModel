@@ -21,6 +21,8 @@ import { TerminalauthGuard } from './terminalauth.guard';
 import { AuthGuard } from './auth.guard';
 import { AdminPaymentComponent } from './admin-payment/admin-payment.component';
 import { AdminFeedbackComponent } from './admin-feedback/admin-feedback.component';
+import { StatusComponent } from './status/status.component';
+import { FinalUserPaymentComponent } from './final-user-payment/final-user-payment.component';
 
 const routes: Routes = [
   {path:'home',component:MainLandingPageComponent},
@@ -29,6 +31,7 @@ const routes: Routes = [
   {path:'InitialLogin?admin',component:InitialLoginComponent},
   {path:'UserRegistration',component:UserRegistrationComponent},
   {path:'ForgotPassword',component:ForgotPasswordComponent},
+  {path:'payment',component:FinalUserPaymentComponent},
   {path:'InitialLanding',component:InitialLandingComponent,children:[
     {path:'watchlist',component:ContainerWatchlistComponent,canActivate:[UserauthGuard]},
     {path:'bookings',component:ContainerBookingComponent,canActivate:[UserauthGuard]},
@@ -36,6 +39,7 @@ const routes: Routes = [
     {path:'feedback',component:FeedbackComponent},
     {path:'profile',component:UserInfoComponent},
     {path:'userrequests',component:UserrequestComponent,canActivate:[TerminalauthGuard]},
+    {path:'status',component:StatusComponent,canActivate:[TerminalauthGuard]},
     {path:'Containers',component:ContainersComponent,canActivate:[TerminalauthGuard]},
     {path:'admin-terminal',component:AdminTerminalComponent,canActivate:[AuthGuard]},
     {path:'admin-user',component:AdminUserComponent,canActivate:[AuthGuard]},

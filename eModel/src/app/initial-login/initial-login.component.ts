@@ -20,7 +20,6 @@ export class InitialLoginComponent implements OnInit {
   //Get Form Data
   userFormData: any;
 
-  showLoadingIndicator = false;
   logopath = "../assets/images/logos/logo.png";
   
   ngOnInit(): void {
@@ -30,14 +29,8 @@ export class InitialLoginComponent implements OnInit {
       // console.log(this.abc);
     });
 
-    if (this.ds.logintype != "") {
-      //Loader
-      setTimeout(() => {
-        this.showLoadingIndicator = false;
-      }, 1000);
-      
+    if (this.ds.logintype != "") {      
       this.logintype = this.ds.logintype;
-
       this.userFormData = this.fb.group({
         username: ['', Validators.required],
         password: ['', Validators.required],
@@ -83,7 +76,7 @@ export class InitialLoginComponent implements OnInit {
         if (this.userFormData.value.username == this.userInfo[i].user_username && this.userFormData.value.password == this.userInfo[i].user_password) {
           this.flag = true;
           this.ds.loginid = this.userInfo[i].id;
-          console.log(this.ds.loginid);
+          // console.log(this.ds.loginid);
           this.router.navigateByUrl('/InitialLanding');
           break;
         }
@@ -96,7 +89,7 @@ export class InitialLoginComponent implements OnInit {
     else if (this.ds.logintype == "terminal") {
       for (let i = 0; i < this.terminalInfo.length; i++) {
         if (this.userFormData.value.username == this.terminalInfo[i].terminal_username && this.userFormData.value.password == this.terminalInfo[i].terminal_password) {
-          console.log(this.userFormData.value.username);
+          // console.log(this.userFormData.value.username);
           this.flag = true;
           this.ds.loginid = this.terminalInfo[i].id;
           this.router.navigateByUrl('/InitialLanding/userrequests');
@@ -109,10 +102,10 @@ export class InitialLoginComponent implements OnInit {
     }
     //ADMIN
     else if (this.ds.logintype == "admin") {
-      console.log(this.adminInfo);
+      // console.log(this.adminInfo);
       for (let i = 0; i < this.adminInfo.length; i++) {
         if (this.userFormData.value.username == this.adminInfo[i].admin_username && this.userFormData.value.password == this.adminInfo[i].admin_password) {
-          console.log(this.userFormData.value.username);
+          // console.log(this.userFormData.value.username);
           this.flag = true;
           this.ds.loginid = this.adminInfo[i].id;
           this.router.navigateByUrl('/InitialLanding/admin-terminal');

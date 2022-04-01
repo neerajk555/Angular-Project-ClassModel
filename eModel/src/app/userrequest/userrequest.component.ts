@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserDataService } from '../user-data.service';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { regExpEscape, toInteger } from '@ng-bootstrap/ng-bootstrap/util/util';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-userrequest',
@@ -10,7 +11,12 @@ import { regExpEscape, toInteger } from '@ng-bootstrap/ng-bootstrap/util/util';
 })
 export class UserrequestComponent implements OnInit {
 
-  constructor(private getDataRequest: UserDataService, private fB: FormBuilder) { }
+  //Loader
+  showLoadingIndicator = true;
+  showbtn = true;
+
+  closeResult = '';
+  constructor(private getDataRequest: UserDataService, private fB: FormBuilder, private modalService: NgbModal) { }
   recRequestData: any;
   approvedDetails: any;
   rejectDetails: any;
@@ -20,26 +26,65 @@ export class UserrequestComponent implements OnInit {
   tempId: any
   tempDate: any
   tempApproveIdStorage: any = []
+  trequests: any = [];
+  terminalcode: any;
 
-  approveRequest(requestData: any, id: any) {
-    this.tempData = requestData
-    this.tempId = id
+  //Approve,Reject Modal
+  approveRequest(content: any, requestData: any, id: any) {
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+    this.tempData = requestData;
+    this.tempId = id;
+  }
+  //No Need for Other Modal Opener
+  rejectRequest(content: any, requestData: any, id: any) {
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+    this.tempDataReject = requestData;
+    this.tempId = id;
   }
 
   approveFromModal(approvedDetails: any) {
-    this.tempCost = parseFloat(approvedDetails.value.requestCost)
-    this.tempData.cost = this.tempCost
-    this.tempData.appointment_status = "approved"
-    this.tempData.terminal_remarks = ""
-    this.tempData.deliveryDate = approvedDetails.value.deliveryDate
-    this.getDataRequest.putappointmentdata(this.tempData, this.tempId).subscribe((data: any) => {
+    
+    //Ashish 
+    this.tempCost = parseFloat(approvedDetails.value.requestCost);
+    this.tempData.cost = this.tempCost;
+    this.tempData.appointment_status = "Approved";
+    this.tempData.terminal_remarks = approvedDetails.value.terminalRemarks;
+    this.tempData.delivery_date = approvedDetails.value.deliveryDate;
+    this.getDataRequest.getappointmentDataById(this.tempId).subscribe((data:any)=>{
+      data.cost=this.tempData.cost;
+      data.appointment_status=this.tempData.appointment_status;
+      data.terminal_remarks=this.tempData.terminal_remarks;
+      data.delivery_date=this.tempData.delivery_date;
+      data.request_response_date=Date();
+      // console.log(data);
+      this.getDataRequest.putappointmentdata(data, this.tempId).subscribe();
     });
-    this.approvedDetails.reset();
+    // this.approvedDetails.reset();
+    // console.log(this.tempId);
+    this.modalService.dismissAll();
   }
 
-  rejectRequest(requestData: any, id: any) {
-    this.tempDataReject = requestData
-    this.tempId = id
+  rejectRemarksFromModal(rejectDetails: any) {
+    this.tempData.terminal_remarks = rejectDetails.value.terminalRemarks;
+    this.getDataRequest.getappointmentDataById(this.tempId).subscribe((data:any)=>{
+      data.appointment_status="Rejected";
+      data.terminal_remarks=this.tempData.terminal_remarks;
+      data.request_response_date=Date();
+      // console.log(data);
+      this.getDataRequest.putappointmentdata(data, this.tempId).subscribe();
+    });
+    this.modalService.dismissAll();
+    // this.tempDataReject.terminal_remarks = rejectDetails.value.terminalRemarks;
+    // this.getDataRequest.putappointmentdata(this.tempDataReject, this.tempId).subscribe();
+    // this.rejectDetails.reset();
   }
 
   onChangeCheckbox($event: any) {
@@ -82,17 +127,7 @@ export class UserrequestComponent implements OnInit {
     this.approvedDetails.reset();
     this.tempApproveIdStorage = []
   }
-  
-  rejectRemarksFromModal(rejectDetails: any) {
-    this.tempDataReject.appointment_status = "rejected"
-    this.tempDataReject.cost = []
-    this.tempDataReject.terminal_remarks = rejectDetails.value.terminalRemarks
-    this.getDataRequest.putappointmentdata(this.tempDataReject, this.tempId).subscribe((data: any) => {
-    });
-    this.rejectDetails.reset();
 
-  }
-  
   selectAll() {
     if (this.recRequestData[0].selectedAll == false) {
       for (let i = 0; i < this.recRequestData.length; i++) {
@@ -108,34 +143,65 @@ export class UserrequestComponent implements OnInit {
       }
     }
     console.log(this.tempApproveIdStorage);
-
   }
 
   ngOnInit(): void {
+    //Loader
+    setTimeout(() => {
+      this.showLoadingIndicator = false;
+    }, 2000);
     this.getDataRequest.getappointmentdata().subscribe((data) => {
       this.recRequestData = data;
-      let num = 0;
-      for (let i = 0; i < this.recRequestData.length; i++) {
-        this.recRequestData[i] = { ...this.recRequestData[i], "selected": false, "selectedAll": false }
-      }
-      // console.log(this.recRequestData);
-      this.recRequestData.forEach((element: any) => {
-        let id = element.delivery_terminal_id
-        let stringData = `?terminal_id=${id}`
-        this.getDataRequest.getterminalDataById(stringData).subscribe((data: any) => {
-          this.recRequestData[num] = { ...this.recRequestData[num], "destination": data[0].city };
-          num++
-        });
+      this.getDataRequest.getterminalDataById(this.getDataRequest.loginid).subscribe((data) => {
+        this.terminalcode = data;
+        for (let i = 0; i < this.recRequestData.length; i++) {
+          if (this.recRequestData[i].source_terminal_id == this.terminalcode.terminal_id) {
+            // this.trequests.push(this.recRequestData[i]);
+            this.getDataRequest.getTerminalDataById(this.recRequestData[i].delivery_terminal_id).subscribe((data:any)=>{
+              this.trequests.push({...this.recRequestData[i],"destination":data[0].terminal_name+', '+data[0].city, "selected": false, "selectedAll": false});      
+            });    
+          }
+        }        
+        // for (let i = 0; i < this.trequests.length; i++) {
+        //   this.getDataRequest.getTerminalDataById(this.trequests[i].delivery_terminal_id).subscribe((data:any)=>{
+        //     this.trequests[i]={...this.trequests[i],"destination":data[0].terminal_name+', '+data[0].city, "selected": false, "selectedAll": false};
+        //   });
+        // }
+        // console.log(this.trequests);
       });
+      // let num = 0;
+      // for (let i = 0; i < this.recRequestData.length; i++) {
+      //   this.recRequestData[i] = { ...this.recRequestData[i], "selected": false, "selectedAll": false }
+      // }
+      // console.log(this.recRequestData);
+      // this.recRequestData.forEach((element: any) => {
+      //   let id = element.delivery_terminal_id
+      //   let stringData = `?terminal_id=${id}`
+      //   this.getDataRequest.getterminalDataById(stringData).subscribe((data: any) => {
+      //     this.recRequestData[num] = { ...this.recRequestData[num], "destination": data[0].city };
+      //     num++;
+      //   });
+      // });
     });
 
     this.approvedDetails = this.fB.group({
       "requestCost": ["", [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
-      "deliveryDate": ["", [Validators.required]]
+      "deliveryDate": ["", [Validators.required]],
+      "terminalRemarks": [""]
     });
 
     this.rejectDetails = this.fB.group({
       "terminalRemarks": ["", [Validators.required]]
     });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
   }
 }

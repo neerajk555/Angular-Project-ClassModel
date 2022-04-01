@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UpdatedateDirective } from '../updatedate.directive';
 import { WatchlistService } from '../watchlist.service';
 import { FormBuilder, Validators } from '@angular/forms';
+import { BookingService } from '../booking.service';
 
 @Component({
   selector: 'app-final-user-payment',
@@ -11,7 +12,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 export class FinalUserPaymentComponent implements OnInit {
   payment: any;
 
-  constructor(public dt:WatchlistService,public formBuilder: FormBuilder) { 
+  constructor(public dt:WatchlistService,public formBuilder: FormBuilder,private getAppointmentData:BookingService) { 
     this.payment = this.formBuilder.group({
       name: ['', [Validators.required]],
       cvv:['', [Validators.required,Validators.minLength(3),Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
@@ -22,6 +23,7 @@ export class FinalUserPaymentComponent implements OnInit {
   containers: any;
   myForm: any;
   totalPrice = 0;
+  todaydate="";
 
   addContainer(data: any) {
     this.containers = data;
@@ -33,7 +35,14 @@ export class FinalUserPaymentComponent implements OnInit {
     console.log(this.totalPrice)
   }
   ngOnInit(): void {
-    this.dt.getData().subscribe((data: any) => this.addContainer(data));
+    this.containers=this.getAppointmentData.paymentdata;
+    console.log(this.containers);
+    this.todaydate=Date();
+    for(let i=0;i<this.containers.length;i++)
+    {
+      this.totalPrice+=parseInt(this.containers[i].cost);
+    }
+    // this.dt.getData().subscribe((data: any) => this.addContainer(data));
     //this.dt.getData().subscribe((data) => console.log(data));
   }
 message(){
