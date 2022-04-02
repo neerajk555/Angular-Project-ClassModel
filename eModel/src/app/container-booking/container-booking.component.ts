@@ -104,10 +104,16 @@ export class ContainerBookingComponent implements OnInit {
     // this.formPostData.receiver_phone = requestForm.value.receiver_phone
     // this.formPostData.receiver_mail = requestForm.value.receiver_mail
 
-    this.getAppointmentData.postAppointmentDetails(this.formPostData).subscribe((data) => {
-      console.log(data);
-    })
+    this.getAppointmentData.postAppointmentDetails(this.formPostData).subscribe((data:any) => {
+      // console.log(data);
+      this.usrds.postNewNotification(data.source_terminal_id,`There is some new request for Container ${data.container_id}`);
+    });
+    this.getAppointmentData.getContainerDataByContainerId(this.formPostData.container_id).subscribe((containerdata:any)=>{
+      containerdata[0].status="Requested";
+      this.getAppointmentData.putContainerData(containerdata[0],containerdata[0].id).subscribe();
+    });
     this.requestForm.reset();
+    this.advanceData();
     this.modalService.dismissAll();
     // window.location.reload()
   }
@@ -131,11 +137,26 @@ export class ContainerBookingComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAppointmentData.getTerminalDetails().subscribe((data: any) => {
-      this.recDataTerminal = data
+      this.recDataTerminal = data;
     });
     // this.getAppointmentData.getContainerDetails().subscribe((data: any) => {
     //   this.recContainerData = data
     // });
+    this.advanceData();
+    this.requestForm = this.fb.group({
+      "source_terminal_id": ["", [Validators.required]],
+      "delivery_terminal_id": ["", [Validators.required]],
+      "container_id": [, [Validators.required]],
+      "pickup_date": ["", [Validators.required]],
+      "sending_date": ["", [Validators.required]],
+      "user_remarks": ["", [Validators.required]],
+      "receiver_fullname": ["", [Validators.required]],
+      "receiver_phone": ["", [Validators.required]],
+      "receiver_mail": ["", [Validators.required]]
+    });
+  }
+
+  advanceData(){
     this.getAppointmentData.getAppointmentDetailsByUserId(this.usrds.loginid).subscribe((data) => {
       this.recAppointmentData = data;
       let numS = 0
@@ -167,18 +188,6 @@ export class ContainerBookingComponent implements OnInit {
 
       });
     });
-
-    this.requestForm = this.fb.group({
-      "source_terminal_id": ["", [Validators.required]],
-      "delivery_terminal_id": ["", [Validators.required]],
-      "container_id": [, [Validators.required]],
-      "pickup_date": ["", [Validators.required]],
-      "sending_date": ["", [Validators.required]],
-      "user_remarks": ["", [Validators.required]],
-      "receiver_fullname": ["", [Validators.required]],
-      "receiver_phone": ["", [Validators.required]],
-      "receiver_mail": ["", [Validators.required]]
-    });
   }
 
   destterminal: any = [];
@@ -197,7 +206,10 @@ export class ContainerBookingComponent implements OnInit {
       for (let i = 0; i < condata.length; i++) {
         this.getAppointmentData.getContypedataById(condata[i].contype_id).subscribe((data: any) => {
           for (let j = 0; j < data.length; j++) {
-            this.containers.push({ ...condata[i], "contype_type": data[j].contype_type, "contype_height": data[j].contype_height, "contype_width": data[j].contype_width });
+            if(condata[i].status=="Available")
+            {
+              this.containers.push({ ...condata[i], "contype_type": data[j].contype_type, "contype_height": data[j].contype_height, "contype_width": data[j].contype_width });
+            }
           }
         });
       }

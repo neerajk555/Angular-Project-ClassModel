@@ -51,21 +51,23 @@ export class UserrequestComponent implements OnInit {
   }
 
   approveFromModal(approvedDetails: any) {
-    
+
     //Ashish 
     this.tempCost = parseFloat(approvedDetails.value.requestCost);
     this.tempData.cost = this.tempCost;
     this.tempData.appointment_status = "Approved";
     this.tempData.terminal_remarks = approvedDetails.value.terminalRemarks;
     this.tempData.delivery_date = approvedDetails.value.deliveryDate;
-    this.getDataRequest.getappointmentDataById(this.tempId).subscribe((data:any)=>{
-      data.cost=this.tempData.cost;
-      data.appointment_status=this.tempData.appointment_status;
-      data.terminal_remarks=this.tempData.terminal_remarks;
-      data.delivery_date=this.tempData.delivery_date;
-      data.request_response_date=Date();
+    this.getDataRequest.getappointmentDataById(this.tempId).subscribe((data: any) => {
+      data.cost = this.tempData.cost;
+      data.appointment_status = this.tempData.appointment_status;
+      data.terminal_remarks = this.tempData.terminal_remarks;
+      data.delivery_date = this.tempData.delivery_date;
+      data.request_response_date = Date();
       // console.log(data);
-      this.getDataRequest.putappointmentdata(data, this.tempId).subscribe();
+      this.getDataRequest.putappointmentdata(data, this.tempId).subscribe((appointmentdata: any) => {
+        this.getDataRequest.postNewNotification(appointmentdata.user_id, `Request For Container: ${appointmentdata.container_id} Has Been ${appointmentdata.appointment_status}`);
+      });
     });
     // this.approvedDetails.reset();
     // console.log(this.tempId);
@@ -74,17 +76,20 @@ export class UserrequestComponent implements OnInit {
 
   rejectRemarksFromModal(rejectDetails: any) {
     this.tempData.terminal_remarks = rejectDetails.value.terminalRemarks;
-    this.getDataRequest.getappointmentDataById(this.tempId).subscribe((data:any)=>{
-      data.appointment_status="Rejected";
-      data.terminal_remarks=this.tempData.terminal_remarks;
-      data.request_response_date=Date();
+    this.getDataRequest.getappointmentDataById(this.tempId).subscribe((data: any) => {
+      data.appointment_status = "Rejected";
+      data.terminal_remarks = this.tempData.terminal_remarks;
+      data.request_response_date = Date();
       // console.log(data);
-      this.getDataRequest.putappointmentdata(data, this.tempId).subscribe();
+      this.getDataRequest.putappointmentdata(data, this.tempId).subscribe((appointmentdata: any) => {
+        this.getDataRequest.postNewNotification(appointmentdata.user_id, `Request For Container: ${appointmentdata.container_id} Has Been ${appointmentdata.appointment_status}`);
+      });
     });
     this.modalService.dismissAll();
     // this.tempDataReject.terminal_remarks = rejectDetails.value.terminalRemarks;
     // this.getDataRequest.putappointmentdata(this.tempDataReject, this.tempId).subscribe();
     // this.rejectDetails.reset();
+    this.ngOnInit();
   }
 
   onChangeCheckbox($event: any) {
@@ -157,11 +162,11 @@ export class UserrequestComponent implements OnInit {
         for (let i = 0; i < this.recRequestData.length; i++) {
           if (this.recRequestData[i].source_terminal_id == this.terminalcode.terminal_id) {
             // this.trequests.push(this.recRequestData[i]);
-            this.getDataRequest.getTerminalDataById(this.recRequestData[i].delivery_terminal_id).subscribe((data:any)=>{
-              this.trequests.push({...this.recRequestData[i],"destination":data[0].terminal_name+', '+data[0].city, "selected": false, "selectedAll": false});      
-            });    
+            this.getDataRequest.getTerminalDataById(this.recRequestData[i].delivery_terminal_id).subscribe((data: any) => {
+              this.trequests.push({ ...this.recRequestData[i], "destination": data[0].terminal_name + ', ' + data[0].city, "selected": false, "selectedAll": false });
+            });
           }
-        }        
+        }
         // for (let i = 0; i < this.trequests.length; i++) {
         //   this.getDataRequest.getTerminalDataById(this.trequests[i].delivery_terminal_id).subscribe((data:any)=>{
         //     this.trequests[i]={...this.trequests[i],"destination":data[0].terminal_name+', '+data[0].city, "selected": false, "selectedAll": false};

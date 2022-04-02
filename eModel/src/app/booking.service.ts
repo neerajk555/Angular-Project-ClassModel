@@ -24,7 +24,12 @@ export class BookingService {
   getContainerDetails() { return this.http.get("http://localhost:3000/containertype_details/") }
   getContainerDetailsById(data: any) { return this.http.get("http://localhost:3000/containertype_details/" + data) }
   getContainerDetailsByTerminalId(data:any){ return this.http.get("http://localhost:3000/container_details?terminal_id_origin=" + data);}
-
+  getContainerDataByContainerId(data:any){
+    return this.http.get("http://localhost:3000/container_details?con_id="+data);
+  }
+  putContainerData(data:any,id:any){
+    return this.http.put("http://localhost:3000/container_details/"+id,data);
+  }
   getContainerByConId(data:any){ return this.http.get("http://localhost:3000/container_details" + data);}
   getContypedataById(data:any){ return this.http.get("http://localhost:3000/containertype_details?contype_id=" + data)}
 }

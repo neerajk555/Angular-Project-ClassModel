@@ -17,6 +17,5 @@ export class WatchlistService {
   getConid(conid: any) {return this.http.get(`http://localhost:3000/status_details/?{conid}`);}
   getContainerWatchlist(){return this.http.get(this.url['containerWatchlist']);}
   getContainerById(id: any) {return this.http.get(this.url.containerWatchlist + "?con_id=" + id);}
-
 }
 

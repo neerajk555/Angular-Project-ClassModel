@@ -52,9 +52,10 @@ export class UserRegistrationComponent implements OnInit {
       return;
     }
     this.ds.getUserData().subscribe((data: any) => {
+      let userid=(10001+data.length);
       this.postuserdata =
       {
-        "id": 10000+data.length,
+        "id":userid,
         "user_firstname": this.UserFormData.value.first_name,
         "user_lastname": this.UserFormData.value.last_name,
         "user_contact": this.UserFormData.value.phoneNumber,
@@ -70,11 +71,12 @@ export class UserRegistrationComponent implements OnInit {
         "user_authentication": false,
         "user_registration_date": Date()
       }
-    });
-    //  console.log(this.postuserdata); 
     // this.ds.postUserData(this.postuserdata).subscribe((data) => console.log(data));
     this.ds.postUserData(this.postuserdata).subscribe();
-    this.ds.logintype = "user";
+    this.ds.postNewNotification(this.postuserdata.id,`Welcome ${this.postuserdata.user_firstname} To eModal Family!`);
+  });
+    //  console.log(this.postuserdata); 
+    this.ds.logintype = "user";    
     this.router.navigate(['/', 'InitialLogin']);
   }
 

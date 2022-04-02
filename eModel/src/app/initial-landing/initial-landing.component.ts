@@ -30,9 +30,14 @@ export class InitialLandingComponent implements OnInit {
       this.loginid = this.usrds.loginid;
       if (this.logintype == "user") {
         this.usrds.getUserDataById(this.loginid).subscribe(data => this.showdata(data));
+        this.usrds.getNotifications(this.usrds.loginid).subscribe((data:any) => {
+          this.notify(data);
+          console.log();
+        });
       }
       else if (this.logintype == "terminal") {
         this.usrds.getterminalDataById(this.loginid).subscribe(data => this.showdata(data));
+        this.usrds.getNotificationsById(this.usrds.loginid).subscribe((data:any) => this.notify(data));
       }
       else if (this.logintype == "admin") {
         this.usrds.getadminDataById(this.loginid).subscribe(data => this.showdata(data));
@@ -41,7 +46,6 @@ export class InitialLandingComponent implements OnInit {
     else {
       this.router.navigate(['/', 'mainlogin']);
     }
-    this.usrds.getNotifications().subscribe(data => this.notify(data));
   }
 
   showdata(data: any) {
@@ -100,21 +104,5 @@ export class InitialLandingComponent implements OnInit {
         this.notifications.push(element);
       }
     }
-  }
-  
-  /////////// Function for posting a new notifiction by Terminal 
-  ////// I have writter it here because the terminal component is still pending, but you 
-  //// can simply cut and paste it there when it's ready.
-
-  newNoti = "New notification";
-  postNewNotification() {
-    let newNotification: any = {
-      "id": ++(this.notifications.length),
-      "sendto_id": this.usrds.loginid,
-      "date": new Date(),
-      "description": this.newNoti,
-      "status": false
-    }
-    this.usrds.postNotification(newNotification).subscribe((data) => console.log(data));
   }
 }

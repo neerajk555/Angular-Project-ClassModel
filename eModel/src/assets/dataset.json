@@ -11,10 +11,7 @@
       "user_document": "../assets/images/user/usercard.png",
       "user_profilephoto": "../assets/images/user/profile.png",
       "user_company_name": "",
-      "user_watchlist": [
-        "CON00001",
-        "CON00002"
-      ],
+      "user_watchlist": [],
       "user_status": true,
       "user_token": "",
       "user_authentication": false,
@@ -36,6 +33,23 @@
       "user_token": "",
       "user_authentication": false,
       "user_registration_date": "Fri Apr 01 2022 00:06:33 GMT+0530 (India Standard Time)"
+    },
+    {
+      "id": 10003,
+      "user_firstname": "purva",
+      "user_lastname": "patel",
+      "user_contact": "7894612459",
+      "user_email": "ppatel@raytex.in",
+      "user_username": "ppatel",
+      "user_password": "123",
+      "user_document": "../assets/images/user/usercard.png",
+      "user_profilephoto": "../assets/images/user/profile.png",
+      "user_company_name": "",
+      "user_watchlist": [],
+      "user_status": true,
+      "user_token": "",
+      "user_authentication": false,
+      "user_registration_date": "Sat Apr 02 2022 13:52:31 GMT+0530 (India Standard Time)"
     }
   ],
   "card_details": [
@@ -115,7 +129,7 @@
       "token": ""
     },
     {
-      "id": 4,
+      "id": 3,
       "terminal_id": "TI100003",
       "terminal_name": "Mudra",
       "terminal_mobile": "1234567890",
@@ -231,7 +245,7 @@
   "appointment_details": [
     {
       "appointment_id": "APT658506",
-      "user_id": "1",
+      "user_id": 10001,
       "container_id": "CON00002",
       "pickup_date": "2022-03-27",
       "sending_date": "2022-04-04",
@@ -275,7 +289,7 @@
     },
     {
       "appointment_id": "APT307483",
-      "user_id": 1,
+      "user_id": 10001,
       "container_id": "CON00001",
       "pickup_date": "2022-04-28",
       "sending_date": "2022-04-30",
@@ -296,27 +310,8 @@
       "id": 3
     }
   ],
-  "payment_details": [
-    {
-      "id": 1,
-      "payment_id": "PT001",
-      "payment_mode": "ATM",
-      "payment_amount": 1500,
-      "issued_by": "eModal",
-      "Description": "",
-      "date": "21/03/2022"
-    }
-  ],
+  "payment_details": [],
   "feedback_details": [
-    {
-      "id": 1,
-      "usertype": "",
-      "userid": "",
-      "feedaback_type": "",
-      "description": "",
-      "read_status": true,
-      "feedback_time": ""
-    },
     {
       "id": 38,
       "usertype": "",
@@ -340,32 +335,11 @@
   ],
   "notification_details": [
     {
-      "id": 1,
-      "sendto_id": 3,
-      "date": "",
-      "description": "This is a notification",
-      "status": false
-    },
-    {
-      "id": 2,
-      "sendto_id": 3,
-      "date": "",
-      "description": "This is another notification",
-      "status": false
-    },
-    {
-      "id": 3,
-      "sendto_id": 3,
-      "date": "",
-      "description": "This is some other notification",
-      "status": false
-    },
-    {
-      "id": 4,
-      "sendto_id": 82,
-      "date": "",
-      "description": "This is 4th notification",
-      "status": false
+      "sendto_id": 10003,
+      "date": "2022-04-02T08:22:31.080Z",
+      "description": "Welcome purva To eModal Family!",
+      "status": false,
+      "id": 1
     }
   ]
 }

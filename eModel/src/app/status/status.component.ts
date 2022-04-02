@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { BookingService } from '../booking.service';
 import { UserDataService } from '../user-data.service';
 
 @Component({
@@ -17,7 +18,8 @@ export class StatusComponent implements OnInit {
   statusprint:any=[];
   date:string="";
 
-  constructor(private usrds: UserDataService, private fb: FormBuilder, private modalService: NgbModal) { }
+  constructor(private usrds: UserDataService, private fb: FormBuilder, private modalService: NgbModal,
+    private getAppointmentData: BookingService) { }
 
   ngOnInit(): void {
     //Loader
@@ -96,6 +98,11 @@ export class StatusComponent implements OnInit {
     else if(this.modaltype=="Delivered"){
       this.statusdata[this.statusid].receiver_delivery_date=data.value.del_date+" "+data.value.del_time;
       this.statusprint[this.statusid].receiver_delivery_date=this.statusdata[this.statusid].receiver_delivery_date;
+      this.usrds.postNewNotification(this.usrds,`Continer ${this.statusprint[this.statusid].con_id} Has Been Delivred! `);
+      this.getAppointmentData.getContainerDataByContainerId(this.statusprint[this.statusid].con_id).subscribe((containerdata:any)=>{
+        containerdata[0].status="Booked";
+        this.getAppointmentData.putContainerData(containerdata[0],containerdata[0].id).subscribe();
+      });
     }
     this.usrds.putStatusDataById(this.statusdata[this.statusid],this.statusdata[this.statusid].id).subscribe();
     this.modalService.dismissAll();

@@ -12,7 +12,7 @@ export class UserDataService {
   constructor(private ht: HttpClient) { }
 
   logintype = "user";
-  loginid = "10001";
+  loginid = "10003";
   user: any;
   requests:any;
 
@@ -21,14 +21,14 @@ export class UserDataService {
     "carddata":"http://localhost:3000/card_details/",
     "containertypedata":"http://localhost:3000/containertype_details/",
     "terminaldata":"http://localhost:3000/terminal_details",
-    "containerdata":"http://localhost:3000/container_details/",
+    "containerdata":"http://localhost:3000/container_details",
     "appointmentdata":"http://localhost:3000/appointment_details",
     "paymentdata":"http://localhost:3000/payment_details/",
     "statusdata":"http://localhost:3000/status_details",
     "feedbackdata":"http://localhost:3000/feedback_details/",
     "terminal_details":"http://localhost:3000/terminal_details/",
     "admindata":"http://localhost:3000/admin_master/",
-    "notifications":"http://localhost:3000/notification_details/"
+    "notifications":"http://localhost:3000/notification_details"
   }
 
   getUserData() { return this.ht.get(this.urls.userdata); }
@@ -64,19 +64,43 @@ export class UserDataService {
     return this.ht.get(this.urls.terminal_details);
   }
 
-
-  getNotifications(){
-    return this.ht.get(this.urls.notifications)
+  getNotifications(data:any){
+    return this.ht.get(this.urls.notifications+'?sendto_id='+data);
+  }
+  getNotificationsById(data:any){
+    return this.ht.get(`${this.urls.notifications}?sendto_id=${data}`);
   }
   postNotification(data:any){
     return this.ht.post(this.urls.notifications, data);
   }
 
+  getStatusData(){
+    return this.ht.get(this.urls.statusdata);
+  }
   getStatusDataByAppointmentId(data:any){
     return this.ht.get(`${this.urls.statusdata}?appointment_id=${data}`);
   }
-
   putStatusDataById(data:any,index:any){
     return this.ht.put(`${this.urls.statusdata}/${index}`,data);
+  }
+  postStatusData(data:any){
+    return this.ht.post(this.urls.statusdata,data);
+  }
+
+  getPaymentData(){
+    return this.ht.get(this.urls.paymentdata);
+  }
+  postPaymentData(data:any){
+    return this.ht.post(this.urls.paymentdata,data);
+  }
+
+  postNewNotification(id:any,message:string) {
+    let notification: any = {
+      "sendto_id": id,
+      "date": new Date(),
+      "description": message,
+      "status": false
+    }
+    this.postNotification(notification).subscribe();
   }
 }
