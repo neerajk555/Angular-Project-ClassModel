@@ -6,7 +6,7 @@
                 <h1>Confirm Purchase</h1>
             </div>
             <div class="payment">
-                <form [formGroup]="payment">
+                <form [formGroup]="payment" (ngSubmit)="addContainer(payment)">
                     <div class="form-group owner">
                         <label for="owner">Owner</label>
                         <input type="text" formControlName="name" placeholder="Enter your Name" class="form-control"

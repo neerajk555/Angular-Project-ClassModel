@@ -3,7 +3,7 @@
   <div class="navbar bg-light navbar-light">
     <h4 class="text-secondary mx-2">Status</h4>
   </div>
-  <div class="container">
+  <div class="">
     <table class="table mt-3">
       <thead class="thead-light">
         <tr>
@@ -28,7 +28,7 @@
           <td>{{ item.appointment_id }}</td>
           <td>{{ item.paymentId }}</td>
           <td>{{ item.approveDate }}</td>
-          <td *ngIf="item.con_loaded!=''">{{ item.con_loaded }}</td>
+          <td *ngIf="item.con_loaded!=''">Loaded</td>
           <td *ngIf="item.con_loaded==''"><button class="btn btn-primary" (click)="open(content,i,'Container')">Con
               Status</button></td>
           <td *ngIf="item.departure_date!=''">{{ item.departure_date }}</td>

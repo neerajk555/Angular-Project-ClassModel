@@ -20,7 +20,7 @@ export class ContainerBookingComponent implements OnInit {
     private modalService: NgbModal,
     private fb: FormBuilder,
     private usrds: UserDataService,
-    private router:Router) { }
+    private router: Router) { }
 
   recDataTerminal: any;
   recAppointmentData: any;
@@ -55,7 +55,7 @@ export class ContainerBookingComponent implements OnInit {
     // let idSource: any
     // let idDestination: any
     // let idContainer: any
-    console.log(requestForm.value);
+    // console.log(requestForm.value);
 
     // for (let i = 0; i < this.recDataTerminal.length; i++) {
     //   if (requestForm.value.source_terminal_id == this.recDataTerminal[i].city) {
@@ -104,16 +104,16 @@ export class ContainerBookingComponent implements OnInit {
     // this.formPostData.receiver_phone = requestForm.value.receiver_phone
     // this.formPostData.receiver_mail = requestForm.value.receiver_mail
 
-    this.getAppointmentData.postAppointmentDetails(this.formPostData).subscribe((data:any) => {
+    this.getAppointmentData.postAppointmentDetails(this.formPostData).subscribe((data: any) => {
       // console.log(data);
-      this.usrds.postNewNotification(data.source_terminal_id,`There is some new request for Container ${data.container_id}`);
+      this.usrds.postNewNotification(data.source_terminal_id, `There is some new request for Container ${data.container_id}`);
     });
-    this.getAppointmentData.getContainerDataByContainerId(this.formPostData.container_id).subscribe((containerdata:any)=>{
-      containerdata[0].status="Requested";
-      this.getAppointmentData.putContainerData(containerdata[0],containerdata[0].id).subscribe();
+    this.getAppointmentData.getContainerDataByContainerId(this.formPostData.container_id).subscribe((containerdata: any) => {
+      containerdata[0].status = "Requested";
+      this.getAppointmentData.putContainerData(containerdata[0], containerdata[0].id).subscribe();
+      this.advanceData();
     });
     this.requestForm.reset();
-    this.advanceData();
     this.modalService.dismissAll();
     // window.location.reload()
   }
@@ -138,11 +138,11 @@ export class ContainerBookingComponent implements OnInit {
   ngOnInit(): void {
     this.getAppointmentData.getTerminalDetails().subscribe((data: any) => {
       this.recDataTerminal = data;
+      this.advanceData();
     });
     // this.getAppointmentData.getContainerDetails().subscribe((data: any) => {
     //   this.recContainerData = data
     // });
-    this.advanceData();
     this.requestForm = this.fb.group({
       "source_terminal_id": ["", [Validators.required]],
       "delivery_terminal_id": ["", [Validators.required]],
@@ -156,7 +156,7 @@ export class ContainerBookingComponent implements OnInit {
     });
   }
 
-  advanceData(){
+  advanceData() {
     this.getAppointmentData.getAppointmentDetailsByUserId(this.usrds.loginid).subscribe((data) => {
       this.recAppointmentData = data;
       let numS = 0
@@ -206,8 +206,7 @@ export class ContainerBookingComponent implements OnInit {
       for (let i = 0; i < condata.length; i++) {
         this.getAppointmentData.getContypedataById(condata[i].contype_id).subscribe((data: any) => {
           for (let j = 0; j < data.length; j++) {
-            if(condata[i].status=="Available")
-            {
+            if (condata[i].status == "Available") {
               this.containers.push({ ...condata[i], "contype_type": data[j].contype_type, "contype_height": data[j].contype_height, "contype_width": data[j].contype_width });
             }
           }
@@ -217,8 +216,8 @@ export class ContainerBookingComponent implements OnInit {
     // console.log(this.containers);
   }
 
-  feePayment(data:any){
+  feePayment(data: any) {
     this.getAppointmentData.paymentdata.push(data);
-    this.router.navigate(['/','payment']);
+    this.router.navigate(['/', 'payment']);
   }
 }

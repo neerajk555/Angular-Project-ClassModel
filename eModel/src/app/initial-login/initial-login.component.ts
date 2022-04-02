@@ -92,6 +92,9 @@ export class InitialLoginComponent implements OnInit {
           // console.log(this.userFormData.value.username);
           this.flag = true;
           this.ds.loginid = this.terminalInfo[i].id;
+          this.ds.logintid = this.terminalInfo[i].terminal_id;
+          // console.log(this.ds.logintid);
+          
           this.router.navigateByUrl('/InitialLanding/userrequests');
           break;
         }

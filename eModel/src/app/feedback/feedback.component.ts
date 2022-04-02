@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, } from '@angular/forms';
+import { Router } from '@angular/router';
 import { FeedbackServicesService } from '../feedback-services.service';
 import { UserDataService } from '../user-data.service';
 
@@ -11,7 +12,7 @@ import { UserDataService } from '../user-data.service';
 })
 export class FeedbackComponent implements OnInit {
 
-  constructor(public fb: FormBuilder, public ds: FeedbackServicesService, private usrds: UserDataService) { }
+  constructor(public fb: FormBuilder, public ds: FeedbackServicesService, private usrds: UserDataService,private route:Router) { }
 
   feedbackFormData: any;
   feedbackData: any;
@@ -36,9 +37,11 @@ export class FeedbackComponent implements OnInit {
         "feedback_time": this.date,
         "read_status": false
       }
+      this.ds.postFeedbackData(this.feedbackData).subscribe();
     });
+
+    this.route.navigate(['/InitialLanding/','']);
     // console.log(this.feedbackData);
-    this.ds.postFeedbackData(this.feedbackData).subscribe((data) => console.log(data));
   }
 
 }

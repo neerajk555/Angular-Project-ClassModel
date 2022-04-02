@@ -29,13 +29,14 @@ export class FinalUserPaymentComponent implements OnInit {
   totalPrice = 0;
   todaydate = "";
   statusdata: any;
+
   addContainer(data: any) {
     this.usrds.getPaymentData().subscribe((pdata: any) => {
       this.paymentdata = {
-        "id": 4000 + this.paymentdata.length,
-        "payment_amount": data.cost,
+        "id": 4000 + pdata.length,
+        "payment_amount": this.totalPrice,
         "issued_by": "eModal",
-        "container_id": data.container_id,
+        "container_id": this.containers.container_id,
         "date": Date()
       };
       this.usrds.postPaymentData(this.paymentdata).subscribe();
@@ -43,14 +44,15 @@ export class FinalUserPaymentComponent implements OnInit {
         //  console.log(apointmentdata);
         apointmentdata.payment_id = this.paymentdata.id;
         apointmentdata.payment_date = this.paymentdata.date;
-        this.usrds.putappointmentdata(apointmentdata, apointmentdata.id).subscribe((appointmentdata:any)=>{
-        this.usrds.postNewNotification(appointmentdata.source_terminal_id,`Payment Has Been made for Container: ${this.containers[0].container_id}`);
-        this.getAppointmentData.getContainerDataByContainerId(appointmentdata.container_id).subscribe((containerdata:any)=>{
-          containerdata[0].status="Booked";
-          this.getAppointmentData.putContainerData(containerdata[0],containerdata[0].id).subscribe();
+        this.usrds.putappointmentdata(apointmentdata, apointmentdata.id).subscribe((appointmentdata: any) => {
+          this.usrds.postNewNotification(appointmentdata.source_terminal_id, `Payment Has Been made for Container: ${this.containers[0].container_id}`);
+          console.log(appointmentdata.source_terminal_id);          
+          this.getAppointmentData.getContainerDataByContainerId(appointmentdata.container_id).subscribe((containerdata: any) => {
+            containerdata[0].status = "Booked";
+            this.getAppointmentData.putContainerData(containerdata[0], containerdata[0].id).subscribe();
+          });
         });
-      });
-        this.usrds.getStatusData().subscribe((statusdt:any) => {
+        this.usrds.getStatusData().subscribe((statusdt: any) => {
           this.statusdata = {
             "status_id": "ST" + (10000 + statusdt.length),
             "appointment_id": apointmentdata.appointment_id,
@@ -67,7 +69,10 @@ export class FinalUserPaymentComponent implements OnInit {
         });
       });
     });
+    // this.router.navigate(['/InitialLanding/', 'bookings']);
   }
+
+
   ngOnInit(): void {
     if (this.getAppointmentData.paymentdata == "") {
       this.router.navigate(['/InitialLanding/', 'bookings']);
@@ -82,6 +87,6 @@ export class FinalUserPaymentComponent implements OnInit {
     //this.dt.getData().subscribe((data) => console.log(data));
   }
   message() {
-    alert("Payment Successful");
+    // alert("");
   }
 }

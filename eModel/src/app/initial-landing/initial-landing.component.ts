@@ -32,12 +32,14 @@ export class InitialLandingComponent implements OnInit {
         this.usrds.getUserDataById(this.loginid).subscribe(data => this.showdata(data));
         this.usrds.getNotifications(this.usrds.loginid).subscribe((data:any) => {
           this.notify(data);
-          console.log();
         });
       }
       else if (this.logintype == "terminal") {
         this.usrds.getterminalDataById(this.loginid).subscribe(data => this.showdata(data));
-        this.usrds.getNotificationsById(this.usrds.loginid).subscribe((data:any) => this.notify(data));
+        this.usrds.getNotificationsById(this.usrds.logintid).subscribe((data:any) => {
+          this.notify(data);
+          // console.log(data);          
+        });
       }
       else if (this.logintype == "admin") {
         this.usrds.getadminDataById(this.loginid).subscribe(data => this.showdata(data));
@@ -93,8 +95,8 @@ export class InitialLandingComponent implements OnInit {
   notifications: any = [];
 
   notify(data: any) {
+    this.notifications=[];
     for (let i = data.length - 1; i >= 0; i--) {
-      if (data[i].sendto_id == this.loginid) {
         let element: any = {};
         element.id = data[i].id;
         element.sendto_id = data[i].sendto_id
@@ -102,7 +104,6 @@ export class InitialLandingComponent implements OnInit {
         element.description = data[i].description;
         element.status = data[i].status;
         this.notifications.push(element);
-      }
     }
   }
 }

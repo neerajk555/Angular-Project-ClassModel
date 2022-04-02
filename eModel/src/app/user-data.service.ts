@@ -13,6 +13,7 @@ export class UserDataService {
 
   logintype = "user";
   loginid = "10003";
+  logintid="";
   user: any;
   requests:any;
 
