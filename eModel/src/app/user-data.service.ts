@@ -45,4 +45,8 @@ export class UserDataService {
     return this.ht.get(this.urls.admindata);
   }
 
+  putuserdata(data:any) {
+    return this.ht.put(this.urls.userdata+data.id, data);
+  }
+
 }

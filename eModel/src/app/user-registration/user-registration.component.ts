@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserDataService } from '../user-data.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { FormBuilder,Validators, AbstractControl,ValidatorFn } from '@angular/forms';
+import { FormBuilder, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,18 +11,13 @@ import { Router } from '@angular/router';
 })
 export class UserRegistrationComponent implements OnInit {
 
-  constructor(private ds:UserDataService, public fb:FormBuilder,private router:Router) { }
-  UserFormData:any;
-  postuserdata:any;
+  constructor(private ds: UserDataService, public fb: FormBuilder, private router: Router) { }
+  UserFormData: any;
+  postuserdata: any;
   submitted = false;
+  alertmsg = false;
   public toggleButton: boolean = false;
-  enable(){
-    this.toggleButton = false
- }
 
- disable(){
-    this.toggleButton = true
- }
   ngOnInit(): void {
 
     this.UserFormData = this.fb.group({
@@ -34,73 +29,72 @@ export class UserRegistrationComponent implements OnInit {
       profile: ['', Validators.required],
       Document: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      phoneNumber: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(15)]],
+      phoneNumber: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
       confirmPassword: ['', Validators.required],
-      password:['',Validators.required]
+      password: ['', Validators.required]
     });
   }
 
   get f() { return this.UserFormData.controls; }
 
-  PostUserFormData(){
+  PostUserFormData() {
 
     this.submitted = true;
     if (this.UserFormData.invalid) {
       return;
-  }
-    
-  this.postuserdata =
-  {
-        "id":Math.floor(Math.random() * 100),
-        "user_first_name":this.UserFormData.value.first_name,
-        "user_last_name":this.UserFormData.value.last_name,
-        "user_contact":this.UserFormData.value.phoneNumber,
-        "user_emailid":this.UserFormData.value.email,
-        "user_username":this.UserFormData.value.username,
-        "user_password":this.UserFormData.value.confirmPassword,
-        "user_document":"../assets/images/user/usercard.png",
-        "user_profilephoto":"../assets/images/user/profile.png",
-        "user_company_name":this.UserFormData.value.companyName,
-        "user_watchlist_ids":[],
-        "user_status":true,
-        "user_token":"",        
-        "authorize":false
-  }
-//  console.log(this.postuserdata); 
-  this.ds.postUserData(this.postuserdata).subscribe((data) => console.log(data));
-  this.router.navigate(['/','mainlogin']);
+    }
+
+    if (this.UserFormData.value.password != this.UserFormData.value.confirmPassword) {
+      this.alertmsg = true;
+      return;
+    }
+
+    this.postuserdata =
+    {
+      "id": Math.floor(Math.random() * 100),
+      "user_first_name": this.UserFormData.value.first_name,
+      "user_last_name": this.UserFormData.value.last_name,
+      "user_contact": this.UserFormData.value.phoneNumber,
+      "user_emailid": this.UserFormData.value.email,
+      "user_username": this.UserFormData.value.username,
+      "user_password": this.UserFormData.value.confirmPassword,
+      "user_document": "../assets/images/user/usercard.png",
+      "user_profilephoto": "../assets/images/user/profile.png",
+      "user_company_name": this.UserFormData.value.companyName,
+      "user_watchlist_ids": [],
+      "user_status": true,
+      "user_token": "",
+      "authorize": false
+    }
+    //  console.log(this.postuserdata); 
+    this.ds.postUserData(this.postuserdata).subscribe((data) => console.log(data));
+    this.router.navigate(['/', 'InitialLogin']);
   }
 
-  passType='password';
-  flag=true;
-  showPassword(ptype:any)
-  {
-    if(ptype=="show")
-    {
-      this.passType='text';
-      this.flag=false;
+  passType = 'password';
+  flag = true;
+  showPassword(ptype: any) {
+    if (ptype == "show") {
+      this.passType = 'text';
+      this.flag = false;
     }
-    else if(ptype=="hide")
-    {
-      this.passType='password';
-      this.flag=true;
+    else if (ptype == "hide") {
+      this.passType = 'password';
+      this.flag = true;
     }
   }
 
 
-  ConfirmpassType='password';
-  Confirmflag=true;
-  ConfirmShowPassword(ptype:any)
-  {
-    if(ptype=="show")
-    {
-      this.ConfirmpassType='text';
-      this.Confirmflag=false;
+  ConfirmpassType = 'password';
+  Confirmflag = true;
+  ConfirmShowPassword(ptype: any) {
+    if (ptype == "show") {
+      this.ConfirmpassType = 'text';
+      this.Confirmflag = false;
     }
-    else if(ptype=="hide")
-    {
-      this.ConfirmpassType='password';
-      this.Confirmflag=true;
+    else if (ptype == "hide") {
+      this.ConfirmpassType = 'password';
+      this.Confirmflag = true;
     }
   }
 
