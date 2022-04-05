@@ -12,7 +12,10 @@ export class FeedbackServicesService {
     "feedbackdata":"http://localhost:3000/feedback_details/"
   }
 
-  
+  getFeedbackData()
+  {
+    return this.ht.get(this.urls.feedbackdata);
+  }
   postFeedbackData(data:any)
   {
     return this.ht.post(this.urls.feedbackdata, data);

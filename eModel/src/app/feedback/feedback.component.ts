@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder,Validators, } from '@angular/forms';
+import { FormBuilder, Validators, } from '@angular/forms';
+import { Router } from '@angular/router';
 import { FeedbackServicesService } from '../feedback-services.service';
+import { UserDataService } from '../user-data.service';
 
 
 @Component({
@@ -10,10 +12,10 @@ import { FeedbackServicesService } from '../feedback-services.service';
 })
 export class FeedbackComponent implements OnInit {
 
-  constructor(public fb:FormBuilder, public ds:FeedbackServicesService) { }
+  constructor(public fb: FormBuilder, public ds: FeedbackServicesService, private usrds: UserDataService,private route:Router) { }
 
-  feedbackFormData:any;
-  feedbackData:any;
+  feedbackFormData: any;
+  feedbackData: any;
 
   ngOnInit(): void {
     this.feedbackFormData = this.fb.group({
@@ -23,24 +25,23 @@ export class FeedbackComponent implements OnInit {
   }
 
 
-  date=new Date();
-  postFeedbackData()
-  {
-    
-    this.feedbackData={
-      "id": Math.floor(Math.random() * 100),
-      "usertype": "",
-      "userid": "",
-      "feedaback_type": this.feedbackFormData.value.title,
-      "description": this.feedbackFormData.value.description,
-      "feedback_time": this.date,
-      "read_status": false
-    }
+  date = new Date();
+  postFeedbackData() {
+    this.ds.getFeedbackData().subscribe((data:any) => {
+      this.feedbackData = {
+        "id": "FB" + (60000 +data.length),
+        "usertype": this.usrds.logintype,
+        "userid": this.usrds.loginid,
+        "feedaback_type": this.feedbackFormData.value.title,
+        "description": this.feedbackFormData.value.description,
+        "feedback_time": this.date,
+        "read_status": false
+      }
+      this.ds.postFeedbackData(this.feedbackData).subscribe();
+    });
 
-    console.log(this.feedbackData);
-    this.ds.postFeedbackData(this.feedbackData).subscribe((data) => console.log(data));
-
-
+    this.route.navigate(['/InitialLanding/','']);
+    // console.log(this.feedbackData);
   }
 
 }
