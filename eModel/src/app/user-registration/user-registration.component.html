@@ -94,10 +94,14 @@
                                             <label>Confirm Password</label>
                                             <input type="{{ConfirmpassType}}" class="form-control"
                                                 formControlName="confirmPassword"
-                                                [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                                                [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" />
                                             <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
                                                 <div *ngIf="f.confirmPassword.errors.required">Confirm Password is
                                                     required</div>
+                                            </div>
+
+                                            <div *ngIf="alertmsg" class="text-danger">
+                                                <p>PAASWORD AND CONFIRM PASSWORD IS NOT MATCH!</p>
                                             </div>
                                         </div>
                                     </div>

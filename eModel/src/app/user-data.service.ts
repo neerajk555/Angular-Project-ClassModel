@@ -65,6 +65,9 @@ export class UserDataService {
     return this.ht.get(this.urls.terminal_details);
   }
 
+  putuserdata(data:any) {
+    return this.ht.put(this.urls.userdata+data.id, data);
+  }
   getNotifications(data:any){
     return this.ht.get(this.urls.notifications+'?sendto_id='+data);
   }

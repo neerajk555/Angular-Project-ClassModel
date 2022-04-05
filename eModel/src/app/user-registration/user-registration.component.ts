@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserDataService } from '../user-data.service';
+
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, Validators, AbstractControl, ValidatorFn, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
@@ -16,9 +18,9 @@ export class UserRegistrationComponent implements OnInit {
   UserFormData: any;
   postuserdata: any;
   submitted = false;
-  logopath = "../assets/images/logos/logo-image.png";
-
+  alertmsg = false;
   public toggleButton: boolean = false;
+  logopath = "../assets/images/logos/logo-image.png";
 
   enable() {
     this.toggleButton = false
@@ -33,14 +35,14 @@ export class UserRegistrationComponent implements OnInit {
       id: [''],
       first_name: ['', Validators.required],
       last_name: ['', Validators.required],
-      phoneNumber: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(15)]],
-      email: ['', [Validators.required, Validators.email]],
       username: ['', Validators.required],
-      password: ['', Validators.required],
-      confirmPassword: ['', Validators.required],
-      companyName: [''],
+      companyName: ['', Validators.required],
       profile: ['', Validators.required],
-      Document: ['', Validators.required]
+      Document: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      phoneNumber: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
+      confirmPassword: ['', Validators.required],
+      password: ['', Validators.required]
     });
   }
 
@@ -51,6 +53,7 @@ export class UserRegistrationComponent implements OnInit {
   selectedfileprofile:any;
   profileimageurl="";
 
+  PostUserFormData() {
   onchangedocument(event:any){
     var filetoUpload= event.target.files.item(0);
     console.log(filetoUpload);
@@ -97,6 +100,18 @@ export class UserRegistrationComponent implements OnInit {
     this.router.navigate(['/', 'InitialLogin']);
   }
 
+  passType = 'password';
+  flag = true;
+  showPassword(ptype: any) {
+    if (ptype == "show") {
+      this.passType = 'text';
+      this.flag = false;
+    }
+    else if (ptype == "hide") {
+      this.passType = 'password';
+      this.flag = true;
+    }
+  }
 
   //Show Password
   passType = 'password';
