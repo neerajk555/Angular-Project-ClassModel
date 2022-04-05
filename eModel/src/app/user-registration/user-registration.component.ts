@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserDataService } from '../user-data.service';
 import { FormBuilder, Validators, AbstractControl, ValidatorFn, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-user-registration',
@@ -44,6 +45,22 @@ export class UserRegistrationComponent implements OnInit {
   }
 
   get f() { return this.UserFormData.controls; }
+  
+  selectedfiledocument:any;
+  documentimageurl="";
+  selectedfileprofile:any;
+  profileimageurl="";
+
+  onchangedocument(event:any){
+    var filetoUpload= event.target.files.item(0);
+    console.log(filetoUpload);
+    let reader = new FileReader();
+    reader.onload=(event:any)=>{
+    };
+  }
+  onchangeprofile(event:any){ 
+    this.selectedfileprofile = <File>event.target.files[0];
+  }
 
   //Post Data in JSON
   PostUserFormData() {

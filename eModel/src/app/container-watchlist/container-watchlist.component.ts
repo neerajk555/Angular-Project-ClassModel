@@ -22,9 +22,20 @@ export class ContainerWatchlistComponent implements OnInit {
 
   watchlist: any[] = [];
   containerIds = "";
-
+  activeremove=false;
   changeState(i: any) {
     this.watchlist[i].isChecked = !this.watchlist[i].isChecked;
+    this.checkselected();
+  }
+
+  checkselected(){
+    for(let w=0;w<this.watchlist.length;w++)
+    {
+      if(this.watchlist[w].isChecked==true)
+      {
+        this.activeremove=true;
+      }
+    }
   }
 
   deletwSelectedRows() {
@@ -56,11 +67,11 @@ export class ContainerWatchlistComponent implements OnInit {
     this.wlids = this.usrds.user.user_watchlist;
     this.wS.getContainerWatchlist().subscribe((dt) => this.saveToWatchlist(dt));
   }
-  saveToWatchlist(data: any) {
+  saveToWatchlist(data: any) {    
     this.wldata = data;
     let j = 0;
     while (j < this.wlids.length) {
-      for (let i = 0; i < this.wldata.length; i++) {
+      for (let i = this.wldata.length - 1; i >=0; i--) {
         if (this.wldata[i].con_id == this.wlids[j]) {
           this.watchlist.push(this.wldata[i]);
           // console.log(this.wldata[i]);

@@ -12,7 +12,7 @@ export class UserDataService {
   constructor(private ht: HttpClient) { }
 
   logintype = "user";
-  loginid = "10003";
+  loginid = "10001";
   logintid="";
   user: any;
   requests:any;
@@ -27,9 +27,9 @@ export class UserDataService {
     "paymentdata":"http://localhost:3000/payment_details/",
     "statusdata":"http://localhost:3000/status_details",
     "feedbackdata":"http://localhost:3000/feedback_details/",
-    "terminal_details":"http://localhost:3000/terminal_details/",
     "admindata":"http://localhost:3000/admin_master/",
-    "notifications":"http://localhost:3000/notification_details"
+    "notifications":"http://localhost:3000/notification_details",
+    "terminal_details":"http://localhost:3000/terminal_details/"
   }
 
   getUserData() { return this.ht.get(this.urls.userdata); }
@@ -74,7 +74,20 @@ export class UserDataService {
   postNotification(data:any){
     return this.ht.post(this.urls.notifications, data);
   }
-
+  postNewNotification(id:any,message:string) {
+    let notification: any = {
+      "sendto_id": id,
+      "date": new Date(),
+      "description": message,
+      "status": true
+    }
+    this.postNotification(notification).subscribe();
+  }
+  putNotification(notification:any,index:any){
+    return this.ht.put(this.urls.notifications+'/'+index,notification);
+  }
+  
+  //Status Tracking
   getStatusData(){
     return this.ht.get(this.urls.statusdata);
   }
@@ -88,20 +101,11 @@ export class UserDataService {
     return this.ht.post(this.urls.statusdata,data);
   }
 
+  //Payment Details
   getPaymentData(){
     return this.ht.get(this.urls.paymentdata);
   }
   postPaymentData(data:any){
     return this.ht.post(this.urls.paymentdata,data);
-  }
-
-  postNewNotification(id:any,message:string) {
-    let notification: any = {
-      "sendto_id": id,
-      "date": new Date(),
-      "description": message,
-      "status": false
-    }
-    this.postNotification(notification).subscribe();
   }
 }

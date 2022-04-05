@@ -69,7 +69,7 @@ export class FinalUserPaymentComponent implements OnInit {
         });
       });
     });
-    // this.router.navigate(['/InitialLanding/', 'bookings']);
+    this.router.navigate(['/InitialLanding/', 'bookings']);
   }
 
 
