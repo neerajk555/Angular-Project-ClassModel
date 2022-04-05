@@ -11,6 +11,10 @@ export class ContainerDataService {
   containertype_details= " http://localhost:3000/containertype_details/";
   containerDetailsData = " http://localhost:3000/container_details/";
 
+  getcontainerData()
+  {
+    return this.ht.get(this.containerDetailsData);
+  }
   getcontainerDetailsData(terminal_name:string)
   {
     return this.ht.get(this.gtcontainerDetailsData+terminal_name);

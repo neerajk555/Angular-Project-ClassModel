@@ -36,7 +36,7 @@ export class ContainerBookingComponent implements OnInit {
   fieldsForTable = [
     "Appointment Id",
     "Container Id",
-    "Expand/Collapse",
+    " ",
     "Status",
     "Source",
     "Destination",
@@ -217,6 +217,7 @@ export class ContainerBookingComponent implements OnInit {
   }
 
   feePayment(data: any) {
+    this.getAppointmentData.paymentdata=[];
     this.getAppointmentData.paymentdata.push(data);
     this.router.navigate(['/', 'payment']);
   }

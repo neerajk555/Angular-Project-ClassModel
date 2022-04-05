@@ -105,15 +105,15 @@
                                 <div class="form-group">
                                     <label>Document</label>
                                     <input type="file" class="form-control" formControlName="Document"
-                                        [ngClass]="{ 'is-invalid': submitted && f.Document.errors }" />
+                                        [ngClass]="{ 'is-invalid': submitted && f.Document.errors }" accept="image/*" (change)="onchangedocument($event)"/>
                                     <div *ngIf="submitted && f.Document.errors" class="invalid-feedback">
                                         <div *ngIf="f.Document.errors.required">Upload Document</div>
                                     </div>
                                 </div><br>
                                 <div class="form-group">
                                     <label>Profile</label>
-                                    <input type="file" class="form-control" formControlName="profile"
-                                        [ngClass]="{ 'is-invalid': submitted && f.profile.errors }" />
+                                    <input type="file" class="form-control" formControlName="profile" accept="image/*"
+                                        [ngClass]="{ 'is-invalid': submitted && f.profile.errors }" (change)="onchangeprofile($event)"/>
                                     <div *ngIf="submitted && f.profile.errors" class="invalid-feedback">
                                         <div *ngIf="f.profile.errors.required">Upload Profile Photo</div>
                                     </div>

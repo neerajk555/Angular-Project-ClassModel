@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand mx-2">My Containers</a>
-    <button type="button" class="btn btn-default-add" (click)="deletwSelectedRows()">Remove Container</button>
+    <a class="navbar-brand mx-2">Watchlist</a>
+
     <ng-template #content let-modal>
         <div class="modal-header">
             <h4 class="modal-title" id="modal-basic-title">Add Container you want to watch</h4>
@@ -16,7 +16,7 @@
         </div>
     </ng-template>
     <button class="btn btn-default-add" (click)="open(content)">Add Container</button>
-
+    <button type="button" class="btn btn-default-add" (click)="deletwSelectedRows()" *ngIf="this.activeremove">Remove Container</button>
     <!-- <div class="dropdown ">        
         <button class="btn btn-default btn-sm">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-pdf"
@@ -44,7 +44,7 @@
 <table class="table" id="contentToConvert">
     <thead class="thead-light">
         <tr>
-            <th scope="col"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></th>
+            <th scope="col"></th>
             <th scope="col">Container ID</th>
             <th scope="col"></th>
             <th scope="col">Loaded OR Empty</th>

@@ -3,6 +3,7 @@ import { UserDataService } from '../user-data.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Observable, switchMap } from 'rxjs';
+import { NgbAlert } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-initial-login',
@@ -83,6 +84,9 @@ export class InitialLoginComponent implements OnInit {
       }
       if (this.flag == false) {
         this.alertmsg = true;
+        setTimeout(() => {
+          this.alertmsg = false;
+        }, 3000);
       }
     }
     //TERMINAL
@@ -94,13 +98,15 @@ export class InitialLoginComponent implements OnInit {
           this.ds.loginid = this.terminalInfo[i].id;
           this.ds.logintid = this.terminalInfo[i].terminal_id;
           // console.log(this.ds.logintid);
-          
           this.router.navigateByUrl('/InitialLanding/userrequests');
           break;
         }
       }
       if (this.flag == false) {
         this.alertmsg = true;
+        setTimeout(() => {
+          this.alertmsg = false;
+        }, 3000);
       }
     }
     //ADMIN
@@ -117,6 +123,9 @@ export class InitialLoginComponent implements OnInit {
       }
       if (this.flag == false) {
         this.alertmsg = true;
+        setTimeout(() => {
+          this.alertmsg = false;
+        }, 3000);
       }
     }
   }

@@ -16,7 +16,7 @@ export class InitialLandingComponent implements OnInit {
     config.backdrop = 'static';
     config.keyboard = false;
   }
-  
+
   //For User Prompt
   logintype = "";
   loginid = "";
@@ -30,13 +30,13 @@ export class InitialLandingComponent implements OnInit {
       this.loginid = this.usrds.loginid;
       if (this.logintype == "user") {
         this.usrds.getUserDataById(this.loginid).subscribe(data => this.showdata(data));
-        this.usrds.getNotifications(this.usrds.loginid).subscribe((data:any) => {
+        this.usrds.getNotifications(this.usrds.loginid).subscribe((data: any) => {
           this.notify(data);
         });
       }
       else if (this.logintype == "terminal") {
         this.usrds.getterminalDataById(this.loginid).subscribe(data => this.showdata(data));
-        this.usrds.getNotificationsById(this.usrds.logintid).subscribe((data:any) => {
+        this.usrds.getNotificationsById(this.usrds.logintid).subscribe((data: any) => {
           this.notify(data);
           // console.log(data);          
         });
@@ -93,17 +93,29 @@ export class InitialLandingComponent implements OnInit {
 
   //Notification
   notifications: any = [];
-
+  newnotifications = false;
   notify(data: any) {
-    this.notifications=[];
+    this.notifications = [];
     for (let i = data.length - 1; i >= 0; i--) {
-        let element: any = {};
-        element.id = data[i].id;
-        element.sendto_id = data[i].sendto_id
-        element.date = data[i].date;
-        element.description = data[i].description;
-        element.status = data[i].status;
-        this.notifications.push(element);
+      let element: any = data[i];
+      // element.id = data[i].id;
+      // element.sendto_id = data[i].sendto_id
+      // element.date = data[i].date;
+      // element.description = data[i].description;
+      if (data[i].status == true) {
+        this.newnotifications = true;
+      }
+      // element.status = data[i].status;
+      this.notifications.push(element);
+    }
+  }
+
+  readnotification() {
+    this.newnotifications = false;
+    // console.log(this.notifications);
+    for (let i = 0; i < this.notifications.length; i++) {
+      this.notifications[i].status=false;
+      this.usrds.putNotification(this.notifications[i],this.notifications[i].id).subscribe();
     }
   }
 }
