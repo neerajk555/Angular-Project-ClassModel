@@ -47,21 +47,21 @@ export class UserRegistrationComponent implements OnInit {
   }
 
   get f() { return this.UserFormData.controls; }
-  
-  selectedfiledocument:any;
-  documentimageurl="";
-  selectedfileprofile:any;
-  profileimageurl="";
 
-  PostUserFormData() {
-  onchangedocument(event:any){
-    var filetoUpload= event.target.files.item(0);
+  selectedfiledocument: any;
+  documentimageurl = "";
+  selectedfileprofile: any;
+  profileimageurl = "";
+
+  onchangedocument(event: any) {
+    var filetoUpload = event.target.files.item(0);
     console.log(filetoUpload);
     let reader = new FileReader();
-    reader.onload=(event:any)=>{
+    reader.onload = (event: any) => {
     };
   }
-  onchangeprofile(event:any){ 
+
+  onchangeprofile(event: any) {
     this.selectedfileprofile = <File>event.target.files[0];
   }
 
@@ -72,10 +72,10 @@ export class UserRegistrationComponent implements OnInit {
       return;
     }
     this.ds.getUserData().subscribe((data: any) => {
-      let userid=(10001+data.length);
+      let userid = (10001 + data.length);
       this.postuserdata =
       {
-        "id":userid,
+        "id": userid,
         "user_firstname": this.UserFormData.value.first_name,
         "user_lastname": this.UserFormData.value.last_name,
         "user_contact": this.UserFormData.value.phoneNumber,
@@ -91,12 +91,12 @@ export class UserRegistrationComponent implements OnInit {
         "user_authentication": false,
         "user_registration_date": Date()
       }
-    // this.ds.postUserData(this.postuserdata).subscribe((data) => console.log(data));
-    this.ds.postUserData(this.postuserdata).subscribe();
-    this.ds.postNewNotification(this.postuserdata.id,`Welcome ${this.postuserdata.user_firstname} To eModal Family!`);
-  });
+      // this.ds.postUserData(this.postuserdata).subscribe((data) => console.log(data));
+      this.ds.postUserData(this.postuserdata).subscribe();
+      this.ds.postNewNotification(this.postuserdata.id, `Welcome ${this.postuserdata.user_firstname} To eModal Family!`);
+    });
     //  console.log(this.postuserdata); 
-    this.ds.logintype = "user";    
+    this.ds.logintype = "user";
     this.router.navigate(['/', 'InitialLogin']);
   }
 
@@ -113,23 +113,23 @@ export class UserRegistrationComponent implements OnInit {
     }
   }
 
-  //Show Password
-  passType = 'password';
+  // //Show Password
+  // passType = 'password';
   ConfirmpassType = 'password';
-  flag = true;
+  // flag = true;
 
-  showPassword(ptype: any) {
-    if (ptype == "show") {
-      this.passType = 'text';
-      this.ConfirmpassType = 'text';
-      this.flag = false;
-    }
-    else if (ptype == "hide") {
-      this.passType = 'password';
-      this.ConfirmpassType = 'password';
-      this.flag = true;
-    }
-  }
+  // showPassword(ptype: any) {
+  //   if (ptype == "show") {
+  //     this.passType = 'text';
+  //     this.ConfirmpassType = 'text';
+  //     this.flag = false;
+  //   }
+  //   else if (ptype == "hide") {
+  //     this.passType = 'password';
+  //     this.ConfirmpassType = 'password';
+  //     this.flag = true;
+  //   }
+  // }
 
   // Confirmflag = true;
   // ConfirmShowPassword(ptype: any) {
